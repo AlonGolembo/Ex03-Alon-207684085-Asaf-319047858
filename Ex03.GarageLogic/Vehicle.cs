@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    public class Vehicle
+    public abstract class Vehicle
     {
         private string m_ModelName;
         private string m_LicenseNumber;
-        private float m_EnergyPercent;
+        public PowerSource Engine { get; set; }
         private List<Wheel> m_Wheels;
 
         public string ModelName
@@ -44,26 +44,6 @@ namespace Ex03.GarageLogic
                     throw new ArgumentNullException("Liscense number can't be empty!");
                 }
             }
-        }
-
-        public float EnergyPercent
-        {
-            get { return m_EnergyPercent; }
-            set
-            {
-                if(value < 0)
-                {
-                    throw new ArgumentOutOfRangeException("Energy percent can't be negative!");
-                }
-            }
-        }
-
-        public Vehicle(string i_ModelName, string i_LicenseNumber)
-        {
-            m_ModelName = i_ModelName;
-            m_LicenseNumber = i_LicenseNumber;
-            m_EnergyPercent = 100;
-            m_Wheels = new List<Wheel>();
         }
     }    
 }
