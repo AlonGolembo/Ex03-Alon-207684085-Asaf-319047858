@@ -1,7 +1,7 @@
 TODO List:
 
 1. Logic:
-  [] Create Vehicle class - Alon
+  [X] Create Vehicle class - Alon
   [] Create a ElectricVehicle: Vehicle class
   [] Create a FuelVehicle : Vehicle class
   [] Create a ElectricMotocycle : ElectricVehicle class
