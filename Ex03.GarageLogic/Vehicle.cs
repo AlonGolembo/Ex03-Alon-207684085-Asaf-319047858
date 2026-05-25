@@ -9,9 +9,9 @@ namespace Ex03.GarageLogic
 {
     public class Vehicle
     {
-        private string modelName;
-        private string licenseNumber;
-        private float energyPercent;
-        private List<Wheel> wheels;
+        private string m_ModelName;
+        private string m_LicenseNumber;
+        private float m_EnergyPercent;
+        private List<Wheel> m_Wheels;
     }
 }
