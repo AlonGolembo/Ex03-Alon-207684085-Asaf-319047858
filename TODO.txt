@@ -1,0 +1,10 @@
+TODO List:
+
+1. Logic:
+  [] Create Vehicle class - Alon
+  [] Create Wheel class - Asaf
+  [] Create Engine class.
+
+2. FE:
+  [] Create User input handler.
+  [] 
