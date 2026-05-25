@@ -13,6 +13,8 @@ TODO List:
   [] Create a eGas enum (Soler, Octan95, Octan96, Octan98)
   [] Create a ePaint (used in ElectricCar & MotorizedCar ) enum(Red , Yellow, Black, Silver)
   [] Create a eDrivingLicenceCategory enium(A, A2, B1, AB) 
+  [] Create a VehicleHandler class - to handle incoming vehicles into the garage
+  [] Create a Garage class - the main engine that will handle the vehicles
 
 
 2. FE:
