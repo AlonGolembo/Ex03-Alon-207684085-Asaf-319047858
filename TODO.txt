@@ -2,15 +2,15 @@ TODO List:
 
 1. Logic:
   [] Create Vehicle class - Alon
-  [] Create a Electric: Vehicle class
-  [] Create a Motorized : Vehicle class
-  [] Create a ElectricMotorbike : Electric class
-  [] Create a ElectricCar : Electric class
-  [] Create a MotorizedMotorbike : Motorized class
-  [] Create a MotorizedCar : Motorized class
-  [] Create a Truck : Motorized class
+  [] Create a ElectricVehicle: Vehicle class
+  [] Create a FuelVehicle : Vehicle class
+  [] Create a ElectricMotocycle : ElectricVehicle class
+  [] Create a ElectricCar : ElectricVehicle class
+  [] Create a FuelMotorcycle : FuelVehicle class
+  [] Create a FuelCar : FuelVehicle class
+  [] Create a FuelTruck : FuelVehicle class
   [] Create Wheel class - Asaf
-  [] Create a Gas enum (Soler, Octan95, Octan96, Octan98)
+  [] Create a eGas enum (Soler, Octan95, Octan96, Octan98)
   [] Create a ePaint (used in ElectricCar & MotorizedCar ) enum(Red , Yellow, Black, Silver)
   [] Create a eDrivingLicenceCategory enium(A, A2, B1, AB) 
 
