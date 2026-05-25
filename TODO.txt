@@ -2,8 +2,13 @@ TODO List:
 
 1. Logic:
   [] Create Vehicle class - Alon
+  [] Create a Motorbike : Vehicle class
+  [] Create a ElectricMotorbike : Motorbike class
+  [] Create a Car : Vehicle class
+  [] Create a ElectricCar : Car class
+  [] Create a Truck : Vehicle class
   [] Create Wheel class - Asaf
-  [] Create Engine class.
+  [] Create a Gas enum (Soler, Octan95, Octan96, Octan98)
 
 2. FE:
   [] Create User input handler.
