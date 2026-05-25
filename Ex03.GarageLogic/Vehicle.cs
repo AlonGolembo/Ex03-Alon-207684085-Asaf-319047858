@@ -45,12 +45,5 @@ namespace Ex03.GarageLogic
                 }
             }
         }
-        public Vehicle(string i_ModelName, string i_LicenseNumber)
-        {
-            m_ModelName = i_ModelName;
-            m_LicenseNumber = i_LicenseNumber;
-            Engine = new PowerSource();
-            m_Wheels = new List<Wheel>();
-        }
     }    
 }
