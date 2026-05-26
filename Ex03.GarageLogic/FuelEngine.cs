@@ -10,7 +10,7 @@ namespace Ex03.GarageLogic
     {
         public eFuelType FuelType { get; set; }
         private float m_CurrentFuelAmount;
-        private float m_MaxFuelAmount;
+        private float m_TankCapacity;
 
         public float CurrentFuelAmount
         {
@@ -21,7 +21,7 @@ namespace Ex03.GarageLogic
                 {
                     throw new ArgumentOutOfRangeException("The current fuel amount can't be negative!");
                 }
-                else if (value > m_MaxFuelAmount)
+                else if (value > m_TankCapacity)
                 {
                     throw new ArgumentOutOfRangeException("The current fuel amount can't be higher than max fuel amount!");
                 }
@@ -34,7 +34,7 @@ namespace Ex03.GarageLogic
 
         public float MaxFuelAmount
         {
-            get { return m_MaxFuelAmount; }
+            get { return m_TankCapacity; }
             set
             {
                 if (value < 0)
@@ -43,7 +43,7 @@ namespace Ex03.GarageLogic
                 }
                 else
                 {
-                    m_MaxFuelAmount = value;
+                    m_TankCapacity = value;
                 }
             }
         }
@@ -55,13 +55,13 @@ namespace Ex03.GarageLogic
                 throw new ArgumentException("Fuel type has to match to car's fuel type!");
             }
 
-            if (m_CurrentFuelAmount + i_FuelInLiters <= m_MaxFuelAmount)
+            if (m_CurrentFuelAmount + i_FuelInLiters <= m_TankCapacity)
             {
                 m_CurrentFuelAmount += i_FuelInLiters;
             }
             else
             {
-                throw new ArgumentOutOfRangeException($"Feul can't exceed tank size: {m_MaxFuelAmount} Liters!");
+                throw new ArgumentOutOfRangeException($"Feul can't exceed tank size: {m_TankCapacity} Liters!");
             }
 
         }
