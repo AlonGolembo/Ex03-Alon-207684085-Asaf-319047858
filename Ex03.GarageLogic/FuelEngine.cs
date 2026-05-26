@@ -54,13 +54,14 @@ namespace Ex03.GarageLogic
             {
                 throw new ArgumentException("Fuel type has to match to car's fuel type!");
             }
-            else if (m_CurrentFuelAmount + i_FuelInLiters > m_MaxFuelAmount)
+
+            if (m_CurrentFuelAmount + i_FuelInLiters <= m_MaxFuelAmount)
             {
-                throw new ArgumentOutOfRangeException("Feul can't exceed tank size!");
+                m_CurrentFuelAmount += i_FuelInLiters;
             }
             else
             {
-                m_CurrentFuelAmount += i_FuelInLiters;
+                throw new ArgumentOutOfRangeException($"Feul can't exceed tank size: {m_MaxFuelAmount} Liters!");
             }
 
         }

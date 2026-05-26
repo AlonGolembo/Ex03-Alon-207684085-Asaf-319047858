@@ -39,6 +39,7 @@
     <Compile Include="eDrivingLicenceCategory.cs" />
     <Compile Include="eFuelType.cs" />
     <Compile Include="ElectricCar.cs" />
+    <Compile Include="ElectricEngine.cs" />
     <Compile Include="ElectricMotorcycle.cs" />
     <Compile Include="ePaint.cs" />
     <Compile Include="FuelEngine.cs" />
