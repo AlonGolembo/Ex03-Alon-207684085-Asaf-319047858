@@ -32,7 +32,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public float MaxFuelAmount
+        public float TankCapacity
         {
             get { return m_TankCapacity; }
             set
@@ -46,6 +46,12 @@ namespace Ex03.GarageLogic
                     m_TankCapacity = value;
                 }
             }
+        }
+
+        public FuelEngine(eFuelType i_FuelType, float i_TankCapacity)
+        {
+            FuelType = i_FuelType;
+            TankCapacity = i_TankCapacity;
         }
 
         public void Refuel(float i_FuelInLiters, eFuelType i_eFuelType)
