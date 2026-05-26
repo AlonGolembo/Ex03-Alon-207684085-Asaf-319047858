@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
         private string m_ModelName;
         private string m_LicenseNumber;
         public Engine Engine { get; set; }
-        private List<Wheel> m_Wheels;
+        private readonly List<Wheel> m_Wheels;
 
         public string ModelName
         {
@@ -44,6 +44,12 @@ namespace Ex03.GarageLogic
                     throw new ArgumentNullException("Liscense number can't be empty!");
                 }
             }
+        }
+
+        public Vehicle(string i_LicenseNumber, string i_ModelName)
+        {
+            LicenseNumber = i_LicenseNumber;
+            ModelName = i_ModelName;
         }
     }    
 }
