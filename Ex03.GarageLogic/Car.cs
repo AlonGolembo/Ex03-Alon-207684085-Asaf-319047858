@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    public enum ePaint
+    public class Car : Vehicle
     {
-        Red = 1,
-        White,
-        Black,
-        Silver
+        public ePaint Color {  get; set; }
+        public eDoorsNumber DoorsNumber { get; set; }
     }
 }

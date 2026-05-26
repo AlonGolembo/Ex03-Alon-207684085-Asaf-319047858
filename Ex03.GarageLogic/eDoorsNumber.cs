@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    public enum ePaint
+    public enum eDoorsNumber
     {
-        Red = 1,
-        White,
-        Black,
-        Silver
+        Two = 2,
+        Three,
+        Four,
+        Five
     }
 }
