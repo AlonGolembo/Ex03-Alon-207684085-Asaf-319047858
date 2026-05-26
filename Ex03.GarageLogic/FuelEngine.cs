@@ -32,7 +32,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public float MaxFuelAmount
+        public float TankCapacity
         {
             get { return m_TankCapacity; }
             set
@@ -48,6 +48,20 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public FuelEngine(eFuelType i_FuelType, float i_TankCapacity)
+        {
+            FuelType = i_FuelType;
+            TankCapacity = i_TankCapacity;
+        }
+
+        public FuelEngine(eFuelType i_FuelType, float i_TankCapacity, float i_CurrentFuelAmount)
+        {
+            FuelType = i_FuelType;
+            TankCapacity = i_TankCapacity;
+            CurrentFuelAmount = i_CurrentFuelAmount;
+            EnergyPercentage = (CurrentFuelAmount / TankCapacity) * 100;
+        }
+
         public void Refuel(float i_FuelInLiters, eFuelType i_eFuelType)
         {
             if (FuelType != i_eFuelType)
@@ -58,6 +72,7 @@ namespace Ex03.GarageLogic
             if (m_CurrentFuelAmount + i_FuelInLiters <= m_TankCapacity)
             {
                 m_CurrentFuelAmount += i_FuelInLiters;
+                EnergyPercentage = (CurrentFuelAmount / TankCapacity) * 100; // Update the energy percentage whenver refuling
             }
             else
             {

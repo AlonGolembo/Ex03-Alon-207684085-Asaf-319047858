@@ -45,5 +45,20 @@ namespace Ex03.GarageLogic
                 }
             }
         }
+
+        public Vehicle(string i_LicenseNumber, string i_ModelName)
+        {
+            LicenseNumber = i_LicenseNumber;
+            ModelName = i_ModelName;
+        }
+
+        protected void InitializeWheelsList(eNumberOfWheels i_NumberOfWheels, float i_MaxAirPressure)
+        {
+            m_Wheels = new List<Wheel>();
+            for (int i = 0; i < (int)i_NumberOfWheels; i++)
+            {
+                m_Wheels.Add(new Wheel(i_MaxAirPressure));
+            }
+        } 
     }    
 }

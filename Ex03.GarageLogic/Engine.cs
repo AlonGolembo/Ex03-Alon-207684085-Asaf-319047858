@@ -21,5 +21,11 @@ namespace Ex03.GarageLogic
                 }
             }
         }
+
+        public Engine() { }
+        //public Engine(float i_EnergyPercentage)
+        //{
+        //    EnergyPercentage = i_EnergyPercentage;
+        //}
     }
 }

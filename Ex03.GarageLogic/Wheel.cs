@@ -51,9 +51,23 @@ namespace Ex03.GarageLogic
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("Max mount of air to for a wheel must be positive and not zero or below.");
+                    throw new ArgumentOutOfRangeException("Max mount of air can't be negative!");
                 }
             }
+        }
+
+        public Wheel()
+        {
+            ManufacturerName = string.Empty;
+            CurrentAirPressure = 0;
+            MaxAirPressure = 0;
+        }
+
+        public Wheel(float i_MaxAirPressure)
+        {
+            ManufacturerName = string.Empty;
+            CurrentAirPressure = 0;
+            MaxAirPressure = i_MaxAirPressure;
         }
 
         public void Inflate(float i_AirToAdd)
