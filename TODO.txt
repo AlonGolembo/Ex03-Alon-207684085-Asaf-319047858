@@ -22,4 +22,4 @@ TODO List:
 
 2. FE:
   [] Create User input handler.
-  [] 
+  [] Read vehicle DB and pass to VehicleHandler.
