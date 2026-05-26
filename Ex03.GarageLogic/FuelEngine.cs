@@ -48,10 +48,18 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public FuelEngine(float i_EnergyPercentage, eFuelType i_FuelType, float i_TankCapacity) : base (i_EnergyPercentage)
+        public FuelEngine(eFuelType i_FuelType, float i_TankCapacity)
         {
             FuelType = i_FuelType;
             TankCapacity = i_TankCapacity;
+        }
+
+        public FuelEngine(eFuelType i_FuelType, float i_TankCapacity, float i_CurrentFuelAmount)
+        {
+            FuelType = i_FuelType;
+            TankCapacity = i_TankCapacity;
+            CurrentFuelAmount = i_CurrentFuelAmount;
+            EnergyPercentage = (CurrentFuelAmount / TankCapacity) * 100;
         }
 
         public void Refuel(float i_FuelInLiters, eFuelType i_eFuelType)
