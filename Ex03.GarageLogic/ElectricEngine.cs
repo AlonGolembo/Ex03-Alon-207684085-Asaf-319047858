@@ -13,27 +13,44 @@ namespace Ex03.GarageLogic
 
         public float MaxBatteryTime
         {
-            get {  return m_RemainingBatteryTime; }
+            get {  return m_MaxBatteryTime; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Max battery life can't be negative!");
+                }
+
+                m_MaxBatteryTime = value;
+            }
+        }
+        public float RemainingBatteryLife
+        {
+            get { return m_RemainingBatteryTime; }
             set
             {
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException("Remaining battery life can't be negative!");
                 }
-                else if (value > m_MaxBatteryTime)
+                
+                if (value > m_MaxBatteryTime)
                 {
                     throw new ArgumentOutOfRangeException($"Remaining battery life can't exceed max battery life time: {m_MaxBatteryTime} hours!")
                 }
-                else
-                {
-                    m_MaxBatteryTime = value;
-                }
+
+                m_RemainingBatteryTime = value;
             }
         }
 
-        public ElectricEngine(float i_EnergyPercentage, float m_MaxBatteryLife) : base(i_EnergyPercentage)
+        public ElectricEngine(float m_MaxBatteryLife)
         {
             MaxBatteryTime = m_MaxBatteryLife;
+        }
+
+        public ElectricEngine(float i_RemainingBatteryLife, float i_MaxBatteryLife)
+        {
+
         }
 
         public void ChargeBattery(int i_ChargeHours)
@@ -41,7 +58,7 @@ namespace Ex03.GarageLogic
             if (i_ChargeHours + m_RemainingBatteryTime <= m_MaxBatteryTime)
             {
                 m_RemainingBatteryTime += i_ChargeHours;
-                EnergyPercentage = (m_RemainingBatteryTime / MaxBatteryTime) * 100;
+                EnergyPercentage = (RemainingBatteryLife / MaxBatteryTime) * 100;
             }
             else
             {
