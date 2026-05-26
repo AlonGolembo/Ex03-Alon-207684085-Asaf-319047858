@@ -52,7 +52,7 @@ namespace Ex03.GarageLogic
         {
             MaxBatteryTime = i_MaxBatteryTime;
             RemainingBatteryLife = i_RemainingBatteryLife;
-            EnergyPercentage = (RemainingBatteryLife / MaxBatteryTime) * 100;
+            this.UpdateEnergyPercentage(RemainingBatteryLife, MaxBatteryTime);
         }
 
         public void ChargeBattery(int i_ChargeHours)
@@ -60,7 +60,7 @@ namespace Ex03.GarageLogic
             if (i_ChargeHours + m_RemainingBatteryTime <= m_MaxBatteryTime)
             {
                 m_RemainingBatteryTime += i_ChargeHours;
-                EnergyPercentage = (RemainingBatteryLife / MaxBatteryTime) * 100;
+                this.UpdateEnergyPercentage(RemainingBatteryLife, MaxBatteryTime);
             }
             else
             {

@@ -23,5 +23,10 @@ namespace Ex03.GarageLogic
         }
 
         public Engine() { }
+
+        public void UpdateEnergyPercentage(float CurrentEnergyValue, float MaxCapacity)
+        {
+            EnergyPercentage = (CurrentEnergyValue / MaxCapacity) * 100;
+        }
     }
 }
