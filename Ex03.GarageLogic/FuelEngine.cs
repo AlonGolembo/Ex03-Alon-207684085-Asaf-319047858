@@ -56,7 +56,7 @@ namespace Ex03.GarageLogic
             }
             else if (m_CurrentFuelAmount + i_FuelInLiters > m_MaxFuelAmount)
             {
-                throw new ArgumentOutOfRangeException("Feul can't exceed tank size!");
+                throw new ArgumentOutOfRangeException($"Feul can't exceed tank size: {m_MaxFuelAmount} Liters!");
             }
             else
             {
