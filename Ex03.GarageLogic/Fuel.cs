@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    public class Fuel : PowerSource
+    public class FuelEngine : Engine
     {
         public eFuelType FuelType { get; set; }
         private float m_CurrentFuelAmount;

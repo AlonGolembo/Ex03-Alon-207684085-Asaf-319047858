@@ -2,9 +2,9 @@ TODO List:
 
 1. Logic:
   [X] Create an abstract Vehicle class - Alon
-  [X] Create an abstract PowerSource class - Alon
-  [X] Create a Fuel : PowerSource class - Alon
-  [] Create an Electricity : PowerSource class - Alon
+  [X] Create an abstract Engine class - Alon
+  [X] Create a FuelEngine : Engine class - Alon
+  [] Create an ElectricEngine : Engine class - Alon
   [] Create an abstract Car : Vehicle class - Alon
   [] Create an abstract Motorcycle : Vehicle class - Alon
   [] Create a FuelTruck : Vehicle class - Alon
