@@ -31,11 +31,17 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public ElectricEngine(float i_EnergyPercentage, float m_MaxBatteryLife) : base(i_EnergyPercentage)
+        {
+            MaxBatteryTime = m_MaxBatteryLife;
+        }
+
         public void ChargeBattery(int i_ChargeHours)
         {
             if (i_ChargeHours + m_RemainingBatteryTime <= m_MaxBatteryTime)
             {
                 m_RemainingBatteryTime += i_ChargeHours;
+                EnergyPercentage = (m_RemainingBatteryTime / MaxBatteryTime) * 100;
             }
             else
             {
