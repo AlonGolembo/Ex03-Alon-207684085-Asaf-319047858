@@ -3,15 +3,15 @@ TODO List:
 1. Logic:
   [X] Create an abstract Vehicle class - Alon
   [X] Create an abstract PowerSource class - Alon
-  [] Create a Fuel : PowerSource class
-  [] Create an Electricity : PowerSource class
-  [] Create an abstract Car : Vehicle class
-  [] Create an abstract Motorcycle : Vehicle class
-  [] Create a FuelTruck : Vehicle class
-  [] Create an ElectricCar : Car class
-  [] Create a FuelCar : Car class
-  [] Create an ElectricMotorcycle : Motorcycle class
-  [] Create a FuelMotorcycle : Motorcycle class
+  [] Create a Fuel : PowerSource class - Alon
+  [] Create an Electricity : PowerSource class - Alon
+  [] Create an abstract Car : Vehicle class - Alon
+  [] Create an abstract Motorcycle : Vehicle class - Alon
+  [] Create a FuelTruck : Vehicle class - Alon
+  [] Create an ElectricCar : Car class - Alon
+  [] Create a FuelCar : Car class - Alon
+  [] Create an ElectricMotorcycle : Motorcycle class - Alon
+  [] Create a FuelMotorcycle : Motorcycle class - Alon
   [] Create Wheel class - Asaf
   [] Create a eGas enum (Soler, Octan95, Octan96, Octan98)
   [] Create a ePaint (used in ElectricCar & MotorizedCar ) enum(Red , Yellow, Black, Silver)
