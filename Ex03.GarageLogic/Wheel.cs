@@ -63,6 +63,13 @@ namespace Ex03.GarageLogic
             MaxAirPressure = 0;
         }
 
+        public Wheel(float i_MaxAirPressure)
+        {
+            ManufacturerName = string.Empty;
+            CurrentAirPressure = 0;
+            MaxAirPressure = i_MaxAirPressure;
+        }
+
         public void Inflate(float i_AirToAdd)
         {
             if (i_AirToAdd > 0 && CurrentAirPressure + i_AirToAdd <= MaxAirPressure)
