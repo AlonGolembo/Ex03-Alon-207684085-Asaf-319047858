@@ -21,7 +21,7 @@ namespace Ex03.GarageLogic
         }
         public FuelTruck(string i_LicenseID, string i_ModelName, bool i_IsRefrigerated, float i_CargoVolume) : base (i_LicenseID, i_ModelName)
         {
-            this.InitializeWheelsList(14, 28);
+            this.InitializeWheelsList(eNumberOfWheels.Fourteen, 28);
             this.Engine = new FuelEngine(eFuelType.Soler, 125);
             this.IsRefrigerated = i_IsRefrigerated;
             CargoVolume = i_CargoVolume;
