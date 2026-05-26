@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
         private string m_ModelName;
         private string m_LicenseNumber;
         public Engine Engine { get; set; }
-        private readonly List<Wheel> m_Wheels;
+        private List<Wheel> m_Wheels;
 
         public string ModelName
         {
@@ -51,5 +51,14 @@ namespace Ex03.GarageLogic
             LicenseNumber = i_LicenseNumber;
             ModelName = i_ModelName;
         }
+
+        protected void InitializeWheelsList(int i_NumberOfWheels, float i_MaxAirPressure)
+        {
+            m_Wheels = new List<Wheel>();
+            for (int i = 0; i < i_NumberOfWheels; i++)
+            {
+                m_Wheels.Add(new Wheel(i_MaxAirPressure));
+            }
+        } 
     }    
 }
