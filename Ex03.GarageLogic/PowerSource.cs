@@ -2,7 +2,7 @@
 
 namespace Ex03.GarageLogic
 {
-    public abstract class PowerSource
+    public abstract class Engine
     {
         private float m_EnergyPercentage;
 

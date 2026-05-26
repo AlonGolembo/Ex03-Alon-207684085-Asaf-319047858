@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
     {
         private string m_ModelName;
         private string m_LicenseNumber;
-        public PowerSource Engine { get; set; }
+        public Engine Engine { get; set; }
         private List<Wheel> m_Wheels;
 
         public string ModelName
