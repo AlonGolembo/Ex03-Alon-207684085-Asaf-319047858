@@ -59,7 +59,7 @@ namespace Ex03.GarageLogic
             FuelType = i_FuelType;
             TankCapacity = i_TankCapacity;
             CurrentFuelAmount = i_CurrentFuelAmount;
-            EnergyPercentage = (CurrentFuelAmount / TankCapacity) * 100;
+            this.UpdateEnergyPercentage(CurrentFuelAmount, TankCapacity);
         }
 
         public void Refuel(float i_FuelInLiters, eFuelType i_eFuelType)
@@ -72,7 +72,7 @@ namespace Ex03.GarageLogic
             if (m_CurrentFuelAmount + i_FuelInLiters <= m_TankCapacity)
             {
                 m_CurrentFuelAmount += i_FuelInLiters;
-                EnergyPercentage = (CurrentFuelAmount / TankCapacity) * 100; // Update the energy percentage whenver refuling
+                this.UpdateEnergyPercentage(CurrentFuelAmount, TankCapacity); // Update the energy percentage whenver refuling
             }
             else
             {
