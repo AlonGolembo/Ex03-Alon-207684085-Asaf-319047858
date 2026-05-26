@@ -33,13 +33,13 @@ namespace Ex03.GarageLogic
 
         public void ChargeBattery(int i_ChargeHours)
         {
-            if (i_ChargeHours + m_RemainingBatteryTime > m_MaxBatteryTime)
+            if (i_ChargeHours + m_RemainingBatteryTime <= m_MaxBatteryTime)
             {
-                throw new ArgumentOutOfRangeException($"Charging hours can't exceed max charging: {m_MaxBatteryTime - m_RemainingBatteryTime} hours!");
+                m_RemainingBatteryTime += i_ChargeHours;
             }
             else
             {
-                m_RemainingBatteryTime += i_ChargeHours;
+                throw new ArgumentOutOfRangeException($"Charging hours can't exceed max charging: {m_MaxBatteryTime - m_RemainingBatteryTime} hours!");
             }
         }
 
