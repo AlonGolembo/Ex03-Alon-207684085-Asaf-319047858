@@ -43,14 +43,16 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public ElectricEngine(float m_MaxBatteryLife)
+        public ElectricEngine(float i_MaxBatteryTime)
         {
-            MaxBatteryTime = m_MaxBatteryLife;
+            MaxBatteryTime = i_MaxBatteryTime;
         }
 
-        public ElectricEngine(float i_RemainingBatteryLife, float i_MaxBatteryLife)
+        public ElectricEngine(float i_RemainingBatteryLife, float i_MaxBatteryTime)
         {
-
+            MaxBatteryTime = i_MaxBatteryTime;
+            RemainingBatteryLife = i_RemainingBatteryLife;
+            EnergyPercentage = (RemainingBatteryLife / MaxBatteryTime) * 100;
         }
 
         public void ChargeBattery(int i_ChargeHours)
