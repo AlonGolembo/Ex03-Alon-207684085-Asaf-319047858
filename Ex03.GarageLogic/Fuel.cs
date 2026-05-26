@@ -47,5 +47,22 @@ namespace Ex03.GarageLogic
                 }
             }
         }
+
+        public void Refuel(float i_FuelInLiters, eFuelType i_eFuelType)
+        {
+            if (FuelType != i_eFuelType)
+            {
+                throw new ArgumentException("Fuel type has to match to car's fuel type!");
+            }
+            else if (m_CurrentFuelAmount + i_FuelInLiters > m_MaxFuelAmount)
+            {
+                throw new ArgumentOutOfRangeException("Feul can't exceed tank size!");
+            }
+            else
+            {
+                m_CurrentFuelAmount += i_FuelInLiters;
+            }
+
+        }
     }
 }
