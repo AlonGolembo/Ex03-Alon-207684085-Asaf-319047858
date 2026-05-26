@@ -64,7 +64,7 @@ namespace Ex03.GarageLogic
             if (m_CurrentFuelAmount + i_FuelInLiters <= m_TankCapacity)
             {
                 m_CurrentFuelAmount += i_FuelInLiters;
-                EnergyPercentage = (m_CurrentFuelAmount / m_TankCapacity) * 100; // Update the energy percentage whenver refuling
+                EnergyPercentage = (CurrentFuelAmount / TankCapacity) * 100; // Update the energy percentage whenver refuling
             }
             else
             {
