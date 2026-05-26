@@ -41,11 +41,11 @@
     <Compile Include="ElectricCar.cs" />
     <Compile Include="ElectricMotorcycle.cs" />
     <Compile Include="ePaint.cs" />
-    <Compile Include="Fuel.cs" />
+    <Compile Include="FuelEngine.cs" />
     <Compile Include="FuelCar.cs" />
     <Compile Include="FuelMotorcycle.cs" />
     <Compile Include="FuelTruck.cs" />
-    <Compile Include="PowerSource.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleCreator.cs" />
     <Compile Include="Wheel.cs" />
