@@ -46,9 +46,9 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public Vehicle(string i_LicenseNumber, string i_ModelName)
+        public Vehicle(string i_LicenseID, string i_ModelName)
         {
-            LicenseID = i_LicenseNumber;
+            LicenseID = i_LicenseID;
             ModelName = i_ModelName;
         }
 
