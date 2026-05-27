@@ -18,6 +18,7 @@ namespace Ex03.ConsoleUI
                 try
                 {
                     Vehicle currentVehicle = ParseLine(dbLine);
+                    RegisteredVehicle registeredVehicle = new RegisteredVehicle(currentVehicle);
                     PrintVehicle.Print(currentVehicle);
                     //VehicleHandler.InsertVehicle(currentVehicle);
                 }
