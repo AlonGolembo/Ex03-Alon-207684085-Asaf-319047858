@@ -21,7 +21,8 @@ namespace Ex03.GarageLogic
             Color = i_Color;
             DoorsNumber = i_DoorsNumber;
         }
-        public Car(string i_LicenseID,string i_ModelName) : base(i_LicenseID, i_ModelName) { }
+        public Car(string i_LicenseID,
+                   string i_ModelName) : base(i_LicenseID, i_ModelName) { }
     }
 
 
