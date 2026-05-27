@@ -8,9 +8,11 @@ namespace Ex03.GarageLogic
 {
     public abstract class Car : Vehicle
     {
+        
         public ePaint Color {  get; set; }
         public eDoorsNumber DoorsNumber { get; set; }
 
+        
         public Car(string i_LicenseID,
                    string i_ModelName,
                    ePaint i_Color,
@@ -19,7 +21,8 @@ namespace Ex03.GarageLogic
             Color = i_Color;
             DoorsNumber = i_DoorsNumber;
         }
-        public Car(string i_LicenseID,string i_ModelName) : base(i_LicenseID, i_ModelName) { }
+        public Car(string i_LicenseID,
+                   string i_ModelName) : base(i_LicenseID, i_ModelName) { }
     }
 
 

@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    internal class Motorcycle : Vehicle
+    public abstract class Motorcycle : Vehicle
     {
         public eDrivingLicenceCategory DrivingLicenceCategory { get; set; }
         private int m_EngineCapacity;
+
+        public Motorcycle (string i_LicenseID, string i_ModelName,int i_EngineCapacity) : base(i_LicenseID, i_ModelName)
+        {
+            EngineCapacity = i_EngineCapacity;
+        }
 
         public int EngineCapacity
         {
@@ -26,5 +31,8 @@ namespace Ex03.GarageLogic
                 }
             }
         }
+
+        public Motorcycle(string i_LicenseNumber,
+                          string i_ModelName) : base(i_LicenseNumber, i_ModelName) { }
     }
 }
