@@ -1,14 +1,11 @@
 ﻿namespace Ex03.GarageLogic
 {
-    internal class ElectricCar : Vehicle
+    public class ElectricCar : Car
     {
-        private string i_LicenseID;
-        private string i_ModelName;
-
-        public ElectricCar(string i_LicenseID, string i_ModelName)
+        public ElectricCar(string i_LicenseID, string i_ModelName) : base (i_LicenseID, i_ModelName)
         {
-            this.i_LicenseID = i_LicenseID;
-            this.i_ModelName = i_ModelName;
+            Engine = new ElectricEngine((float)4.6);
+            this.InitializeWheelsList(eNumberOfWheels.Five, 31);
         }
     }
 }

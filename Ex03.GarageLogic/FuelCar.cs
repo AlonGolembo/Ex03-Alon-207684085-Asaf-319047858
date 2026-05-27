@@ -2,13 +2,10 @@
 {
     internal class FuelCar : Vehicle
     {
-        private string i_LicenseID;
-        private string i_ModelName;
-
-        public FuelCar(string i_LicenseID, string i_ModelName)
+        public FuelCar(string i_LicenseID, string i_ModelName) : base(i_LicenseID, i_ModelName)
         {
-            this.i_LicenseID = i_LicenseID;
-            this.i_ModelName = i_ModelName;
+            Engine = new FuelEngine(eFuelType.Octan95, (float)51);
+            this.InitializeWheelsList(eNumberOfWheels.Five, 31);
         }
     }
 }
