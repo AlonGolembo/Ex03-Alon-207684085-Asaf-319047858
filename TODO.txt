@@ -8,8 +8,8 @@ TODO List:
   [X] Create an abstract Car : Vehicle class - Alon
   [X] Create an abstract Motorcycle : Vehicle class - Alon
   [X] Create a FuelTruck : Vehicle class - Alon
-  [] Create an ElectricCar : Car class - Alon
-  [] Create a FuelCar : Car class - Alon
+  [X] Create an ElectricCar : Car class - Alon
+  [X] Create a FuelCar : Car class - Alon
   [] Create an ElectricMotorcycle : Motorcycle class - Alon
   [] Create a FuelMotorcycle : Motorcycle class - Alon
   [X] Create Wheel class - Asaf
