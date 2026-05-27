@@ -30,6 +30,11 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public List<Wheel> Wheels
+        {
+            get { return m_Wheels; }
+        }
+
         public string LicenseID
         {
             get { return m_LicenseID; }

@@ -11,14 +11,15 @@ namespace Ex03.ConsoleUI
 {
     public class PrintVehicle
     {
-        public static void Print(RegisterVehicle i_RegisteredVehicle)
+        public static void Print(RegisteredVehicle i_RegisteredVehicle)
         {
             Console.WriteLine("Vehicle details:");
-            Console.WriteLine($"License Number: {i_RegisteredVehicle.Vehicle.LicenseNumber}");
+            Console.WriteLine($"License Number: {i_RegisteredVehicle.Vehicle.LicenseID}");
             Console.WriteLine($"Model Name: {i_RegisteredVehicle.Vehicle.ModelName}");
             Console.WriteLine($"Owner Name: {i_RegisteredVehicle.OwnerName}");
             Console.WriteLine($"Vehicle State: {i_RegisteredVehicle.VehicleState}");
-            Console.WriteLine($"Wheels Description: {i_RegisteredVehicle.Vehicle.Wheels}");
+            Console.WriteLine($"Wheels Description: ");
+            PrintWheels(i_RegisteredVehicle.Vehicle.Wheels);
             switch (i_RegisteredVehicle.Vehicle.Engine)
             {
                 case FuelEngine fuelEngine:
@@ -46,6 +47,21 @@ namespace Ex03.ConsoleUI
                 case ElectricMotorcycle fuelMotorcycle:
                     Console.WriteLine($"Add ElectricMotorcycle details here...");
                     break;
+            }
+        }
+
+        private static void PrintWheels(List<Wheel> i_wheels)
+        {
+            Console.WriteLine($"This vehicle has {i_wheels.Count} wheels");
+            Console.WriteLine($"Wheels status: ");
+            int i_WheelCount = 1;
+            foreach (Wheel w in i_wheels)
+            {
+                Console.WriteLine($"Wheel number {i_WheelCount}: ");
+                Console.WriteLine($"Manafatured: {w.ManufacturerName}");
+                Console.WriteLine($"Air pressure: {w.CurrentAirPressure}");
+                Console.WriteLine("");
+                i_WheelCount++;
             }
         }
     }
