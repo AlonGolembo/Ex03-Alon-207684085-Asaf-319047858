@@ -16,10 +16,12 @@ TODO List:
   [X] Create a eFuelType enum (Soler, Octan95, Octan96, Octan98) - Alon
   [X] Create a ePaint (used in ElectricCar & MotorizedCar ) enum(Red , Yellow, Black, Silver) - Asaf
   [X] Create a eDrivingLicenceCategory enum(A, A2, B1, AB) - Asaf 
-  [] Create a VehicleHandler class - to handle incoming vehicles into the garage - Asaf
+  [] Create a RegisteredVehicle class - register incoming vehicle and wrap with owner info etc.. - Alon
+  [] Create a VehicleHandler class - to handle incoming registered vehicles into the garage - Asaf
   [] Create a Garage class - the main engine that will handle the vehicles - Asaf
 
 
 2. FE:
   [] Create User input handler.
   [] Read vehicle DB and pass to VehicleHandler.
+  [] Create PrintVehicle class that prints all of the registered vehicle details - Alon
