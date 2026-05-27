@@ -26,5 +26,8 @@ namespace Ex03.GarageLogic
                 }
             }
         }
+
+        public Motorcycle(string i_LicenseNumber,
+                          string i_ModelName) : base(i_LicenseNumber, i_ModelName) { }
     }
 }
