@@ -12,6 +12,7 @@ namespace Ex03.ConsoleUI
     {
         public static void Load(string i_fileName)
         {
+            int linesRead = 1;
             string[] dbLines = File.ReadAllLines(i_fileName);
             foreach (string dbLine in dbLines)
             {
@@ -21,8 +22,16 @@ namespace Ex03.ConsoleUI
                     string ownerPhoneNumber;
                     Vehicle currentVehicle = ParseLine(dbLine, out ownerName, out ownerPhoneNumber);
                     RegisteredVehicle registeredVehicle = new RegisteredVehicle(currentVehicle, ownerName, ownerPhoneNumber);
+                    Console.WriteLine("***************************");
+                    Console.WriteLine("***************************");
+                    Console.WriteLine($"Vehicle number {linesRead}: ");
+                    Console.WriteLine("***************************");
+                    Console.WriteLine("***************************");
+                    Console.WriteLine("");
                     PrintVehicle.Print(registeredVehicle); // This printing is only for testing! Need to remove
+                    Console.WriteLine("");
                     //VehicleHandler.InsertVehicle(currentVehicle);
+                    linesRead++;
                 }
                 catch (Exception ex)
                 {
@@ -42,7 +51,19 @@ namespace Ex03.ConsoleUI
 
             o_OwnerName = lineDetails[6];
             o_OwnerPhoneNumber = lineDetails[7];
-            return VehicleCreator.CreateVehicle(lineDetails[0], lineDetails[1], lineDetails[2]);
+
+            Vehicle currentVehicle = VehicleCreator.CreateVehicle(lineDetails[0], lineDetails[1], lineDetails[2]);
+            if (float.TryParse(lineDetails[5], out float currentAirPressure))
+            {
+                currentVehicle.SetWheels(lineDetails[4], currentAirPressure);
+            }
+            if (float.TryParse(lineDetails[3], out float energyPercentage))
+            {
+                currentVehicle.Engine.EnergyPercentage = energyPercentage;
+            }
+            
+
+            return currentVehicle;
         }
 
         private static bool IsVehicleType(string i_VehicleType)
