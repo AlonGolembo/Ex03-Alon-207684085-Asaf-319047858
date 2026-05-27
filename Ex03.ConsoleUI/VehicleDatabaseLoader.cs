@@ -18,12 +18,13 @@ namespace Ex03.ConsoleUI
                 try
                 {
                     Vehicle currentVehicle = ParseLine(dbLine);
+
+                    //VehicleHandler.InsertVehicle(currentVehicle);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
-
             }
         }
         private static Vehicle ParseLine(string i_Line)

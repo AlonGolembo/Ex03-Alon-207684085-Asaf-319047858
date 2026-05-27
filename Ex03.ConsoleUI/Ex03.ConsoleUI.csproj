@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
-    <Compile Include="ReadDB.cs" />
+    <Compile Include="VehicleDatabaseLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="VehiclesDB.txt">

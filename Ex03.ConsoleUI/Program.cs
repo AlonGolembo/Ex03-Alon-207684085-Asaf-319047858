@@ -12,7 +12,11 @@ namespace Ex03.ConsoleUI
     {
         public static void Main()
         {
-            
+            // Test VehicleDatabaseLoader class
+
+            Console.WriteLine("Going to test the VehicleDatabaseLoader class now...");
+
+
         }
     }
 }
