@@ -18,7 +18,7 @@ namespace Ex03.ConsoleUI
                 try
                 {
                     Vehicle currentVehicle = ParseLine(dbLine);
-
+                    PrintVehicle.Print(currentVehicle);
                     //VehicleHandler.InsertVehicle(currentVehicle);
                 }
                 catch (Exception ex)
