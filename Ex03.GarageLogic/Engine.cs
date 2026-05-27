@@ -1,0 +1,32 @@
+﻿using System;
+
+namespace Ex03.GarageLogic
+{
+    public abstract class Engine
+    {
+        private float m_EnergyPercentage;
+
+        public float EnergyPercentage
+        {
+            get { return m_EnergyPercentage; }
+            set
+            {
+                if(value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Energy percentage can't be negative!");
+                }
+                else
+                {
+                    m_EnergyPercentage = value;
+                }
+            }
+        }
+
+        public Engine() { }
+
+        public void UpdateEnergyPercentage(float CurrentEnergyValue, float MaxCapacity)
+        {
+            EnergyPercentage = (CurrentEnergyValue / MaxCapacity) * 100;
+        }
+    }
+}

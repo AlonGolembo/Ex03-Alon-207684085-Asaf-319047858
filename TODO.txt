@@ -1,0 +1,25 @@
+TODO List:
+
+1. Logic:
+  [X] Create an abstract Vehicle class - Alon
+  [X] Create an abstract Engine class - Alon
+  [X] Create a FuelEngine : Engine class - Alon
+  [X] Create an ElectricEngine : Engine class - Alon
+  [X] Create an abstract Car : Vehicle class - Alon
+  [X] Create an abstract Motorcycle : Vehicle class - Alon
+  [X] Create a FuelTruck : Vehicle class - Alon
+  [X] Create an ElectricCar : Car class - Alon
+  [X] Create a FuelCar : Car class - Alon
+  [] Create an ElectricMotorcycle : Motorcycle class - Alon
+  [] Create a FuelMotorcycle : Motorcycle class - Alon
+  [X] Create Wheel class - Asaf
+  [X] Create a eFuelType enum (Soler, Octan95, Octan96, Octan98) - Alon
+  [X] Create a ePaint (used in ElectricCar & MotorizedCar ) enum(Red , Yellow, Black, Silver) - Asaf
+  [X] Create a eDrivingLicenceCategory enum(A, A2, B1, AB) - Asaf 
+  [] Create a VehicleHandler class - to handle incoming vehicles into the garage - Asaf
+  [] Create a Garage class - the main engine that will handle the vehicles - Asaf
+
+
+2. FE:
+  [] Create User input handler.
+  [] Read vehicle DB and pass to VehicleHandler.
