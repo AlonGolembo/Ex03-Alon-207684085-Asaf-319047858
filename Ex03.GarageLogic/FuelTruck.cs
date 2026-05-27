@@ -4,9 +4,9 @@ namespace Ex03.GarageLogic
 {
     public class FuelTruck : Vehicle
     {
-        private float m_CargoVolume;
-        public bool IsRefrigerated { get; set; }
-        public float CargoVolume
+        private float? m_CargoVolume;
+        public bool? IsRefrigerated { get; set; }
+        public float? CargoVolume
         {
             get { return m_CargoVolume; }
             set
@@ -25,6 +25,14 @@ namespace Ex03.GarageLogic
             this.Engine = new FuelEngine(eFuelType.Soler, 125);
             this.IsRefrigerated = i_IsRefrigerated;
             CargoVolume = i_CargoVolume;
+        }
+
+        public FuelTruck(string i_LicenseID, string i_ModelName) : base(i_LicenseID, i_ModelName)
+        {
+            this.InitializeWheelsList(eNumberOfWheels.Fourteen, 28);
+            this.Engine = new FuelEngine(eFuelType.Soler, 125);
+            this.IsRefrigerated = null;
+            CargoVolume = null;
         }
     }
 }
