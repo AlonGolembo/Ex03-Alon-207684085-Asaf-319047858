@@ -36,7 +36,7 @@ namespace Ex03.GarageLogic
                 
                 if (value > m_MaxBatteryTime)
                 {
-                    throw new ArgumentOutOfRangeException($"Remaining battery life can't exceed max battery life time: {m_MaxBatteryTime} hours!")
+                    throw new ArgumentOutOfRangeException($"Remaining battery life can't exceed max battery life time: {m_MaxBatteryTime} hours!");
                 }
 
                 m_RemainingBatteryTime = value;

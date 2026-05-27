@@ -25,6 +25,8 @@ namespace Ex03.GarageLogic
                         throw new ArgumentException("Owner name can contain only letters!");
                     }
                 }
+
+                m_OwnerName = value;
             }
         }
         public string OwnerPhoneNumber
@@ -43,6 +45,8 @@ namespace Ex03.GarageLogic
                     {
                         throw new FormatException($"{i} is not valid.");
                     }
+
+                    m_OwnerPhoneNumber = value;
                 }
             }
         }

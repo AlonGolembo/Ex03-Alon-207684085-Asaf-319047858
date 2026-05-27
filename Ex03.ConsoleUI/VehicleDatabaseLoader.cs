@@ -17,18 +17,21 @@ namespace Ex03.ConsoleUI
             {
                 try
                 {
-                    Vehicle currentVehicle = ParseLine(dbLine);
-                    RegisteredVehicle registeredVehicle = new RegisteredVehicle(currentVehicle);
-                    PrintVehicle.Print(currentVehicle);
+                    string ownerName;
+                    string ownerPhoneNumber;
+                    Vehicle currentVehicle = ParseLine(dbLine, out ownerName, out ownerPhoneNumber);
+                    RegisteredVehicle registeredVehicle = new RegisteredVehicle(currentVehicle, ownerName, ownerPhoneNumber);
+                    PrintVehicle.Print(registeredVehicle); // This printing is only for testing! Need to remove
                     //VehicleHandler.InsertVehicle(currentVehicle);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    Console.WriteLine("Moving to the next line...");
                 }
             }
         }
-        private static Vehicle ParseLine(string i_Line)
+        private static Vehicle ParseLine(string i_Line, out string o_OwnerName, out string o_OwnerPhoneNumber)
         {
             
             string[] lineDetails = i_Line.Split(',');
@@ -37,6 +40,8 @@ namespace Ex03.ConsoleUI
                 throw new FormatException($"Line '{i_Line}' isn't a valid vehicle!");
             }
 
+            o_OwnerName = lineDetails[6];
+            o_OwnerPhoneNumber = lineDetails[7];
             return VehicleCreator.CreateVehicle(lineDetails[0], lineDetails[1], lineDetails[2]);
         }
 

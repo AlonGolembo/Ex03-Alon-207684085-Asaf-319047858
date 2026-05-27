@@ -19,7 +19,7 @@ namespace Ex03.GarageLogic
                 }
                 else
                 {
-                    throw new ArgumentNullException("Manufacturer name can't be empty!");
+                    //throw new ArgumentNullException("Manufacturer name can't be empty!");
                 }
             }
         }
