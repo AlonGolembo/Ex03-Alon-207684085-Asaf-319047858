@@ -1,0 +1,123 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using Ex03.GarageLogic;
+
+namespace Ex03.ConsoleUI
+{
+    public class InsertVehicleToGarage
+    {
+        private static bool IsLicenseNumberInGarage(string i_LicenseNumber)
+        {
+            bool isLicenseNumberInGarage = false;
+
+            return VehicleHandler.GetVehicle(i_LicenseNumber) != null;
+            //foreach (RegisteredVehicle registeredVehicle in Garage.VehiclesList)
+            //{
+            //    if (i_LicenseNumber == registeredVehicle.Vehicle.LicenseID)
+            //    {
+            //        isLicenseNumberInGarage = true;
+            //    }
+            //}
+        }
+
+        public static void Insert(string i_LicenseNumber)
+        {
+            if (IsLicenseNumberInGarage(i_LicenseNumber))
+            {
+                Console.WriteLine($"Vehicle {i_LicenseNumber} is already in garage, starting to repair it...");
+                VehicleHandler.GetVehicle(i_LicenseNumber).VehicleState = eVehicleState.UnderRepair;
+                //foreach (RegisteredVehicle registeredVehicle in Garage.VehiclesList)
+                //{
+                //    if (i_LicenseNumber == registeredVehicle.Vehicle.LicenseID)
+                //    {
+                //        registeredVehicle.VehicleState = eVehicleState.UnderRepair;
+                //    }
+                //}
+            }
+            else
+            {
+                Console.WriteLine("Please insert your vehicle type: ");
+                string vehicleType = Console.ReadLine();
+
+                if (!VehicleCreator.SupportedTypes.Contains(vehicleType))
+                {
+                    throw new FormatException("Vehicle type doens't exist!");
+                }
+
+                string modelName = GetVehicleModel();
+                Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseNumber, modelName);
+
+
+            }
+        }
+
+        private static string GetVehicleModel()
+        {
+            Console.WriteLine("Please insert the vehicle's model name: ");
+            return Console.ReadLine();
+        }
+
+        private static void GetVehicleDetails(Vehicle i_Vehicle)
+        {
+            try
+            {
+                GetEnergyPercentage(i_Vehicle);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Please insert a correct value!");
+            }
+
+            Console.WriteLine("Please enter the vehicles wheels state: ");
+
+        }
+
+        // TODO: Split this method into GetOwnerDetails and RegisterVehicle
+        private static void RegisterVehicle(string i_LicenseNumber, string i_VehicleType)
+        {
+            Console.WriteLine("Please enter your model name: ");
+            string modelName = Console.ReadLine();
+            Vehicle vehicle = VehicleCreator.CreateVehicle(i_VehicleType, i_LicenseNumber, modelName);
+            Console.WriteLine("Please insert car owners name: ");
+            string ownerName = Console.ReadLine();
+            Console.WriteLine("Please insert car owners phone number: ");
+            string ownerPhoneNumber = Console.ReadLine();
+            RegisteredVehicle registeredVehicle = new RegisteredVehicle(vehicle, ownerName, ownerPhoneNumber);
+        }
+
+        private static void GetEnergyPercentage(Vehicle i_Vehicle)
+        {
+            switch (i_Vehicle.Engine)
+            {
+                case FuelEngine fuelEngine:
+                    Console.WriteLine("Insert vehicle's fuel percentage: ");
+                    float fuelPercentage;
+                    if (!float.TryParse(Console.ReadLine(), out fuelPercentage))
+                    {
+                        throw new FormatException("Can't parse fuel percentage to a float!");
+                    }
+
+                    i_Vehicle.Engine.EnergyPercentage = fuelPercentage;
+                    
+                    break;
+
+                case ElectricEngine electricEngine:
+                    Console.WriteLine("Insert vehicle's battery percentage: ");
+                    float batteryPercentage;
+                    if (!float.TryParse(Console.ReadLine(), out batteryPercentage))
+                    {
+                        throw new FormatException("Can't parse battery percentage to a float!");
+                    }
+
+                    i_Vehicle.Engine.EnergyPercentage = batteryPercentage;
+
+                    break;
+            }
+        }
+    }
+}
