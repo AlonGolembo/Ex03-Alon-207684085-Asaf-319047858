@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="PrintVehicle.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="InsertVehicleToGarage.cs" />
     <Compile Include="VehicleDatabaseLoader.cs" />
   </ItemGroup>
   <ItemGroup>
