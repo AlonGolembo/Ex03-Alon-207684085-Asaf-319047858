@@ -10,7 +10,7 @@ namespace Ex03.ConsoleUI
 {
     public class VehicleDatabaseLoader
     {
-        public static void Load(string i_fileName)
+        public static void Load(VehicleHandler i_VehicleHandler, string i_fileName)
         {
             int linesRead = 1;
             string[] dbLines = File.ReadAllLines(i_fileName);
@@ -18,16 +18,16 @@ namespace Ex03.ConsoleUI
             {
                 try
                 {
-                    string ownerName;
-                    string ownerPhoneNumber;
-                    Vehicle currentVehicle = ParseLine(dbLine, out ownerName, out ownerPhoneNumber);
-                    RegisteredVehicle registeredVehicle = new RegisteredVehicle(currentVehicle, ownerName, ownerPhoneNumber);
+                    RegisteredVehicle registeredVehicle = ParseLine(dbLine);
+                    //RegisteredVehicle registeredVehicle = new RegisteredVehicle(currentVehicle, ownerName, ownerPhoneNumber);
                     Console.WriteLine("***************************");
                     Console.WriteLine("***************************");
                     Console.WriteLine($"Vehicle number {linesRead}: ");
                     Console.WriteLine("***************************");
                     Console.WriteLine("***************************");
                     Console.WriteLine("");
+                    i_VehicleHandler.InsertToGarage(registeredVehicle);
+
                     PrintVehicle.Print(registeredVehicle); // This printing is only for testing! Need to remove
                     Console.WriteLine("");
                     //VehicleHandler.InsertVehicle(currentVehicle);
@@ -40,19 +40,16 @@ namespace Ex03.ConsoleUI
                 }
             }
         }
-        private static Vehicle ParseLine(string i_Line, out string o_OwnerName, out string o_OwnerPhoneNumber)
+        private static RegisteredVehicle ParseLine(string i_Line)
         {
-            
             string[] lineDetails = i_Line.Split(',');
             if (!IsVehicleType(lineDetails[0]) || !IsLicenseId(lineDetails[1]))
             {
                 throw new FormatException($"Line '{i_Line}' isn't a valid vehicle!");
             }
 
-            o_OwnerName = lineDetails[6];
-            o_OwnerPhoneNumber = lineDetails[7];
-
             Vehicle currentVehicle = VehicleCreator.CreateVehicle(lineDetails[0], lineDetails[1], lineDetails[2]);
+
             if (float.TryParse(lineDetails[5], out float currentAirPressure))
             {
                 currentVehicle.SetWheels(lineDetails[4], currentAirPressure);
@@ -61,9 +58,10 @@ namespace Ex03.ConsoleUI
             {
                 currentVehicle.Engine.EnergyPercentage = energyPercentage;
             }
-            
 
-            return currentVehicle;
+            RegisteredVehicle registeredVehicle = new RegisteredVehicle(currentVehicle, lineDetails[6], lineDetails[7]);
+
+            return registeredVehicle;
         }
 
         private static bool IsVehicleType(string i_VehicleType)
