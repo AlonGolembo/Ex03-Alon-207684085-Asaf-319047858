@@ -8,9 +8,18 @@ namespace Ex03.GarageLogic
 {
     public class VehicleHandler
     {
-        public static object GetVehicle(string i_LicenseNumber)
+        public static Vehicle GetVehicle(string i_LicenseNumber)
         {
-            throw new NotImplementedException();
+            Vehicle vehicle = null;
+            foreach (RegisteredVehicle registeredVehicle in Garage.VehiclesList)
+            {
+                if (i_LicenseNumber == registeredVehicle.Vehicle.LicenseID)
+                {
+                    vehicle = registeredVehicle.Vehicle;
+                }
+            }
+
+            return vehicle;
         }
 
         public static void InsertToGarage(Vehicle currentVehicle)

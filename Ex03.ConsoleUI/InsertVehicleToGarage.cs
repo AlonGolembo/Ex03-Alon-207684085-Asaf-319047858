@@ -12,8 +12,6 @@ namespace Ex03.ConsoleUI
     {
         private static bool IsLicenseNumberInGarage(string i_LicenseNumber)
         {
-            bool isLicenseNumberInGarage = false;
-
             return VehicleHandler.GetVehicle(i_LicenseNumber) != null;
             //foreach (RegisteredVehicle registeredVehicle in Garage.VehiclesList)
             //{
