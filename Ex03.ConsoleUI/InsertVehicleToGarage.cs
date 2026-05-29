@@ -63,18 +63,40 @@ namespace Ex03.ConsoleUI
 
         private static void GetVehicleDetails(Vehicle i_Vehicle)
         {
-            try
+            GetEnergyPercentage(i_Vehicle);
+            GetWheelsState(i_Vehicle);
+            switch (i_Vehicle)
             {
-                GetEnergyPercentage(i_Vehicle);
+                case Car carVehicle:
+                    GetCarColor(carVehicle);
+                    break;
+                case Motorcycle motorcycleVehicle:
+                    GetDrivingLicenseCategory(motorcycleVehicle);
+                    break;
+                case FuelTruck truckVehicle:
+                    GetIsRefrigirated(truckVehicle);
+                    break;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Please insert a correct value!");
-            }
+        }
 
-            Console.WriteLine("Please enter the vehicles wheels state: ");
+        private static void GetIsRefrigirated(FuelTruck truckVehicle)
+        {
+            throw new NotImplementedException();
+        }
 
+        private static void GetDrivingLicenseCategory(Motorcycle motorcycleVehicle)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void GetCarColor(Car carVehicle)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void GetWheelsState(Vehicle i_Vehicle)
+        {
+            throw new NotImplementedException();
         }
 
         // TODO: Split this method into GetOwnerDetails and RegisterVehicle
