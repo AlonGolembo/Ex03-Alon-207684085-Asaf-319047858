@@ -13,13 +13,6 @@ namespace Ex03.ConsoleUI
         private static bool IsLicenseNumberInGarage(string i_LicenseNumber)
         {
             return VehicleHandler.GetVehicle(i_LicenseNumber) != null;
-            //foreach (RegisteredVehicle registeredVehicle in Garage.VehiclesList)
-            //{
-            //    if (i_LicenseNumber == registeredVehicle.Vehicle.LicenseID)
-            //    {
-            //        isLicenseNumberInGarage = true;
-            //    }
-            //}
         }
 
         public static void Insert(string i_LicenseNumber)
@@ -49,8 +42,8 @@ namespace Ex03.ConsoleUI
                 string modelName = GetVehicleModel();
                 Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseNumber, modelName);
                 SetVehicleDetails(currentVehicle);
-                RegisterVehicle(currentVehicle);
-                VehicleHandler.InsertToGarage(currentVehicle);
+                RegisteredVehicle registeredVehicle = RegisterVehicle(currentVehicle);
+                VehicleHandler.InsertToGarage(registeredVehicle);
             }
         }
 
@@ -98,13 +91,14 @@ namespace Ex03.ConsoleUI
             throw new NotImplementedException();
         }
 
-        private static void RegisterVehicle(Vehicle i_Vehicle)
+        private static RegisteredVehicle RegisterVehicle(Vehicle i_Vehicle)
         {
             Console.WriteLine("Please insert car owners name: ");
             string ownerName = Console.ReadLine();
             Console.WriteLine("Please insert car owners phone number: ");
             string ownerPhoneNumber = Console.ReadLine();
-            RegisteredVehicle registeredVehicle = new RegisteredVehicle(i_Vehicle, ownerName, ownerPhoneNumber);
+
+            return new RegisteredVehicle(i_Vehicle, ownerName, ownerPhoneNumber);
         }
 
         private static void GetEnergyPercentage(Vehicle i_Vehicle)
