@@ -10,24 +10,13 @@ namespace Ex03.ConsoleUI
 {
     public class InsertVehicleToGarage
     {
-        private static bool IsLicenseNumberInGarage(string i_LicenseNumber)
+        public static void Insert(VehicleHandler i_VehicleHandler, string i_LicenseNumber)
         {
-            return VehicleHandler.GetVehicle(i_LicenseNumber) != null;
-        }
-
-        public static void Insert(string i_LicenseNumber)
-        {
-            if (IsLicenseNumberInGarage(i_LicenseNumber))
+            RegisteredVehicle existingVehicle = i_VehicleHandler.GetVehicle(i_LicenseNumber);
+            if (existingVehicle != null)
             {
                 Console.WriteLine($"Vehicle {i_LicenseNumber} is already in garage, starting to repair it...");
-                VehicleHandler.GetVehicle(i_LicenseNumber).VehicleState = eVehicleState.UnderRepair;
-                //foreach (RegisteredVehicle registeredVehicle in Garage.VehiclesList)
-                //{
-                //    if (i_LicenseNumber == registeredVehicle.Vehicle.LicenseID)
-                //    {
-                //        registeredVehicle.VehicleState = eVehicleState.UnderRepair;
-                //    }
-                //}
+                existingVehicle.VehicleState = eVehicleState.UnderRepair;
             }
             else
             {
@@ -43,7 +32,7 @@ namespace Ex03.ConsoleUI
                 Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseNumber, modelName);
                 SetVehicleDetails(currentVehicle);
                 RegisteredVehicle registeredVehicle = RegisterVehicle(currentVehicle);
-                VehicleHandler.InsertToGarage(registeredVehicle);
+                i_VehicleHandler.InsertToGarage(registeredVehicle);
             }
         }
 

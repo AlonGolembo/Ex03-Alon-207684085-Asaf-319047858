@@ -18,14 +18,14 @@ namespace Ex03.GarageLogic
         {
             m_Garage = new Garage();
         }
-        public Vehicle GetVehicle(string i_LicenseNumber)
+        public RegisteredVehicle GetVehicle(string i_LicenseNumber)
         {
-            Vehicle vehicle = null;
+            RegisteredVehicle vehicle = null;
             foreach (RegisteredVehicle registeredVehicle in this.m_Garage.VehicleList)
             {
                 if (i_LicenseNumber == registeredVehicle.Vehicle.LicenseID)
                 {
-                    vehicle = registeredVehicle.Vehicle;
+                    vehicle = registeredVehicle;
                 }
             }
 
