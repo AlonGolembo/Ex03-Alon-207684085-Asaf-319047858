@@ -25,3 +25,6 @@ TODO List:
   [] Create User input handler.
   [X] Read vehicle DB and pass to RegisteredVehicle - Alon
   [X] Create PrintVehicle class that prints all of the registered vehicle details - Alon
+
+3. Refactor:
+  [] Change data members that don't get a value in constructor to nullable variables
