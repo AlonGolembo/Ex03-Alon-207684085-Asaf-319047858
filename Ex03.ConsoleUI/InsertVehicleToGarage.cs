@@ -52,7 +52,7 @@ namespace Ex03.ConsoleUI
                 Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseNumber, modelName);
                 SetVehicleDetails(currentVehicle);
                 RegisterVehicle(currentVehicle);
-
+                VehicleHandler.InsertToGarage(currentVehicle);
             }
         }
 
