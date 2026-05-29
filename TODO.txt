@@ -17,9 +17,10 @@ TODO List:
   [X] Create a ePaint (used in ElectricCar & MotorizedCar ) enum(Red , Yellow, Black, Silver) - Asaf
   [X] Create a eDrivingLicenceCategory enum(A, A2, B1, AB) - Asaf 
   [X] Create a RegisteredVehicle class - register incoming vehicle and wrap with owner info etc.. - Alon
-  [] Create a VehicleHandler class - to handle incoming registered vehicles into the garage - Asaf
-  [] Create a Garage class - the main engine that will handle the vehicles - Asaf
-
+  [X] Create a VehicleHandler class - to handle incoming registered vehicles into the garage - Asaf
+  [X] Create a Garage class - the main engine that will handle the vehicles - Asaf
+  [] Create ValueRangeException class as mentioned at the "must use" section (page 4) of the project. - Asaf
+  [] Refraze throwing exceptions according to "must use" section. - Asaf
 
 2. FE:
   [] Create User input handler - Alon

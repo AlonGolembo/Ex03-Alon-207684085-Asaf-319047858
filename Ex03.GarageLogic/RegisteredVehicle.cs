@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
         public Vehicle Vehicle {  get; set; }
         private string m_OwnerName { get; set; }
         private string m_OwnerPhoneNumber;
-        public eVehicleState VehicleState { get; set; }
+    
 
         public string OwnerName
         {
@@ -56,6 +56,15 @@ namespace Ex03.GarageLogic
             Vehicle = i_Vehicle;
             OwnerName = i_OwnerName;
             OwnerPhoneNumber = i_OwnerPhoneNumber;
+        }
+        public override string ToString()
+        {
+            return string.Format(
+              "{0}\nOwner's name: {1}\nPhone number:{2}",
+             Vehicle.ToString(),
+             OwnerName,
+             OwnerPhoneNumber
+          );
         }
     }
 }
