@@ -50,7 +50,8 @@ namespace Ex03.ConsoleUI
 
                 string modelName = GetVehicleModel();
                 Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseNumber, modelName);
-
+                SetVehicleDetails(currentVehicle);
+                RegisterVehicle(currentVehicle);
 
             }
         }
@@ -61,7 +62,7 @@ namespace Ex03.ConsoleUI
             return Console.ReadLine();
         }
 
-        private static void GetVehicleDetails(Vehicle i_Vehicle)
+        private static void SetVehicleDetails(Vehicle i_Vehicle)
         {
             GetEnergyPercentage(i_Vehicle);
             GetWheelsState(i_Vehicle);
@@ -99,17 +100,13 @@ namespace Ex03.ConsoleUI
             throw new NotImplementedException();
         }
 
-        // TODO: Split this method into GetOwnerDetails and RegisterVehicle
-        private static void RegisterVehicle(string i_LicenseNumber, string i_VehicleType)
+        private static void RegisterVehicle(Vehicle i_Vehicle)
         {
-            Console.WriteLine("Please enter your model name: ");
-            string modelName = Console.ReadLine();
-            Vehicle vehicle = VehicleCreator.CreateVehicle(i_VehicleType, i_LicenseNumber, modelName);
             Console.WriteLine("Please insert car owners name: ");
             string ownerName = Console.ReadLine();
             Console.WriteLine("Please insert car owners phone number: ");
             string ownerPhoneNumber = Console.ReadLine();
-            RegisteredVehicle registeredVehicle = new RegisteredVehicle(vehicle, ownerName, ownerPhoneNumber);
+            RegisteredVehicle registeredVehicle = new RegisteredVehicle(i_Vehicle, ownerName, ownerPhoneNumber);
         }
 
         private static void GetEnergyPercentage(Vehicle i_Vehicle)
