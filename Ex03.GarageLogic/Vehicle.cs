@@ -74,5 +74,13 @@ namespace Ex03.GarageLogic
                 w.CurrentAirPressure = i_CurrentAirPressure;
             }
         }
+        public override string ToString() 
+        {
+            return string.Format(
+               "License Number: {0}\nThe car model: {1}",
+                LicenseID,
+               ModelName
+           );
+        }
     }    
 }
