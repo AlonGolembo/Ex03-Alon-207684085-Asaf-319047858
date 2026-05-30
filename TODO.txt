@@ -31,7 +31,7 @@ TODO List:
   [] Create FillAir class for the main menu 
   [] Create FillGas class for the main menu 
   [] Create Charge class for the main menu 
-  [] Create MainMenu class - Alon
+  [X] Create MainMenu class - Alon
 
 3. Refactor:
   [] Change data members that don't get a value in constructor to nullable variables
