@@ -34,9 +34,9 @@ namespace Ex03.GarageLogic
         {
             List<string> licenseNumberList = new List<string>();
 
-            foreach (string licenseNUmber in m_VehiclesInGarage.Keys)
+            foreach (string licenseNumber in m_VehiclesInGarage.Keys)
             {
-                licenseNumberList.Add(licenseNUmber);
+                licenseNumberList.Add(licenseNumber);
             }
             return licenseNumberList;
         }
@@ -102,7 +102,7 @@ namespace Ex03.GarageLogic
         {
             if (!m_VehiclesInGarage.ContainsKey(i_LicenseID))
             {
-                throw new ArgumentException(string.Format("Error: Vehicle with license number '{0}' is not registered in the garage.", i_LicenseNumber));
+                throw new ArgumentException(string.Format("Error: Vehicle with license number '{0}' is not registered in the garage.", i_LicenseID));
             }
 
             return m_VehiclesInGarage[i_LicenseID];
