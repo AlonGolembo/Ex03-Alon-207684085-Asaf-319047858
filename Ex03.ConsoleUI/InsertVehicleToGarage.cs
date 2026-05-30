@@ -10,33 +10,13 @@ namespace Ex03.ConsoleUI
 {
     public class InsertVehicleToGarage
     {
-        private static bool IsLicenseNumberInGarage(string i_LicenseNumber)
+        public static void Insert(VehicleHandler i_VehicleHandler, string i_LicenseNumber)
         {
-            bool isLicenseNumberInGarage = false;
-
-            return VehicleHandler.GetVehicle(i_LicenseNumber) != null;
-            //foreach (RegisteredVehicle registeredVehicle in Garage.VehiclesList)
-            //{
-            //    if (i_LicenseNumber == registeredVehicle.Vehicle.LicenseID)
-            //    {
-            //        isLicenseNumberInGarage = true;
-            //    }
-            //}
-        }
-
-        public static void Insert(string i_LicenseNumber)
-        {
-            if (IsLicenseNumberInGarage(i_LicenseNumber))
+            RegisteredVehicle existingVehicle = i_VehicleHandler.GetVehicle(i_LicenseNumber);
+            if (existingVehicle != null)
             {
                 Console.WriteLine($"Vehicle {i_LicenseNumber} is already in garage, starting to repair it...");
-                VehicleHandler.GetVehicle(i_LicenseNumber).VehicleState = eVehicleState.UnderRepair;
-                //foreach (RegisteredVehicle registeredVehicle in Garage.VehiclesList)
-                //{
-                //    if (i_LicenseNumber == registeredVehicle.Vehicle.LicenseID)
-                //    {
-                //        registeredVehicle.VehicleState = eVehicleState.UnderRepair;
-                //    }
-                //}
+                existingVehicle.VehicleState = eVehicleState.UnderRepair;
             }
             else
             {
@@ -50,8 +30,9 @@ namespace Ex03.ConsoleUI
 
                 string modelName = GetVehicleModel();
                 Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseNumber, modelName);
-
-
+                SetVehicleDetails(currentVehicle);
+                RegisteredVehicle registeredVehicle = RegisterVehicle(currentVehicle);
+                i_VehicleHandler.InsertToGarage(registeredVehicle);
             }
         }
 
@@ -61,33 +42,52 @@ namespace Ex03.ConsoleUI
             return Console.ReadLine();
         }
 
-        private static void GetVehicleDetails(Vehicle i_Vehicle)
+        private static void SetVehicleDetails(Vehicle i_Vehicle)
         {
-            try
+            GetEnergyPercentage(i_Vehicle);
+            GetWheelsState(i_Vehicle);
+            switch (i_Vehicle)
             {
-                GetEnergyPercentage(i_Vehicle);
+                case Car carVehicle:
+                    GetCarColor(carVehicle);
+                    break;
+                case Motorcycle motorcycleVehicle:
+                    GetDrivingLicenseCategory(motorcycleVehicle);
+                    break;
+                case FuelTruck truckVehicle:
+                    GetIsRefrigirated(truckVehicle);
+                    break;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Please insert a correct value!");
-            }
-
-            Console.WriteLine("Please enter the vehicles wheels state: ");
-
         }
 
-        // TODO: Split this method into GetOwnerDetails and RegisterVehicle
-        private static void RegisterVehicle(string i_LicenseNumber, string i_VehicleType)
+        private static void GetIsRefrigirated(FuelTruck truckVehicle)
         {
-            Console.WriteLine("Please enter your model name: ");
-            string modelName = Console.ReadLine();
-            Vehicle vehicle = VehicleCreator.CreateVehicle(i_VehicleType, i_LicenseNumber, modelName);
+            throw new NotImplementedException();
+        }
+
+        private static void GetDrivingLicenseCategory(Motorcycle motorcycleVehicle)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void GetCarColor(Car carVehicle)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void GetWheelsState(Vehicle i_Vehicle)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static RegisteredVehicle RegisterVehicle(Vehicle i_Vehicle)
+        {
             Console.WriteLine("Please insert car owners name: ");
             string ownerName = Console.ReadLine();
             Console.WriteLine("Please insert car owners phone number: ");
             string ownerPhoneNumber = Console.ReadLine();
-            RegisteredVehicle registeredVehicle = new RegisteredVehicle(vehicle, ownerName, ownerPhoneNumber);
+
+            return new RegisteredVehicle(i_Vehicle, ownerName, ownerPhoneNumber);
         }
 
         private static void GetEnergyPercentage(Vehicle i_Vehicle)

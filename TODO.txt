@@ -23,9 +23,15 @@ TODO List:
   [] Refraze throwing exceptions according to "must use" section. - Asaf
 
 2. FE:
-  [] Create User input handler - Alon
+  [X] Create InsertToGarage option for the main menu - Alon
   [X] Read vehicle DB and pass to RegisteredVehicle - Alon
   [X] Create PrintVehicle class that prints all of the registered vehicle details - Alon
+  [] Create DisplayLicenseNumbersInGarage class for the main menu 
+  [] Create ChangeVehicleState class for the main menu 
+  [] Create FillAir class for the main menu 
+  [] Create FillGas class for the main menu 
+  [] Create Charge class for the main menu 
+  [] Create MainMenu class
 
 3. Refactor:
   [] Change data members that don't get a value in constructor to nullable variables
