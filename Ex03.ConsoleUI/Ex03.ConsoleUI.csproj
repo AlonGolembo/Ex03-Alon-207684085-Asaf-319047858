@@ -42,10 +42,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainMenu.cs" />
     <Compile Include="PrintVehicle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="InsertVehicleToGarage.cs" />
     <Compile Include="VehicleDatabaseLoader.cs" />
+    <Compile Include="VehicleDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="VehiclesDB.txt">
