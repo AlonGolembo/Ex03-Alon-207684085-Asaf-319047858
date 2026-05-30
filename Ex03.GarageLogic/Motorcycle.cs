@@ -23,7 +23,7 @@ namespace Ex03.GarageLogic
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Engine capacity can't be negative!");
+                    throw new ValueOutOfRangeException("Engine capacity can't be negative!");
                 }
                 else
                 {

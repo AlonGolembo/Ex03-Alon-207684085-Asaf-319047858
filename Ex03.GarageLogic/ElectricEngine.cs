@@ -18,7 +18,7 @@ namespace Ex03.GarageLogic
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Max battery life can't be negative!");
+                    throw new ValueOutOfRangeException("Max battery life can't be negative!");
                 }
 
                 m_MaxBatteryTime = value;
@@ -31,12 +31,12 @@ namespace Ex03.GarageLogic
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Remaining battery life can't be negative!");
+                    throw new ValueOutOfRangeException("Remaining battery life can't be negative!");
                 }
                 
                 if (value > m_MaxBatteryTime)
                 {
-                    throw new ArgumentOutOfRangeException($"Remaining battery life can't exceed max battery life time: {m_MaxBatteryTime} hours!");
+                    throw new ValueOutOfRangeException($"Remaining battery life can't exceed max battery life time: {m_MaxBatteryTime} hours!");
                 }
 
                 m_RemainingBatteryTime = value;
@@ -64,7 +64,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new ArgumentOutOfRangeException($"Charging hours can't exceed max charging: {m_MaxBatteryTime - m_RemainingBatteryTime} hours!");
+                throw new ValueOutOfRangeException($"Charging hours can't exceed max charging: {m_MaxBatteryTime - m_RemainingBatteryTime} hours!");
             }
         }
 
