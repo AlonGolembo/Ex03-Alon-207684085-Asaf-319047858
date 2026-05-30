@@ -27,7 +27,7 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("9. Exit");
                 try
                 {
-                    UserInputDigest(Console.ReadLine());
+                    runMenu = UserInputDigest(Console.ReadLine());
                 }
                 catch (Exception ex)
                 {
@@ -37,7 +37,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        private static void UserInputDigest(string i_UserInput)
+        private static bool UserInputDigest(string i_UserInput)
         {
             if(!int.TryParse(i_UserInput, out int userChoice))
             {
@@ -47,6 +47,8 @@ namespace Ex03.ConsoleUI
             {
                 throw new ValueRangeExpection("Invalid choice number!");
             }
+
+            bool continueToMenu = true;
 
             switch (userChoice)
             {
@@ -83,7 +85,14 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("Please enter a vehicle's license number: ");
                     PrintVehicle.Print(Console.Read());
                     break;
+                case 9:
+                    Console.WriteLine("Thank you for using the garage management system!");
+                    Console.WriteLine("Hope to seet you again!");
+                    continueToMenu = false;
+                    break;
             }
+
+            return continueToMenu;
         }
     }
 }
