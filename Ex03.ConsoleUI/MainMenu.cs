@@ -83,7 +83,7 @@ namespace Ex03.ConsoleUI
                     break;
                 case 8:
                     Console.WriteLine("Please enter a vehicle's license number: ");
-                    PrintVehicle.Print(Console.Read());
+                    PrintVehicle.Print(Console.ReadLine());
                     break;
                 case 9:
                     Console.WriteLine("Thank you for using the garage management system!");
