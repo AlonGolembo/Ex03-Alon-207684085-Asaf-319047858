@@ -35,7 +35,7 @@ namespace Ex03.GarageLogic
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("Current amount of air must be positive and not exceed max air pressure!");
+                    throw new ValueOutOfRangeException("Current amount of air must be positive and not exceed max air pressure!");
                 }
             }
         }
@@ -51,7 +51,7 @@ namespace Ex03.GarageLogic
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("Max mount of air can't be negative!");
+                    throw new ValueOutOfRangeException("Max mount of air can't be negative!");
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new ArgumentOutOfRangeException( "Amount of air to add must be positive and not exceed max air pressure!");
+                throw new ValueOutOfRangeException( "Amount of air to add must be positive and not exceed max air pressure!");
             }
         }
 
