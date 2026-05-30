@@ -102,7 +102,7 @@ namespace Ex03.GarageLogic
         {
             if (!m_VehiclesInGarage.ContainsKey(i_LicenseID))
             {
-                throw new ArgumentException(string.Format("Error: Vehicle with license number '{0}' is not registered in the garage.", i_LicenseNumber));
+                throw new ArgumentException(string.Format("Error: Vehicle with license number '{0}' is not registered in the garage.", i_LicenseID));
             }
 
             return m_VehiclesInGarage[i_LicenseID];
