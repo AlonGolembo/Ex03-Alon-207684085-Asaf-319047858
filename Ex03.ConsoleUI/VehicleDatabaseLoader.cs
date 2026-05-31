@@ -27,11 +27,7 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("***************************");
                     Console.WriteLine("");
                     i_VehicleHandler.InsertToGarage(registeredVehicle);
-
-                    //PrintVehicle.Print(registeredVehicle); // This printing is only for testing! Need to remove
-                    //Console.WriteLine("");
-                    ////VehicleHandler.InsertVehicle(currentVehicle);
-                    //linesRead++;
+                    linesRead++;
                 }
                 catch (Exception ex)
                 {
@@ -50,10 +46,14 @@ namespace Ex03.ConsoleUI
 
             Vehicle currentVehicle = VehicleCreator.CreateVehicle(lineDetails[0], lineDetails[1], lineDetails[2]);
 
+
+            // Need to add exception here
             if (float.TryParse(lineDetails[5], out float currentAirPressure))
             {
                 currentVehicle.SetWheels(lineDetails[4], currentAirPressure);
             }
+
+            // Need to add exception here
             if (float.TryParse(lineDetails[3], out float energyPercentage))
             {
                 currentVehicle.Engine.EnergyPercentage = energyPercentage;

@@ -9,11 +9,19 @@ namespace Ex03.GarageLogic
     public class Garage
     {
         private readonly Dictionary<string, RegisteredVehicle> m_VehiclesInGarage;
-        public Dictionary<string, RegisteredVehicle> VehiclesInGarage
+        public IReadOnlyDictionary<string, RegisteredVehicle> VehiclesInGarage => m_VehiclesInGarage;
+
+        public Garage()
         {
-            get { return VehiclesInGarage; }
+            m_VehiclesInGarage = new Dictionary<string, RegisteredVehicle>();
         }
-        public void InflateWheelsToMax(string i_LicenseID)
+
+        internal void AddVehicle(RegisteredVehicle i_Vehicle)
+        {
+            m_VehiclesInGarage.Add(i_Vehicle.Vehicle.LicenseID, i_Vehicle);
+        }
+
+        internal void InflateWheelsToMax(string i_LicenseID)
         {
             if (VehiclesInGarage.ContainsKey(i_LicenseID))
             {
@@ -29,7 +37,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void FuelVehicle(string i_LicenseID, eFuelType i_FuelType, float i_AmountToFuel)
+        internal void FuelVehicle(string i_LicenseID, eFuelType i_FuelType, float i_AmountToFuel)
         {
             if (VehiclesInGarage.ContainsKey(i_LicenseID))
             {
@@ -65,7 +73,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void ChargeVehicle(string i_LicenseID, float io_MinutesToCharge)
+        internal void ChargeVehicle(string i_LicenseID, float io_MinutesToCharge)
         {
             if (VehiclesInGarage.ContainsKey(i_LicenseID))
             {
@@ -92,8 +100,6 @@ namespace Ex03.GarageLogic
             {
                 throw new KeyNotFoundException("Vehicle with the given license ID not found in the garage.");
             }
-        } 
-    
-        
+        }         
     }
 }

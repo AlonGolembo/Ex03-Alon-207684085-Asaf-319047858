@@ -55,6 +55,8 @@ namespace Ex03.GarageLogic
             {
                 throw new ArgumentNullException("Vehicle doesn't exist in the garage!");
             }
+
+            Garage.VehiclesInGarage[i_LicenseID].VehicleState = i_NewState;
         }
 
         public void FillAir(string i_LicenseNumber)
@@ -83,13 +85,14 @@ namespace Ex03.GarageLogic
             }
             Garage.FuelVehicle(i_LicenseNubmer, i_FuelType, i_FuelLiters);
         }
+
+        public void InsertToGarage(RegisteredVehicle registeredVehicle)
+        {
+            // Currently there is no limitation to insert a new vehicle into garage
+            // If in the future there would be any limitation (for example space limit)
+            // Add verification here
+
+            Garage.AddVehicle(registeredVehicle);
+        }
     }
 }
-
-
-
-
-    
-    
-   
-
