@@ -29,8 +29,8 @@ TODO List:
   [X] Create DisplayLicenseNumbersInGarage class for the main menu - Alon
   [X] Create ChangeVehicleState class for the main menu - Alon
   [X] Create FillAir class for the main menu 
-  [] Create FillGas class for the main menu 
-  [] Create Charge class for the main menu 
+  [X] Create FillGas class for the main menu 
+  [X] Create Charge class for the main menu 
   [X] Create MainMenu class - Alon
 
 3. Refactor:
