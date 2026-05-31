@@ -11,6 +11,7 @@ namespace Ex03.GarageLogic
         public Vehicle Vehicle {  get; set; }
         private string m_OwnerName { get; set; }
         private string m_OwnerPhoneNumber;
+        private eVehicleState m_VehicleState;
     
 
         public string OwnerName
@@ -28,6 +29,11 @@ namespace Ex03.GarageLogic
 
                 m_OwnerName = value;
             }
+        }
+        public eVehicleState VehicleState
+        {
+            get { return m_VehicleState; }
+            set { m_VehicleState = value; }
         }
         public string OwnerPhoneNumber
         {
