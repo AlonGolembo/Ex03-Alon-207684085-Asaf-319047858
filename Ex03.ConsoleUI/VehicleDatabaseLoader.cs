@@ -28,10 +28,10 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("");
                     i_VehicleHandler.InsertToGarage(registeredVehicle);
 
-                    PrintVehicle.Print(registeredVehicle); // This printing is only for testing! Need to remove
-                    Console.WriteLine("");
-                    //VehicleHandler.InsertVehicle(currentVehicle);
-                    linesRead++;
+                    //PrintVehicle.Print(registeredVehicle); // This printing is only for testing! Need to remove
+                    //Console.WriteLine("");
+                    ////VehicleHandler.InsertVehicle(currentVehicle);
+                    //linesRead++;
                 }
                 catch (Exception ex)
                 {

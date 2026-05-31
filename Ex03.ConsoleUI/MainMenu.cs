@@ -9,6 +9,22 @@ namespace Ex03.ConsoleUI
 {
     internal class MainMenu
     {
+        private VehicleHandler m_VehicleHandler;
+
+        public VehicleHandler VehicleHandler
+        {
+            get { return m_VehicleHandler; }
+            private set { m_VehicleHandler = value; }
+        }
+        public MainMenu()
+        {
+            m_VehicleHandler = new VehicleHandler();
+        }
+
+        public MainMenu(VehicleHandler i_VehicleHandler)
+        {
+            VehicleHandler = i_VehicleHandler;
+        }
         public static void StartMenu()
         {
             bool runMenu = true;
@@ -67,7 +83,7 @@ namespace Ex03.ConsoleUI
                     string licenseNumber = Console.ReadLine();
                     Console.WriteLine("Please enter the new vehicle's state: ");
                     string newVehicleState = Console.ReadLine();
-                    VehicleChangeState.Change(licenseNumber, newVehicleState);
+                    VehicleHandler.ChangeVehicleState(licenseNumber, newVehicleState);
                     break;
                 case 5:
                     Console.WriteLine("Please enter a vehicle's license number: ");
