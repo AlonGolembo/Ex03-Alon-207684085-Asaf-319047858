@@ -25,7 +25,7 @@ namespace Ex03.ConsoleUI
         {
             VehicleHandler = i_VehicleHandler;
         }
-        public static void StartMenu()
+        public void StartMenu()
         {
             bool runMenu = true;
             while (runMenu)
@@ -53,7 +53,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        private static bool UserInputDigest(string i_UserInput)
+        private bool UserInputDigest(string i_UserInput)
         {
             if(!int.TryParse(i_UserInput, out int userChoice))
             {
@@ -69,11 +69,11 @@ namespace Ex03.ConsoleUI
             switch (userChoice)
             {
                 case 1:
-                    VehicleDatabaseLoader.Load(i_VehicleHandler, VehicleDB.Name());
+                    VehicleDatabaseLoader.Load(VehicleHandler, VehicleDB.Name());
                     break;
                 case 2:
                     Console.WriteLine("Please Enter a vehicle's license number: ");
-                    InsertVehicleToGarage.Insert(i_VehicleHandler, Console.ReadLine());
+                    InsertVehicleToGarage.Insert(VehicleHandler, Console.ReadLine());
                     break;
                 case 3:
                     DisplayVehicles.Display();
@@ -81,9 +81,13 @@ namespace Ex03.ConsoleUI
                 case 4:
                     Console.WriteLine("Please enter a vehicle's license number: ");
                     string licenseNumber = Console.ReadLine();
-                    Console.WriteLine("Please enter the new vehicle's state: ");
+                    Console.WriteLine("Please enter the new vehicle's state (1. Under repair 2. Repaired 3. Paid): ");
                     string newVehicleState = Console.ReadLine();
-                    VehicleHandler.ChangeVehicleState(licenseNumber, newVehicleState);
+                    if(!eVehicleState.TryParse(newVehicleState, out eVehicleState o_newState))
+                    {
+                        throw new ArgumentException("No such vehicle state!");
+                    }
+                    VehicleHandler.ChangeVehicleState(licenseNumber, o_newState);
                     break;
                 case 5:
                     Console.WriteLine("Please enter a vehicle's license number: ");
