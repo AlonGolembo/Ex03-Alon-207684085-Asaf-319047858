@@ -68,6 +68,10 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public void FillAir(string licenseNumber)
+        {
+            Garage.InflateWheelsToMax(licenseNumber);
+        }
     }
 }
 
