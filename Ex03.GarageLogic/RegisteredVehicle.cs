@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,11 @@ namespace Ex03.GarageLogic
 
                 m_OwnerName = value;
             }
+        }
+        public eVehicleState VehicleState
+        {
+            get { return VehicleState; }
+            set { VehicleState = value; }
         }
         public string OwnerPhoneNumber
         {
