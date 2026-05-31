@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,85 +9,107 @@ namespace Ex03.GarageLogic
 {
     public class VehicleHandler
     {
+        public Garage Garage { get; set; }
 
-        private readonly RegisteredVehicle m_RegisteredVehicle;
-        private eVehicleState m_VehicleState;
-
-
-
-        public VehicleHandler(RegisteredVehicle i_RegisteredVehicle)
+        public VehicleHandler()
         {
-            m_RegisteredVehicle = i_RegisteredVehicle;
-            m_VehicleState = eVehicleState.UnderRepair; 
+            Garage = new Garage();
         }
+        
+        //public VehicleHandler(Garage i_Garage)
+        //{
+        //    Garage = i_Garage;
+        //}
 
-
-        public RegisteredVehicle RegisteredVehicle
+        public List<RegisteredVehicle> DisplayVehicles(eVehicleState i_VehicleState)
         {
-            get { return m_RegisteredVehicle; }
-        }
-        public eVehicleState VehicleState
-        {
-            get { return m_VehicleState; }
-            set { m_VehicleState = value; }
-        }
-
-
-
-        public void InflateWheelsToMax()
-        {
-            List<Wheel> vehicleWheels = m_RegisteredVehicle.Vehicle.Wheels;
-            foreach (Wheel wheel in vehicleWheels)
+            List<RegisteredVehicle> vehicleList = new List<RegisteredVehicle>();
+            foreach(RegisteredVehicle vehicle in Garage.Vehicles)
             {
-                float airToAdd = wheel.MaxAirPressure - wheel.CurrentAirPressure;
-
-                if (airToAdd > 0)
+                if(vehicle.m_VehicleState == i_VehicleState)
                 {
-                    wheel.Inflate(airToAdd); 
+                    vehicleList.Add(vehicle);
                 }
             }
+
+            return vehicleList;
         }
 
+        //private readonly RegisteredVehicle m_RegisteredVehicle;
+        //private eVehicleState m_VehicleState;
 
-        public void FuelVehicle(eFuelType i_FuelType, float i_AmountToFuel)
-        {
-            if (m_RegisteredVehicle.Vehicle.Engine is FuelEngine fuelEngine)
-            {
+        //public VehicleHandler(RegisteredVehicle i_RegisteredVehicle)
+        //{
+        //    m_RegisteredVehicle = i_RegisteredVehicle;
+        //    m_VehicleState = eVehicleState.UnderRepair; 
+        //}
 
-                fuelEngine.Refuel(i_AmountToFuel, i_FuelType);
-            }
-            else
-            {
+        //public RegisteredVehicle RegisteredVehicle
+        //{
+        //    get { return m_RegisteredVehicle; }
+        //}
+        //public eVehicleState VehicleState
+        //{
+        //    get { return m_VehicleState; }
+        //    set { m_VehicleState = value; }
+        //}
 
-                throw new ArgumentException("Error: Cannot fuel an electric vehicle!");
-            }
-        }
+
+
+        //public void InflateWheelsToMax()
+        //{
+        //    List<Wheel> vehicleWheels = m_RegisteredVehicle.Vehicle.Wheels;
+        //    foreach (Wheel wheel in vehicleWheels)
+        //    {
+        //        float airToAdd = wheel.MaxAirPressure - wheel.CurrentAirPressure;
+
+        //        if (airToAdd > 0)
+        //        {
+        //            wheel.Inflate(airToAdd); 
+        //        }
+        //    }
+        //}
+
+
+        //public void FuelVehicle(eFuelType i_FuelType, float i_AmountToFuel)
+        //{
+        //    if (m_RegisteredVehicle.Vehicle.Engine is FuelEngine fuelEngine)
+        //    {
+
+        //        fuelEngine.Refuel(i_AmountToFuel, i_FuelType);
+        //    }
+        //    else
+        //    {
+
+        //        throw new ArgumentException("Error: Cannot fuel an electric vehicle!");
+        //    }
+        //}
 
        
-        public void ChargeVehicle(float i_MinutesToCharge)
-        {
-            if (m_RegisteredVehicle.Vehicle.Engine is ElectricEngine electricEngine)
-            {
-                float hoursToCharge = i_MinutesToCharge / 60f;
-                electricEngine.ChargeBattery(hoursToCharge);
-            }
-            else
-            {
+        //public void ChargeVehicle(float i_MinutesToCharge)
+        //{
+        //    if (m_RegisteredVehicle.Vehicle.Engine is ElectricEngine electricEngine)
+        //    {
+        //        float hoursToCharge = i_MinutesToCharge / 60f;
+        //        electricEngine.ChargeBattery(hoursToCharge);
+        //    }
+        //    else
+        //    {
 
-                throw new ArgumentException("Error: Cannot charge a fuel-based vehicle!");
-            }
-        }
+        //        throw new ArgumentException("Error: Cannot charge a fuel-based vehicle!");
+        //    }
+        //}
 
         
-        public override string ToString()
-        {
-            return string.Format(
-                "{0}\n{1}\nStatue in Garage: {2}",
-                m_RegisteredVehicle.Vehicle.ToString(),
-                m_RegisteredVehicle.ToString(),
-                m_VehicleState.ToString()
-            );
-        }
+        //public override string ToString()
+        //{
+        //    return string.Format(
+        //        "{0}\n{1}\nStatue in Garage: {2}",
+        //        m_RegisteredVehicle.Vehicle.ToString(),
+        //        m_RegisteredVehicle.ToString(),
+        //        m_VehicleState.ToString()
+        //    );
+        //}
     }
 }
 
