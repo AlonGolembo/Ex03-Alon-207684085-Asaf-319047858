@@ -79,15 +79,7 @@ namespace Ex03.ConsoleUI
                     DisplayVehicles.Display();
                     break;
                 case 4:
-                    Console.WriteLine("Please enter a vehicle's license number: ");
-                    string licenseNumber = Console.ReadLine();
-                    Console.WriteLine("Please enter the new vehicle's state (1. Under repair 2. Repaired 3. Paid): ");
-                    string newVehicleState = Console.ReadLine();
-                    if(!eVehicleState.TryParse(newVehicleState, out eVehicleState o_newState))
-                    {
-                        throw new ArgumentException("No such vehicle state!");
-                    }
-                    VehicleHandler.ChangeVehicleState(licenseNumber, o_newState);
+                    ChangeVehicleState.Change(VehicleHandler);
                     break;
                 case 5:
                     Console.WriteLine("Please enter a vehicle's license number: ");
