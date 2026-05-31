@@ -61,7 +61,7 @@ namespace Ex03.ConsoleUI
             }
             if (!(userChoice >= 1 && userChoice <= 9))
             {
-                throw new ValueRangeExpection("Invalid choice number!");
+                throw new ValueOutOfRangeException("Invalid choice number!");
             }
 
             bool continueToMenu = true;
