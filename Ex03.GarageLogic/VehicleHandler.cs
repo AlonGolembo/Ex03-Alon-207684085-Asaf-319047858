@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,29 +10,30 @@ namespace Ex03.GarageLogic
 {
     public class VehicleHandler
     {
-        private readonly Garage m_Garage;
-        private readonly Dictionary<string, RegisteredVehicle> m_VehiclesInGarage;
+        public Garage Garage { get; set; }
 
-        public Garage Garage
+        public VehicleHandler()
         {
-            get { return m_Garage; }
-        }   
-
-        public Dictionary<string, RegisteredVehicle> VehiclesInGarage
-        {
-            get { return m_VehiclesInGarage; }
+            Garage = new Garage();
         }
-        public void InsertToGarage(RegisteredVehicle i_registeredVehicle)
+        
+        //public VehicleHandler(Garage i_Garage)
+        //{
+        //    Garage = i_Garage;
+        //}
+
+        public List<RegisteredVehicle> DisplayVehicles(eVehicleState i_VehicleState)
         {
-            string licenseID = i_registeredVehicle.Vehicle.LicenseID;
-            if (!m_VehiclesInGarage.ContainsKey(licenseID))
+            List<RegisteredVehicle> vehicleList = new List<RegisteredVehicle>();
+            foreach(RegisteredVehicle vehicle in Garage.Vehicles)
             {
-                m_VehiclesInGarage.Add(licenseID, i_registeredVehicle);
+                if(vehicle.m_VehicleState == i_VehicleState)
+                {
+                    vehicleList.Add(vehicle);
+                }
             }
-            else
-            {
-                m_VehiclesInGarage[licenseID].VehicleState = eVehicleState.UnderRepair;
-            }
+
+            return vehicleList;
         }
         public RegisteredVehicle GetVehicle(string i_LicenseID)
         {
