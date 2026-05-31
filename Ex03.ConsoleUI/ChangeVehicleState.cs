@@ -13,13 +13,16 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Please enter a vehicle's license number: ");
             string licenseNumber = Console.ReadLine();
-            Console.WriteLine("Please enter the new vehicle's state (1. Under repair 2. Repaired 3. Paid): ");
-            string newVehicleState = Console.ReadLine();
-            if (!eVehicleState.TryParse(newVehicleState, out eVehicleState o_newState))
+            Console.WriteLine("Please enter the new vehicle's state:");
+            Console.WriteLine("1. Under repair");
+            Console.WriteLine("2. Repaired");
+            Console.WriteLine("3. Paid");
+            if (!eVehicleState.TryParse(Console.ReadLine(), out eVehicleState o_newState))
             {
                 throw new ArgumentException("No such vehicle state!");
             }
             i_VehicleHandler.ChangeVehicleState(licenseNumber, o_newState);
+            Console.WriteLine($"Vehicle number {licenseNumber} state was changed to {i_VehicleHandler.GetVehicle(licenseNumber).VehicleState}"); // This is written this way to verify the method actually works
         }
     }
 }

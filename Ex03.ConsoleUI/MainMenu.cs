@@ -34,7 +34,7 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Please choose one of the options below: ");
                 Console.WriteLine("1. Load vehicles from the database");
                 Console.WriteLine("2. Insert a new vehicle");
-                Console.WriteLine("3. Display vehicles in the garage");
+                Console.WriteLine("3. Display vehicles in garage");
                 Console.WriteLine("4. Change a vehicle state");
                 Console.WriteLine("5. Fill up air in tiers");
                 Console.WriteLine("6. Refuel");
@@ -76,7 +76,7 @@ namespace Ex03.ConsoleUI
                     InsertVehicleToGarage.Insert(VehicleHandler, Console.ReadLine());
                     break;
                 case 3:
-                    DisplayVehicles.Display();
+                    DisplayVehicles.Display(VehicleHandler);
                     break;
                 case 4:
                     ChangeVehicleState.Change(VehicleHandler);

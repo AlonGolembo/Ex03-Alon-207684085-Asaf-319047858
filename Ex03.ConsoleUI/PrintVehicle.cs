@@ -11,22 +11,16 @@ namespace Ex03.ConsoleUI
 {
     public class PrintVehicle
     {
-        public static void Print(string i_LicenseNumber)
+        public static void Print(RegisteredVehicle i_Vehicle)
         {
-            RegisteredVehicle registeredVehicle = i_VehicleHandler.GetVehicle(i_LicenseNumber);
-            if (registeredVehicle == null)
-            {
-                throw new ArgumentNullException("License number doesn't exist!");
-            }
-
             Console.WriteLine("Vehicle details:");
-            Console.WriteLine($"License Number: {registeredVehicle.Vehicle.LicenseID}");
-            Console.WriteLine($"Model Name: {registeredVehicle.Vehicle.ModelName}");
-            Console.WriteLine($"Owner Name: {registeredVehicle.OwnerName}");
-            Console.WriteLine($"Vehicle State: {registeredVehicle.VehicleState}");
+            Console.WriteLine($"License Number: {i_Vehicle.Vehicle.LicenseID}");
+            Console.WriteLine($"Model Name: {i_Vehicle.Vehicle.ModelName}");
+            Console.WriteLine($"Owner Name: {i_Vehicle.OwnerName}");
+            Console.WriteLine($"Vehicle State: {i_Vehicle.VehicleState}");
             Console.WriteLine($"Wheels Description: ");
-            PrintWheels(registeredVehicle.Vehicle.Wheels);
-            switch (registeredVehicle.Vehicle.Engine)
+            PrintWheels(i_Vehicle.Vehicle.Wheels);
+            switch (i_Vehicle.Vehicle.Engine)
             {
                 case FuelEngine fuelEngine:
                     Console.WriteLine($"The engine takes {fuelEngine.FuelType} fuel and the tank is {fuelEngine.EnergyPercentage}% full ");
@@ -36,7 +30,7 @@ namespace Ex03.ConsoleUI
                     break;
             }
 
-            switch (registeredVehicle.Vehicle)
+            switch (i_Vehicle.Vehicle)
             {
                 case FuelTruck fuelTruck:
                     Console.WriteLine($"Add FuelTruck details here...");
