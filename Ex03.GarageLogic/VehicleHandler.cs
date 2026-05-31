@@ -12,7 +12,12 @@ namespace Ex03.GarageLogic
         private readonly RegisteredVehicle m_RegisteredVehicle;
         private eVehicleState m_VehicleState;
 
+        //Add GetVehicle method to return
+        //the registered vehicle in case
+        //we need to check if it already exists in the garage or not
 
+
+        //Add
 
         public VehicleHandler(RegisteredVehicle i_RegisteredVehicle)
         {
