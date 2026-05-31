@@ -16,18 +16,13 @@ namespace Ex03.GarageLogic
         {
             Garage = new Garage();
         }
-        
-        //public VehicleHandler(Garage i_Garage)
-        //{
-        //    Garage = i_Garage;
-        //}
 
         public List<RegisteredVehicle> DisplayVehicles(eVehicleState i_VehicleState)
         {
             List<RegisteredVehicle> vehicleList = new List<RegisteredVehicle>();
-            foreach(RegisteredVehicle vehicle in Garage.Vehicles)
+            foreach (RegisteredVehicle vehicle in Garage.VehiclesInGarage.Values)
             {
-                if(vehicle.m_VehicleState == i_VehicleState)
+                if(vehicle.VehicleState == i_VehicleState)
                 {
                     vehicleList.Add(vehicle);
                 }
@@ -37,44 +32,67 @@ namespace Ex03.GarageLogic
         }
         public RegisteredVehicle GetVehicle(string i_LicenseID)
         {
-            if (m_VehiclesInGarage.ContainsKey(i_LicenseID))
+            if (!Garage.VehiclesInGarage.ContainsKey(i_LicenseID))
             {
-                return m_VehiclesInGarage[i_LicenseID];
+                throw new ArgumentNullException($"Vehicle number {i_LicenseID} doesn't exist in garage!");
             }
-            else
-            {
-                return null;
-            }
-        }
-        public List<string> GetAllLicenseNumbers()
-        {
-            List<string> licenseNumberList = new List<string>();
 
-            foreach (string licenseNumber in m_VehiclesInGarage.Keys)
-            {
-                licenseNumberList.Add(licenseNumber);
-            }
-            return licenseNumberList;
+            return Garage.VehiclesInGarage[i_LicenseID];
         }
+        //public List<string> GetAllLicenseNumbers()
+        //{
+        //    List<string> licenseNumberList = new List<string>();
+
+        //    foreach (string licenseNumber in m_VehiclesInGarage.Keys)
+        //    {
+        //        licenseNumberList.Add(licenseNumber);
+        //    }
+        //    return licenseNumberList;
+        //}
         public void ChangeVehicleState(string i_LicenseID, eVehicleState i_NewState)
         {
-            if (m_VehiclesInGarage.ContainsKey(i_LicenseID))
+            if (GetVehicle(i_LicenseID) == null)
             {
-                m_VehiclesInGarage[i_LicenseID].VehicleState = i_NewState;
+                throw new ArgumentNullException("Vehicle doesn't exist in the garage!");
             }
-            else
-            {
-                throw new KeyNotFoundException("Vehicle with the given license ID not found in the garage.");
-            }
+
+            Garage.VehiclesInGarage[i_LicenseID].VehicleState = i_NewState;
         }
 
+        public void FillAir(string i_LicenseNumber)
+        {
+            if (GetVehicle(i_LicenseNumber) == null)
+            {
+                throw new ArgumentNullException("Vehicle doesn't exist in the garage!");
+            }
+            Garage.InflateWheelsToMax(i_LicenseNumber);
+        }
+
+        public void ChargeVehicle(string i_LicenseNumber, float minutesToCharge)
+        {
+            if(GetVehicle(i_LicenseNumber) == null)
+            {
+                throw new ArgumentNullException("Vehicle doesn't exist in the garage!");
+            }
+            Garage.ChargeVehicle(i_LicenseNumber, minutesToCharge);
+        }
+
+        public void FuelVehicle(string i_LicenseNubmer, eFuelType i_FuelType, float i_FuelLiters)
+        {
+            if (GetVehicle(i_LicenseNubmer) == null)
+            {
+                throw new ArgumentNullException("Vehicle doesn't exist in the garage!");
+            }
+            Garage.FuelVehicle(i_LicenseNubmer, i_FuelType, i_FuelLiters);
+        }
+
+        public void InsertToGarage(RegisteredVehicle registeredVehicle)
+        {
+            // Currently there is no limitation to insert a new vehicle into garage
+            // If in the future there would be any limitation (for example space limit)
+            // Add verification here
+
+            Garage.AddVehicle(registeredVehicle);
+        }
     }
 }
-
-
-
-
-    
-    
-   
-

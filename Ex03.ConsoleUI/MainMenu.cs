@@ -34,7 +34,7 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Please choose one of the options below: ");
                 Console.WriteLine("1. Load vehicles from the database");
                 Console.WriteLine("2. Insert a new vehicle");
-                Console.WriteLine("3. Display vehicles in the garage");
+                Console.WriteLine("3. Display license numbers in garage according to vehicle state");
                 Console.WriteLine("4. Change a vehicle state");
                 Console.WriteLine("5. Fill up air in tiers");
                 Console.WriteLine("6. Refuel");
@@ -61,7 +61,7 @@ namespace Ex03.ConsoleUI
             }
             if (!(userChoice >= 1 && userChoice <= 9))
             {
-                throw new ValueRangeExpection("Invalid choice number!");
+                throw new ValueOutOfRangeException("Invalid choice number!");
             }
 
             bool continueToMenu = true;
@@ -76,34 +76,23 @@ namespace Ex03.ConsoleUI
                     InsertVehicleToGarage.Insert(VehicleHandler, Console.ReadLine());
                     break;
                 case 3:
-                    DisplayVehicles.Display();
+                    DisplayVehicles.DisplayAccordingToState(VehicleHandler);
                     break;
                 case 4:
-                    Console.WriteLine("Please enter a vehicle's license number: ");
-                    string licenseNumber = Console.ReadLine();
-                    Console.WriteLine("Please enter the new vehicle's state (1. Under repair 2. Repaired 3. Paid): ");
-                    string newVehicleState = Console.ReadLine();
-                    if(!eVehicleState.TryParse(newVehicleState, out eVehicleState o_newState))
-                    {
-                        throw new ArgumentException("No such vehicle state!");
-                    }
-                    VehicleHandler.ChangeVehicleState(licenseNumber, o_newState);
+                    ChangeVehicleState.Change(VehicleHandler);
                     break;
                 case 5:
-                    Console.WriteLine("Please enter a vehicle's license number: ");
-                    FillAir.Fill(Console.ReadLine());
+                    FillAir.Fill(VehicleHandler);
                     break;
                 case 6:
-                    Console.WriteLine("Please enter a vehicle's license number: ");
-                    Energize.Refuel(Console.ReadLine());
+                    Energize.Refuel(VehicleHandler);
                     break;
                 case 7:
-                    Console.WriteLine("Please enter a vehicle's license number: ");
-                    Energize.Recharge(Console.ReadLine());
+                    Energize.Recharge(VehicleHandler);
                     break;
                 case 8:
                     Console.WriteLine("Please enter a vehicle's license number: ");
-                    PrintVehicle.Print(Console.ReadLine());
+                    PrintVehicle.GetVehicleFromUserAndPrint(VehicleHandler);
                     break;
                 case 9:
                     Console.WriteLine("Thank you for using the garage management system!");
