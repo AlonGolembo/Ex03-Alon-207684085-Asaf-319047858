@@ -50,6 +50,18 @@ namespace Ex03.ConsoleUI
             }
         }
 
+        internal static void GetVehicleFromUserAndPrint(VehicleHandler i_VehicleHandler)
+        {
+            Console.WriteLine("Insert vehicle number: ");
+            string licenseNubmer = Console.ReadLine();
+            Print(i_VehicleHandler.GetVehicle(licenseNubmer));
+        }
+
+        internal static void LicenseNumber(RegisteredVehicle i_RegisteredVehicle)
+        {
+            Console.WriteLine($"{i_RegisteredVehicle.Vehicle.LicenseID}");
+        }
+
         private static void PrintWheels(List<Wheel> i_wheels)
         {
             Console.WriteLine($"This vehicle has {i_wheels.Count} wheels");

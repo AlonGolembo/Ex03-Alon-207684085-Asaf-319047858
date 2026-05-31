@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ChangeVehicleState.cs" />
     <Compile Include="DisplayVehicles.cs" />
+    <Compile Include="Energize.cs" />
     <Compile Include="FillAir.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="PrintVehicle.cs" />

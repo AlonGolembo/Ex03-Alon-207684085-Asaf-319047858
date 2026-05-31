@@ -6,7 +6,7 @@ namespace Ex03.ConsoleUI
 {
     internal class DisplayVehicles
     {
-        internal static void Display(VehicleHandler i_VehicleHandler)
+        internal static void DisplayAccordingToState(VehicleHandler i_VehicleHandler)
         {
             Console.WriteLine("Choose a vehicle state to display:");
             Console.WriteLine("1. Under repair");
@@ -19,7 +19,7 @@ namespace Ex03.ConsoleUI
             List<RegisteredVehicle> vehicleList = i_VehicleHandler.DisplayVehicles(o_newState);
             foreach(RegisteredVehicle vehicle in vehicleList)
             {
-                PrintVehicle.Print(vehicle);
+                PrintVehicle.LicenseNumber(vehicle);
             }
         }
     }
