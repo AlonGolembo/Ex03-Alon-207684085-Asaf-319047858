@@ -81,8 +81,7 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             return string.Format(
-                "{0}\n{1}\nStatue in Garage: {2}",
-                m_RegisteredVehicle.Vehicle.ToString(),
+                "{0}\nStatue in Garage: {1}",
                 m_RegisteredVehicle.ToString(),
                 m_VehicleState.ToString()
             );
