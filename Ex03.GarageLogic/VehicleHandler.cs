@@ -12,18 +12,6 @@ namespace Ex03.GarageLogic
         private readonly Garage m_Garage;
         private readonly Dictionary<string, RegisteredVehicle> m_VehiclesInGarage;
 
-
-        // private readonly RegisteredVehicle m_RegisteredVehicle;
-        //private eVehicleState m_VehicleState;
-
-        //Add GetVehicle method to return
-        //the registered vehicle in case
-        //we need to check if it already exists in the garage or not
-
-
-      
-         
-
         public Garage Garage
         {
             get { return m_Garage; }
@@ -56,79 +44,28 @@ namespace Ex03.GarageLogic
                 return null;
             }
         }
+        public List<string> GetAllLicenseNumbers()
+        {
+            List<string> licenseNumberList = new List<string>();
 
-        // public VehicleHandler(RegisteredVehicle i_RegisteredVehicle)
-        //{
-        //  m_RegisteredVehicle = i_RegisteredVehicle;
-        //m_VehicleState = eVehicleState.UnderRepair; 
-        // }
+            foreach (string licenseNumber in m_VehiclesInGarage.Keys)
+            {
+                licenseNumberList.Add(licenseNumber);
+            }
+            return licenseNumberList;
+        }
+        public void ChangeVehicleState(string i_LicenseID, eVehicleState i_NewState)
+        {
+            if (m_VehiclesInGarage.ContainsKey(i_LicenseID))
+            {
+                m_VehiclesInGarage[i_LicenseID].VehicleState = i_NewState;
+            }
+            else
+            {
+                throw new KeyNotFoundException("Vehicle with the given license ID not found in the garage.");
+            }
+        }
 
-
-        //public RegisteredVehicle RegisteredVehicle
-        //{
-        //    get { return m_RegisteredVehicle; }
-        //}
-        //public eVehicleState VehicleState
-        //{
-        //    get { return m_VehicleState; }
-        //    set { m_VehicleState = value; }
-        //}
-
-
-
-        //public void InflateWheelsToMax() -->> Garage class
-        //{
-        //    List<Wheel> vehicleWheels = m_RegisteredVehicle.Vehicle.Wheels;
-        //    foreach (Wheel wheel in vehicleWheels)
-        //    {
-        //        float airToAdd = wheel.MaxAirPressure - wheel.CurrentAirPressure;
-
-        //        if (airToAdd > 0)
-        //        {
-        //            wheel.Inflate(airToAdd); 
-        //        }
-        //    }
-        //}
-
-
-        //public void FuelVehicle(eFuelType i_FuelType, float i_AmountToFuel) -->> Garage class
-        //{
-        //    if (m_RegisteredVehicle.Vehicle.Engine is FuelEngine fuelEngine)
-        //    {
-
-        //        fuelEngine.Refuel(i_AmountToFuel, i_FuelType);
-        //    }
-        //    else
-        //    {
-
-        //        throw new ArgumentException("Error: Cannot fuel an electric vehicle!");
-        //    }
-        //}
-
-
-        //public void ChargeVehicle(float i_MinutesToCharge) -->> Garrage class
-        //{
-        //    if (m_RegisteredVehicle.Vehicle.Engine is ElectricEngine electricEngine)
-        //    {
-        //        float hoursToCharge = i_MinutesToCharge / 60f;
-        //        electricEngine.ChargeBattery(hoursToCharge);
-        //    }
-        //    else
-        //    {
-
-        //        throw new ArgumentException("Error: Cannot charge a fuel-based vehicle!");
-        //    }
-        //}
-
-
-        //public override string ToString() -->> Refraze the to string to methods that prints after filtering the vehicles in the garage by their state and type, and add the vehicle state to the printout
-        //{
-        //    return string.Format(
-        //        "{0}\nStatue in Garage: {1}",
-        //        m_RegisteredVehicle.ToString(),
-        //        m_VehicleState.ToString()
-        //    );
-        //}
     }
 }
 
