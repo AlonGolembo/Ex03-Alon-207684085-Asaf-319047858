@@ -8,11 +8,16 @@ namespace Ex03.GarageLogic
 {
     public class Garage
     {
-        public void InflateWheelsToMax(string i_LicenseID, Dictionary<string, RegisteredVehicle> m_VehiclesInGarage)
+        private readonly Dictionary<string, RegisteredVehicle> VehiclesInGarage;
+        public Dictionary<string, RegisteredVehicle> VehiclesInGarage
         {
-            if (m_VehiclesInGarage.ContainsKey(i_LicenseID))
+            get { return VehiclesInGarage; }
+        }
+        public void InflateWheelsToMax(string i_LicenseID)
+        {
+            if (VehiclesInGarage.ContainsKey(i_LicenseID))
             {
-                foreach (Wheel wheel in m_VehiclesInGarage[i_LicenseID].Vehicle.Wheels)
+                foreach (Wheel wheel in VehiclesInGarage[i_LicenseID].Vehicle.Wheels)
                 {
                     wheel.CurrentAirPressure = wheel.MaxAirPressure;
                 }
@@ -25,14 +30,14 @@ namespace Ex03.GarageLogic
         }
 
 
-        public void FuelVehicle(string i_LicenseID, eFuelType i_FuelType, float i_AmountToFuel, Dictionary<string, RegisteredVehicle> io_VehiclesInGarage)
+        public void FuelVehicle(string i_LicenseID, eFuelType i_FuelType, float i_AmountToFuel)
         {
-            if (io_VehiclesInGarage.ContainsKey(i_LicenseID))
+            if (VehiclesInGarage.ContainsKey(i_LicenseID))
             {
 
-                if (io_VehiclesInGarage[i_LicenseID].Vehicle.Engine is FuelEngine)
+                if (VehiclesInGarage[i_LicenseID].Vehicle.Engine is FuelEngine)
                 {
-                    FuelEngine fuelEngine = (FuelEngine)io_VehiclesInGarage[i_LicenseID].Vehicle.Engine;
+                    FuelEngine fuelEngine = (FuelEngine)VehiclesInGarage[i_LicenseID].Vehicle.Engine;
 
                     if (fuelEngine.FuelType != i_FuelType)
                     {
@@ -64,13 +69,13 @@ namespace Ex03.GarageLogic
 
         //Need to check if theres a way to use one method for fuel and electric vehicles.
 
-        public void ChargeVehicle(string i_LicenseID, float io_MinutesToCharge, Dictionary<string, RegisteredVehicle> io_VehiclesInGarage)
+        public void ChargeVehicle(string i_LicenseID, float io_MinutesToCharge)
         {
-            if (io_VehiclesInGarage.ContainsKey(i_LicenseID))
+            if (VehiclesInGarage.ContainsKey(i_LicenseID))
             {
-                if (io_VehiclesInGarage[i_LicenseID].Vehicle.Engine is ElectricEngine)
+                if (VehiclesInGarage[i_LicenseID].Vehicle.Engine is ElectricEngine)
                 {
-                    ElectricEngine electricEngine = (ElectricEngine)io_VehiclesInGarage[i_LicenseID].Vehicle.Engine;
+                    ElectricEngine electricEngine = (ElectricEngine)VehiclesInGarage[i_LicenseID].Vehicle.Engine;
 
                     if (electricEngine.RemainingBatteryLife + io_MinutesToCharge > electricEngine.MaxBatteryTime)
                     {
@@ -94,26 +99,5 @@ namespace Ex03.GarageLogic
         } 
     
         
-        public string GetVehicleDetails(string i_LicenseID)
-        {
-            if (m_VehiclesInGarage.ContainsKey(i_LicenseID))
-            {
-                return m_VehiclesInGarage[i_LicenseID].RegisteredVehicle.ToString();
-            }
-            else
-            {
-                throw new KeyNotFoundException("Vehicle with the given license ID not found in the garage.");
-            }
-        }
-        private VehicleHandler GetVehicleHandler(string i_LicenseID) 
-        {
-            if (!m_VehiclesInGarage.ContainsKey(i_LicenseID))
-            {
-                throw new ArgumentException(string.Format("Error: Vehicle with license number '{0}' is not registered in the garage.", i_LicenseID));
-            }
-
-            return m_VehiclesInGarage[i_LicenseID];
-        }
     }
-}
 }
