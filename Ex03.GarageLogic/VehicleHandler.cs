@@ -39,16 +39,7 @@ namespace Ex03.GarageLogic
 
             return Garage.VehiclesInGarage[i_LicenseID];
         }
-        //public List<string> GetAllLicenseNumbers()
-        //{
-        //    List<string> licenseNumberList = new List<string>();
-
-        //    foreach (string licenseNumber in m_VehiclesInGarage.Keys)
-        //    {
-        //        licenseNumberList.Add(licenseNumber);
-        //    }
-        //    return licenseNumberList;
-        //}
+     
         public void ChangeVehicleState(string i_LicenseID, eVehicleState i_NewState)
         {
             if (GetVehicle(i_LicenseID) == null)

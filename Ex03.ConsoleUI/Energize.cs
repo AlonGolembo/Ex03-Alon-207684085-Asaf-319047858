@@ -14,7 +14,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Insert a license number to charge: ");
             string licenseNubmer = Console.ReadLine();
             Console.WriteLine("Insert amount of minutes to charge: ");
-            //string minutesToCharge = Console.ReadLine();
+            //string minutesToCharge = Console.ReadLine(); -->> Needs to be deleted ?
             if(!float.TryParse(Console.ReadLine(), out float minutesToCharge))
             {
                 throw new FormatException("Can't parse minutes to float!");

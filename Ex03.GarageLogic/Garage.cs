@@ -47,13 +47,13 @@ namespace Ex03.GarageLogic
 
                     if (fuelEngine.FuelType != i_FuelType)
                     {
-                        throw new ArgumentException("You're asking to fuel above your tank capacity.");
+                        throw new ArgumentException("You're asking to fuel with inappropriate fuel type.");
                     }
                     else
                     {
                         if (fuelEngine.CurrentFuelAmount + i_AmountToFuel > fuelEngine.TankCapacity)
                         {
-                            throw new ValueOutOfRangeException("You're asking to fuel above your tank capacity.");
+                            throw new ValueRangeException("You're asking to fuel above your tank capacity.");
                         }
                         else
                         {
@@ -83,7 +83,7 @@ namespace Ex03.GarageLogic
 
                     if (electricEngine.RemainingBatteryLife + io_MinutesToCharge > electricEngine.MaxBatteryTime)
                     {
-                        throw new ValueOutOfRangeException("You're asking to charge above your battery capacity.");
+                        throw new ValueRangeException("You're asking to charge above your battery capacity.");
                     }
                     else
                     {

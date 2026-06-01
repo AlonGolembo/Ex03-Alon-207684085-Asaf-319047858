@@ -20,7 +20,7 @@ TODO List:
   [X] Create a VehicleHandler class - to handle incoming registered vehicles into the garage - Asaf
   [X] Create a Garage class - the main engine that will handle the vehicles - Asaf
   [X] Create ValueRangeException class as mentioned at the "must use" section (page 4) of the project. - Asaf
-  [] Refraze throwing exceptions according to "must use" section. - Asaf
+  [X] Refraze throwing exceptions according to "must use" section. - Asaf
 
 2. FE:
   [X] Create InsertToGarage option for the main menu - Alon

@@ -19,11 +19,11 @@ namespace Ex03.GarageLogic
             {
                 if (value < 0)
                 {
-                    throw new ValueOutOfRangeException("The current fuel amount can't be negative!");
+                    throw new ValueRangeException("The current fuel amount can't be negative!");
                 }
                 else if (value > m_TankCapacity)
                 {
-                    throw new ValueOutOfRangeException("The current fuel amount can't be higher than max fuel amount!");
+                    throw new ValueRangeException("The current fuel amount can't be higher than max fuel amount!");
                 }
                 else
                 {
@@ -39,7 +39,7 @@ namespace Ex03.GarageLogic
             {
                 if (value < 0)
                 {
-                    throw new ValueOutOfRangeException("The max fuel amount can't be negative!");
+                    throw new ValueRangeException("The max fuel amount can't be negative!");
                 }
                 else
                 {
@@ -76,7 +76,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new ValueOutOfRangeException($"Feul can't exceed tank size: {m_TankCapacity} Liters!");
+                throw new ValueRangeException($"Fuel can't exceed tank size: {m_TankCapacity} Liters!");
             }
 
         }
