@@ -108,17 +108,8 @@ namespace Ex03.ConsoleUI
 
         private static void GetWheelsState(Vehicle i_Vehicle)
         {
-            Console.WriteLine("Enter wheel's max air pressure:");
-            float maxAirPressure;
-            if (!float.TryParse(Console.ReadLine(), out maxAirPressure))
-            {
-                throw new FormatException("Can't parse max air pressure to a float!");
-            }
-            i_Vehicle.
-            if (maxAirPressure <= 0)
-            {
-                throw new ValueRangeException("Max air pressure must be positive!");
-            }
+         
+           
             Console.WriteLine("Please insert the current air pressure of the wheels: ");
             float airPressure;
             if (!float.TryParse(Console.ReadLine(), out airPressure))
@@ -136,11 +127,10 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Please enter manufacturer's name:");
             string manufacturerName = Console.ReadLine();
             
-            if(string.IsNullOrEmpty(manufacturerName))
+            if(string.IsNullOrWhiteSpace(manufacturerName))
             {
-                throw new ArgumentNullException("Manufacturer name can't be empty!");
+                throw new ArgumentNullException("Manufacturer name can't be empty or just spaces!");
             }
-            //Need to consider a case where all spaces... but for now, we'll just check if it's empty or null.
             i_Vehicle.SetWheels(manufacturerName, airPressure);
         }
 
