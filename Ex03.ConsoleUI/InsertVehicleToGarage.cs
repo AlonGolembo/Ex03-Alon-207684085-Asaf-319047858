@@ -20,13 +20,11 @@ namespace Ex03.ConsoleUI
             }
             else
             {
-                Console.WriteLine("Please insert your vehicle type: ");
-                string vehicleType = Console.ReadLine();
-
-                if (!VehicleCreator.SupportedTypes.Contains(vehicleType))
-                {
-                    throw new FormatException("Vehicle type doens't exist!");
-                }
+                string vehicleType = GetVehicleType();
+                //if (!VehicleCreator.SupportedTypes.Contains(vehicleType))
+                //{
+                //    throw new FormatException("Vehicle type doens't exist!");
+                //}
 
                 string modelName = GetVehicleModel();
                 Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseID, modelName);
@@ -34,6 +32,24 @@ namespace Ex03.ConsoleUI
                 RegisteredVehicle registeredVehicle = RegisterVehicle(currentVehicle);
                 i_VehicleHandler.InsertToGarage(registeredVehicle);
             }
+        }
+
+        private static string GetVehicleType()
+        {
+            Console.WriteLine("Please select a vehicle type: ");
+            int typeAmount = 1;
+            foreach (string type in VehicleCreator.SupportedTypes)
+            {
+                Console.WriteLine($"{typeAmount}. {type}");
+                typeAmount++;
+            }
+
+            if(!int.TryParse(Console.ReadLine(), out int o_TypeNumber))
+            {
+                throw new FormatException("Can't parse input to a valid vehicle type number!");
+            }
+
+            return VehicleCreator.SupportedTypes[o_TypeNumber - 1];
         }
 
         private static string GetVehicleModel()
