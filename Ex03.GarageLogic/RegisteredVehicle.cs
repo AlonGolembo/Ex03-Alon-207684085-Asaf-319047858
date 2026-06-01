@@ -59,6 +59,7 @@ namespace Ex03.GarageLogic
             Vehicle = i_Vehicle;
             OwnerName = i_OwnerName;
             OwnerPhoneNumber = i_OwnerPhoneNumber;
+            VehicleState = eVehicleState.UnderRepair;
         }
         public override string ToString()
         {

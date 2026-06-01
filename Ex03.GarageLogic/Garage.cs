@@ -78,7 +78,7 @@ namespace Ex03.GarageLogic
                 throw new KeyNotFoundException("Vehicle with the given license ID not found in the garage.");
             }
         }
-        internal bool isVehicleInGarageEmpty()
+        internal bool IsVehicleInGarageEmpty()
         {
             return m_VehiclesInGarage.Count == 0;
         }   
