@@ -9,7 +9,13 @@ namespace Ex03.GarageLogic
     public class Garage
     {
         private readonly Dictionary<string, RegisteredVehicle> m_VehiclesInGarage;
-        public IReadOnlyDictionary<string, RegisteredVehicle> VehiclesInGarage => m_VehiclesInGarage;
+        public IReadOnlyDictionary<string, RegisteredVehicle> VehiclesInGarage
+        {
+            get
+            {
+                return m_VehiclesInGarage;
+            }
+        }
 
         public Garage()
         {

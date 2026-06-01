@@ -35,7 +35,7 @@ TODO List:
 
 3. Refactor:
   [] Change data members that don't get a value in constructor to nullable variables
-  [] Rename ValueOutOfRangeException to ValueRangeException
+  [X] Rename ValueOutOfRangeException to ValueRangeException 
   [] Add printing of successful actions (vehicle creation, adding vehicle to garage, etc)
   [] Add exceptions to unsuccessful actions (maintain the logic -> UI throws parsing exceptions, VehicleHandler throws ArgumentNullException if a vehicle doesn't exist in garage, Garage throw other exceptions, etc..)
   [] Test!!
