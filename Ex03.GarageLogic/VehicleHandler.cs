@@ -32,14 +32,15 @@ namespace Ex03.GarageLogic
         }
         public RegisteredVehicle GetVehicle(string i_LicenseID)
         {
-            if (!Garage.VehiclesInGarage.ContainsKey(i_LicenseID))
+            RegisteredVehicle vehicle = null;
+            if (Garage.VehiclesInGarage.ContainsKey(i_LicenseID))
             {
-                throw new ArgumentNullException($"Vehicle number {i_LicenseID} doesn't exist in garage!");
+                vehicle = Garage.VehiclesInGarage[i_LicenseID];
             }
 
-            return Garage.VehiclesInGarage[i_LicenseID];
+            return vehicle;
         }
-     
+
         public void ChangeVehicleState(string i_LicenseID, eVehicleState i_NewState)
         {
             if (GetVehicle(i_LicenseID) == null)

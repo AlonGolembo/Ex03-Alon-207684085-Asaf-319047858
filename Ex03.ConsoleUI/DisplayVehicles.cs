@@ -17,10 +17,20 @@ namespace Ex03.ConsoleUI
                 throw new ArgumentException("No such vehicle state!");
             }
             List<RegisteredVehicle> vehicleList = i_VehicleHandler.DisplayVehicles(o_newState);
-            foreach(RegisteredVehicle vehicle in vehicleList)
+            
+            if(vehicleList.Count == 0)
             {
-                PrintVehicle.LicenseNumber(vehicle);
+                Console.WriteLine("There are no cars in the garage in this state!");
             }
+            else
+            {
+                Console.WriteLine($"The vehicles in the garage in {o_newState} state are:");
+                foreach (RegisteredVehicle vehicle in vehicleList)
+                {
+                    PrintVehicle.LicenseNumber(vehicle);
+                }
+            }
+                
         }
     }
 }
