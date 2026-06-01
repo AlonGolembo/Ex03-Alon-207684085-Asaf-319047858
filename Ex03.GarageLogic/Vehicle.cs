@@ -11,8 +11,9 @@ namespace Ex03.GarageLogic
     {
         private string m_ModelName;
         private string m_LicenseID;
+        private Engine m_Engine = null;
         public Engine Engine { get; set; }
-        private List<Wheel> m_Wheels;
+        private List<Wheel> m_Wheels = null;
 
         public string ModelName
         {

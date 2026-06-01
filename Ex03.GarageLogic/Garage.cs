@@ -78,7 +78,10 @@ namespace Ex03.GarageLogic
                 throw new KeyNotFoundException("Vehicle with the given license ID not found in the garage.");
             }
         }
-
+        internal bool isVehicleInGarageEmpty()
+        {
+            return m_VehiclesInGarage.Count == 0;
+        }   
         internal void ChargeVehicle(string i_LicenseID, float io_MinutesToCharge)
         {
             if (VehiclesInGarage.ContainsKey(i_LicenseID))
