@@ -62,22 +62,86 @@ namespace Ex03.ConsoleUI
 
         private static void GetIsRefrigirated(FuelTruck truckVehicle)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Is the truck refrigerated? (Y/N)");
+            string isRefrigeratedInput = Console.ReadLine();
+            if (isRefrigeratedInput.Equals("Y", StringComparison.OrdinalIgnoreCase))
+            {
+                truckVehicle.IsRefrigerated = true;
+            }
+            else if (isRefrigeratedInput.Equals("N", StringComparison.OrdinalIgnoreCase))
+            {
+                truckVehicle.IsRefrigerated = false;
+            }
+            else
+            {
+                throw new FormatException("Invalid input for refrigerated status! Please enter Y or N.");
+            }
         }
 
         private static void GetDrivingLicenseCategory(Motorcycle motorcycleVehicle)
         {
-            throw new NotImplementedException();
+           Console.WriteLine("Please insert the motorcycle's driving license category (A, A1, A2, B): ");
+            string categoryInput = Console.ReadLine();
+            if (Enum.TryParse(categoryInput, true, out eDrivingLicenceCategory category))
+            {
+                motorcycleVehicle.DrivingLicenceCategory = category;
+            }
+            else
+            {
+                throw new FormatException("Invalid input for driving license category! Please enter A, A1, A2, or B.");
+            }
         }
 
         private static void GetCarColor(Car carVehicle)
         {
-            throw new NotImplementedException();
+        Console.WriteLine("Please insert the car's color (Red, White, Black, Silver): ");
+            string colorInput = Console.ReadLine();
+            if (Enum.TryParse(colorInput, true, out ePaint color))
+            {
+                carVehicle.Color = color;
+            }
+            else
+            {
+                throw new FormatException("Invalid input for car color! Please enter Red, White, Black, or Silver.");
+            }
         }
 
         private static void GetWheelsState(Vehicle i_Vehicle)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Enter wheel's max air pressure:");
+            float maxAirPressure;
+            if (!float.TryParse(Console.ReadLine(), out maxAirPressure))
+            {
+                throw new FormatException("Can't parse max air pressure to a float!");
+            }
+            i_Vehicle.
+            if (maxAirPressure <= 0)
+            {
+                throw new ValueRangeException("Max air pressure must be positive!");
+            }
+            Console.WriteLine("Please insert the current air pressure of the wheels: ");
+            float airPressure;
+            if (!float.TryParse(Console.ReadLine(), out airPressure))
+            {
+                throw new FormatException("Can't parse air pressure to a float!");
+            }
+            if (airPressure < 0)
+            {
+                throw new ValueRangeException("Air pressure can't be negative!");
+            }
+            if (airPressure > i_Vehicle.Wheels[0].MaxAirPressure)
+            {
+                throw new ValueRangeException($"Air pressure can't be higher than {i_Vehicle.Wheels[0].MaxAirPressure}!");
+            }
+            Console.WriteLine("Please enter manufacturer's name:");
+            string manufacturerName = Console.ReadLine();
+            
+            if(string.IsNullOrEmpty(manufacturerName))
+            {
+                throw new ArgumentNullException("Manufacturer name can't be empty!");
+            }
+            //Need to consider a case where all spaces... but for now, we'll just check if it's empty or null.
+            i_Vehicle.SetWheels(manufacturerName, airPressure);
         }
 
         private static RegisteredVehicle RegisterVehicle(Vehicle i_Vehicle)
