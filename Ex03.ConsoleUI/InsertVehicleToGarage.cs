@@ -108,8 +108,6 @@ namespace Ex03.ConsoleUI
 
         private static void GetWheelsState(Vehicle i_Vehicle)
         {
-         
-           
             Console.WriteLine("Please insert the current air pressure of the wheels: ");
             float airPressure;
             if (!float.TryParse(Console.ReadLine(), out airPressure))
@@ -124,6 +122,7 @@ namespace Ex03.ConsoleUI
             {
                 throw new ValueRangeException($"Air pressure can't be higher than {i_Vehicle.Wheels[0].MaxAirPressure}!");
             }
+           
             Console.WriteLine("Please enter manufacturer's name:");
             string manufacturerName = Console.ReadLine();
             
