@@ -84,6 +84,11 @@ namespace Ex03.GarageLogic
             // If in the future there would be any limitation (for example space limit)
             // Add verification here
 
+            if(GetVehicle(registeredVehicle.Vehicle.LicenseID) != null)
+            {
+                throw new ArgumentException($"Vehicle {registeredVehicle.Vehicle.LicenseID} already exists in garage!");
+            }
+
             Garage.AddVehicle(registeredVehicle);
         }
     }

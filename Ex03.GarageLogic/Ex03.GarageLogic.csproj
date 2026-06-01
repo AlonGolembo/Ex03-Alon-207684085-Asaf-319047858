@@ -58,6 +58,7 @@
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleCreator.cs" />
     <Compile Include="VehicleHandler.cs" />
+    <Compile Include="VehicleNotFoundException.cs" />
     <Compile Include="Wheel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
