@@ -12,21 +12,15 @@ namespace Ex03.ConsoleUI
     {
         public static void Load(VehicleHandler i_VehicleHandler, string i_fileName)
         {
-            int linesRead = 1;
+            int linesRead = 0;
             string[] dbLines = File.ReadAllLines(i_fileName);
             foreach (string dbLine in dbLines)
             {
                 try
                 {
                     RegisteredVehicle registeredVehicle = ParseLine(dbLine);
-                    //RegisteredVehicle registeredVehicle = new RegisteredVehicle(currentVehicle, ownerName, ownerPhoneNumber);
-                    Console.WriteLine("***************************");
-                    Console.WriteLine("***************************");
-                    Console.WriteLine($"Vehicle number {linesRead}: ");
-                    Console.WriteLine("***************************");
-                    Console.WriteLine("***************************");
-                    Console.WriteLine("");
                     i_VehicleHandler.InsertToGarage(registeredVehicle);
+                    Console.WriteLine($"Vehicle {registeredVehicle.Vehicle.LicenseID} was loaded to the garage system.");
                     linesRead++;
                 }
                 catch (Exception ex)
@@ -35,6 +29,9 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("Moving to the next line...");
                 }
             }
+            Console.WriteLine();
+            Console.WriteLine($"{linesRead} vehicles were loaded to the garage system");
+            Console.WriteLine();
         }
         private static RegisteredVehicle ParseLine(string i_Line)
         {
