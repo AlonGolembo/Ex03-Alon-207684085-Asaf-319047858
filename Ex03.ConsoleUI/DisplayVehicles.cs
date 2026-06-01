@@ -1,6 +1,7 @@
 ﻿using Ex03.GarageLogic;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Ex03.ConsoleUI
 {
@@ -16,21 +17,30 @@ namespace Ex03.ConsoleUI
             {
                 throw new ArgumentException("No such vehicle state!");
             }
+
             List<RegisteredVehicle> vehicleList = i_VehicleHandler.DisplayVehicles(o_newState);
-            
-            if(vehicleList.Count == 0)
+            int numberOfVehiclesInList = vehicleList.Count;
+
+            if (numberOfVehiclesInList == 0)
             {
                 Console.WriteLine("There are no cars in the garage in this state!");
             }
             else
             {
-                Console.WriteLine($"The vehicles in the garage in {o_newState} state are:");
-                foreach (RegisteredVehicle vehicle in vehicleList)
+                if(numberOfVehiclesInList == 1)
                 {
-                    PrintVehicle.LicenseNumber(vehicle);
+                    Console.WriteLine($"There is 1 vehicle in the garage in {o_newState} state:");
+                    PrintVehicle.LicenseNumber(vehicleList[0]);
                 }
-            }
-                
+                else
+                {
+                    Console.WriteLine($"There are{numberOfVehiclesInList} vehicles in the garage in {o_newState} state are:");
+                    foreach (RegisteredVehicle vehicle in vehicleList)
+                    {
+                        PrintVehicle.LicenseNumber(vehicle);
+                    }
+                }
+            }   
         }
     }
 }
