@@ -31,11 +31,7 @@ namespace Ex03.GarageLogic
                 m_OwnerName = value;
             }
         }
-        //public eVehicleState VehicleState
-        //{
-        //    get { return VehicleState; }
-        //    set { VehicleState = value; }
-        //}
+        
         public string OwnerPhoneNumber
         {
             get { return  m_OwnerPhoneNumber; }
@@ -63,6 +59,7 @@ namespace Ex03.GarageLogic
             Vehicle = i_Vehicle;
             OwnerName = i_OwnerName;
             OwnerPhoneNumber = i_OwnerPhoneNumber;
+            VehicleState = eVehicleState.UnderRepair;
         }
         public override string ToString()
         {

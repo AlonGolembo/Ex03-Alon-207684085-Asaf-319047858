@@ -13,7 +13,7 @@ namespace Ex03.GarageLogic
             {
                 if(value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Energy percentage can't be negative!");
+                    throw new ValueRangeException("Energy percentage can't be negative!");
                 }
                 else
                 {

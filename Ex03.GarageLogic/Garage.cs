@@ -9,7 +9,13 @@ namespace Ex03.GarageLogic
     public class Garage
     {
         private readonly Dictionary<string, RegisteredVehicle> m_VehiclesInGarage;
-        public IReadOnlyDictionary<string, RegisteredVehicle> VehiclesInGarage => m_VehiclesInGarage;
+        public IReadOnlyDictionary<string, RegisteredVehicle> VehiclesInGarage
+        {
+            get
+            {
+                return m_VehiclesInGarage;
+            }
+        }
 
         public Garage()
         {
@@ -47,13 +53,13 @@ namespace Ex03.GarageLogic
 
                     if (fuelEngine.FuelType != i_FuelType)
                     {
-                        throw new ArgumentException("You're asking to fuel above your tank capacity.");
+                        throw new ArgumentException("You're asking to fuel with inappropriate fuel type.");
                     }
                     else
                     {
                         if (fuelEngine.CurrentFuelAmount + i_AmountToFuel > fuelEngine.TankCapacity)
                         {
-                            throw new ValueOutOfRangeException("You're asking to fuel above your tank capacity.");
+                            throw new ValueRangeException("You're asking to fuel above your tank capacity.");
                         }
                         else
                         {
@@ -72,7 +78,10 @@ namespace Ex03.GarageLogic
                 throw new KeyNotFoundException("Vehicle with the given license ID not found in the garage.");
             }
         }
-
+        internal bool IsVehicleInGarageEmpty()
+        {
+            return m_VehiclesInGarage.Count == 0;
+        }   
         internal void ChargeVehicle(string i_LicenseID, float io_MinutesToCharge)
         {
             if (VehiclesInGarage.ContainsKey(i_LicenseID))
@@ -83,7 +92,7 @@ namespace Ex03.GarageLogic
 
                     if (electricEngine.RemainingBatteryLife + io_MinutesToCharge > electricEngine.MaxBatteryTime)
                     {
-                        throw new ValueOutOfRangeException("You're asking to charge above your battery capacity.");
+                        throw new ValueRangeException("You're asking to charge above your battery capacity.");
                     }
                     else
                     {

@@ -20,7 +20,7 @@ TODO List:
   [X] Create a VehicleHandler class - to handle incoming registered vehicles into the garage - Asaf
   [X] Create a Garage class - the main engine that will handle the vehicles - Asaf
   [X] Create ValueRangeException class as mentioned at the "must use" section (page 4) of the project. - Asaf
-  [] Refraze throwing exceptions according to "must use" section. - Asaf
+  [X] Refraze throwing exceptions according to "must use" section. - Asaf
 
 2. FE:
   [X] Create InsertToGarage option for the main menu - Alon
@@ -35,7 +35,7 @@ TODO List:
 
 3. Refactor:
   [] Change data members that don't get a value in constructor to nullable variables
-  [] Rename ValueOutOfRangeException to ValueRangeException
+  [X] Rename ValueOutOfRangeException to ValueRangeException 
   [] Add printing of successful actions (vehicle creation, adding vehicle to garage, etc)
   [] Add exceptions to unsuccessful actions (maintain the logic -> UI throws parsing exceptions, VehicleHandler throws ArgumentNullException if a vehicle doesn't exist in garage, Garage throw other exceptions, etc..)
   [] Test!!

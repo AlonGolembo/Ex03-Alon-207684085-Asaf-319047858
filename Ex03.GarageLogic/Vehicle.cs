@@ -11,9 +11,10 @@ namespace Ex03.GarageLogic
     {
         private string m_ModelName;
         private string m_LicenseID;
+        private Engine m_Engine = null;
+        private List<Wheel> m_Wheels = null;
+       
         public Engine Engine { get; set; }
-        private List<Wheel> m_Wheels;
-
         public string ModelName
         {
             get { return m_ModelName; }
@@ -30,7 +31,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public List<Wheel> Wheels
+        public  List<Wheel> Wheels
         {
             get { return m_Wheels; }
         }

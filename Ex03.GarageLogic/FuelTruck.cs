@@ -13,7 +13,7 @@ namespace Ex03.GarageLogic
             {
                 if (value < 0)
                 {
-                    throw new ValueOutOfRangeException("Volume can't be negative!");
+                    throw new ValueRangeException("Volume can't be negative!");
                 }
 
                 m_CargoVolume = value;
