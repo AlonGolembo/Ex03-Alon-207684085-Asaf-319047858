@@ -60,7 +60,7 @@ namespace Ex03.ConsoleUI
             switch (i_Vehicle)
             {
                 case Car carVehicle:
-                    GetCarColor(carVehicle);
+                    GetCarDetails(carVehicle);
                     break;
                 case Motorcycle motorcycleVehicle:
                     GetDrivingLicenseCategory(motorcycleVehicle);
@@ -93,9 +93,9 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Please insert the motorcycle's license category: ");
             Console.WriteLine("1. A");
-            Console.WriteLine("1. A1");
-            Console.WriteLine("1. A2");
-            Console.WriteLine("1. B");
+            Console.WriteLine("2. A1");
+            Console.WriteLine("3. A2");
+            Console.WriteLine("4. B");
             string categoryInput = Console.ReadLine();
             if (!eDrivingLicenceCategory.TryParse(categoryInput, true, out eDrivingLicenceCategory o_NewCategory))
             {
@@ -108,23 +108,23 @@ namespace Ex03.ConsoleUI
             motorcycleVehicle.LicenseCategory = o_NewCategory;
         }
 
-        private static void GetCarColor(Car carVehicle)
+        private static void GetCarDetails(Car carVehicle)
         {
             Console.WriteLine("Please insert the car's color:");
             Console.WriteLine("1. Red");
-            Console.WriteLine("1. Yellow");
-            Console.WriteLine("1. Black");
-            Console.WriteLine("1. Silver");
+            Console.WriteLine("2. Yellow");
+            Console.WriteLine("3. Black");
+            Console.WriteLine("4. Silver");
             string colorInput = Console.ReadLine();
-            if (ePaint.TryParse(colorInput, out ePaint color))
-            {
-                throw new FormatException("Invalid input for car color! Please enter Red, White, Black, or Silver.");  
-            }
-            if(!Enum.IsDefined(typeof(ePaint), color))
-            {
-                throw new ArgumentException("Enum doesn't exist!");
-            }
-            carVehicle.Color = color;
+
+            Console.WriteLine("Please insert the number of doors:");
+            Console.WriteLine("1. Two");
+            Console.WriteLine("2. Three");
+            Console.WriteLine("3. Four");
+            Console.WriteLine("4. Five");
+            string doorsNumber = Console.ReadLine();
+
+            carVehicle.InsertSpecificVehicleProperties(colorInput, doorsNumber);
         }
 
         private static void GetWheelsState(Vehicle i_Vehicle)
