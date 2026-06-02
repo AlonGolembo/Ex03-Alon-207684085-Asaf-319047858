@@ -23,7 +23,7 @@ namespace Ex03.ConsoleUI
                 string vehicleType = GetVehicleType();
                 string modelName = GetVehicleModel();
                 Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseID, modelName);
-                SetVehicleDetails(currentVehicle);
+                GetVehicleDetails(currentVehicle);
                 RegisteredVehicle registeredVehicle = RegisterVehicle(currentVehicle);
                 i_VehicleHandler.InsertToGarage(registeredVehicle);
             }
@@ -53,7 +53,7 @@ namespace Ex03.ConsoleUI
             return Console.ReadLine();
         }
 
-        private static void SetVehicleDetails(Vehicle i_Vehicle)
+        private static void GetVehicleDetails(Vehicle i_Vehicle)
         {
             GetEnergyPercentage(i_Vehicle);
             GetWheelsState(i_Vehicle);
