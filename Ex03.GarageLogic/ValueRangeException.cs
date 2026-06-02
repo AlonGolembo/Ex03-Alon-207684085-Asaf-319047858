@@ -10,14 +10,9 @@ namespace Ex03.GarageLogic
     {
         private readonly float m_MinValue;
         private readonly float m_MaxValue;
-        public ValueRangeException() : base("Value is out of range.")
-        {
-        }
+
         public ValueRangeException(string i_Message) : base(i_Message)
         {
-        }
-        public ValueRangeException(string i_Message,Exception i_InnerException) : base(i_Message, i_InnerException)    
-        {    
         }
 
         public ValueRangeException(float i_MinValue, float i_MaxValue)

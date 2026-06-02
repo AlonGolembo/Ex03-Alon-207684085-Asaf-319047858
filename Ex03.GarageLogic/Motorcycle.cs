@@ -29,10 +29,8 @@ namespace Ex03.GarageLogic
                 {
                     throw new ValueRangeException("Engine capacity can't be negative!");
                 }
-                else
-                {
-                    m_EngineCapacity = value;
-                }
+
+                m_EngineCapacity = value;
             }
         }
     }
