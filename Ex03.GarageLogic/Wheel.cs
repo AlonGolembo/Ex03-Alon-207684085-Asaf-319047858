@@ -13,14 +13,12 @@ namespace Ex03.GarageLogic
             get { return m_ManufacturerName; }
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
                 {
-                    m_ManufacturerName = value;
+                    throw new ArgumentNullException("Manufacturer name can't be empty!");
                 }
-                else
-                {
-                    //throw new ArgumentNullException("Manufacturer name can't be empty!");
-                }
+
+                m_ManufacturerName = value;
             }
         }
 
@@ -29,14 +27,12 @@ namespace Ex03.GarageLogic
             get { return m_CurrentAirPressure; }
             set
             {
-                if (value >= 0 && value <= MaxAirPressure)
+                if (!(value >= 0 && value <= MaxAirPressure))
                 {
-                    m_CurrentAirPressure = value;
+                    throw new ValueRangeException(0f, MaxAirPressure);
                 }
-                else
-                {
-                    throw new ValueRangeException("Current amount of air must be positive and not exceed max air pressure!");
-                }
+
+                m_CurrentAirPressure = value;
             }
         }
 
@@ -45,14 +41,12 @@ namespace Ex03.GarageLogic
             get { return m_MaxAirPressure; }
             set
             {
-                if (value > 0)
-                {
-                    m_MaxAirPressure = value;
-                }
-                else
+                if (value < 0)
                 {
                     throw new ValueRangeException("Max mount of air can't be negative!");
                 }
+
+                m_MaxAirPressure = value;
             }
         }
 
@@ -72,15 +66,12 @@ namespace Ex03.GarageLogic
 
         public void Inflate(float i_AirToAdd)
         {
-            if (i_AirToAdd > 0 && CurrentAirPressure + i_AirToAdd <= MaxAirPressure)
+            if (!(i_AirToAdd > 0 && CurrentAirPressure <= (MaxAirPressure - i_AirToAdd)))
             {
-                CurrentAirPressure += i_AirToAdd;
+                throw new ValueRangeException(0f, (MaxAirPressure - i_AirToAdd));
             }
-            else
-            {
-                throw new ValueRangeException( "Amount of air to add must be positive and not exceed max air pressure!");
-            }
-        }
 
+            CurrentAirPressure += i_AirToAdd;
+        }
     }
 }
