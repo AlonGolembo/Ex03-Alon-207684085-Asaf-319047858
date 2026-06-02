@@ -14,7 +14,6 @@ namespace Ex03.GarageLogic
         public Engine Engine { get; set; }
         private List<Wheel> m_Wheels;
        
-
         public string ModelName
         {
             get { return m_ModelName; }
