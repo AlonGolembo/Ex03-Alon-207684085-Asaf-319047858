@@ -35,16 +35,16 @@ namespace Ex03.GarageLogic
             CargoVolume = null;
         }
 
-        public override bool InsertSpecificVehicleProperties(string i_Property1, string i_Property2)
+        public override bool InsertSpecificVehicleProperties(string i_IsRefrigerated, string i_CargoVolume)
         {
             bool canInsert = false;
-            if (!bool.TryParse(i_Property1, out bool isRefrigerated))
+            if (!bool.TryParse(i_IsRefrigerated, out bool isRefrigerated))
             {
                 throw new FormatException("Can't parse is refrigerated to boolean value!");
             }
             IsRefrigerated = isRefrigerated;
 
-            if (!float.TryParse(i_Property2, out float cargoVolume))
+            if (!float.TryParse(i_CargoVolume, out float cargoVolume))
             {
                 throw new FormatException("Can't parse engine capacity to int!");
             }

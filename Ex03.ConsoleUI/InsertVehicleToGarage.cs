@@ -66,27 +66,38 @@ namespace Ex03.ConsoleUI
                     GetMotorcycleDetails(motorcycleVehicle);
                     break;
                 case FuelTruck truckVehicle:
-                    GetIsRefrigirated(truckVehicle);
+                    GetTruckDetails(truckVehicle);
                     break;
             }
         }
 
-        private static void GetIsRefrigirated(FuelTruck truckVehicle)
+        private static void GetTruckDetails(FuelTruck truckVehicle)
         {
-            Console.WriteLine("Is the truck refrigerated? (Y/N)");
-            string isRefrigeratedInput = Console.ReadLine();
-            if (isRefrigeratedInput.Equals("Y", StringComparison.OrdinalIgnoreCase))
+            string isRefrigeratedInput;
+            Console.WriteLine("Is the truck refrigerated?");
+            Console.WriteLine("1. Yes");
+            Console.WriteLine("2. No");
+            if(!int.TryParse(Console.ReadLine(), out int userAnswer))
             {
-                truckVehicle.IsRefrigerated = true;
+                throw new FormatException("Can't parse answer to number!");
             }
-            else if (isRefrigeratedInput.Equals("N", StringComparison.OrdinalIgnoreCase))
+            if(!(userAnswer == 1 || userAnswer == 2))
             {
-                truckVehicle.IsRefrigerated = false;
+                throw new ArgumentException("Invalid choice!");
+            }
+            if(userAnswer == 1)
+            {
+                isRefrigeratedInput = "true";
             }
             else
             {
-                throw new FormatException("Invalid input for refrigerated status! Please enter Y or N.");
+                isRefrigeratedInput = "false";
             }
+
+            Console.WriteLine("Insert the truck cargo volume: ");
+            string cargoVolumeInput = Console.ReadLine();
+
+            truckVehicle.InsertSpecificVehicleProperties(isRefrigeratedInput, cargoVolumeInput);
         }
 
         private static void GetMotorcycleDetails(Motorcycle motorcycleVehicle)

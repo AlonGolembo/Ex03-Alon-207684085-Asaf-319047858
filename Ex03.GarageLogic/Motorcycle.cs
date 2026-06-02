@@ -39,10 +39,10 @@ namespace Ex03.GarageLogic
             LicenseCategory = i_DrivingLicenceCategory;
         }
 
-        public override bool InsertSpecificVehicleProperties(string i_Property1, string i_Property2)
+        public override bool InsertSpecificVehicleProperties(string i_LicenseCategory, string i_EngineCapacity)
         {
             bool canInsert = false;
-            if (!eDrivingLicenceCategory.TryParse(i_Property1, out eDrivingLicenceCategory drivingLicenceCategory))
+            if (!eDrivingLicenceCategory.TryParse(i_LicenseCategory, out eDrivingLicenceCategory drivingLicenceCategory))
             {
                 throw new FormatException("Can't parse driving license category to enum!");
             }
@@ -52,7 +52,7 @@ namespace Ex03.GarageLogic
             }
             LicenseCategory = drivingLicenceCategory;
 
-            if (!int.TryParse(i_Property2, out int engineCapacity))
+            if (!int.TryParse(i_EngineCapacity, out int engineCapacity))
             {
                 throw new FormatException("Can't parse engine capacity to int!");
             }
