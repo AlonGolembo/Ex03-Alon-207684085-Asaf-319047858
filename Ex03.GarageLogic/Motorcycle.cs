@@ -8,19 +8,10 @@ namespace Ex03.GarageLogic
 {
     public abstract class Motorcycle : Vehicle
     {
-        public eDrivingLicenceCategory DrivingLicenceCategory { get; set; }
-        private int m_EngineCapacity;
+        public eDrivingLicenceCategory? DrivingLicenceCategory { get; set; }
+        private int? m_EngineCapacity;
 
-        public Motorcycle(string i_LicenseID,
-                          string i_ModelName,
-                          int i_EngineCapacity,
-                          eDrivingLicenceCategory i_DrivingLicenceCategory) : base(i_LicenseID, i_ModelName)
-        {
-            EngineCapacity = i_EngineCapacity;
-            DrivingLicenceCategory = i_DrivingLicenceCategory;
-        }
-
-        public int EngineCapacity
+        public int? EngineCapacity
         {
             get { return m_EngineCapacity; }
             set
@@ -32,6 +23,20 @@ namespace Ex03.GarageLogic
 
                 m_EngineCapacity = value;
             }
+        }
+
+        public Motorcycle(string i_LicenseID, string i_ModelName) : base(i_LicenseID, i_ModelName)
+        {
+            EngineCapacity = null;
+            DrivingLicenceCategory = null;
+        }
+        public Motorcycle(string i_LicenseID,
+                          string i_ModelName,
+                          int i_EngineCapacity,
+                          eDrivingLicenceCategory i_DrivingLicenceCategory) : base(i_LicenseID, i_ModelName)
+        {
+            EngineCapacity = i_EngineCapacity;
+            DrivingLicenceCategory = i_DrivingLicenceCategory;
         }
     }
 }
