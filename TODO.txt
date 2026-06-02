@@ -34,7 +34,9 @@ TODO List:
   [X] Create MainMenu class - Alon
 
 3. Refactor:
-  [] Change data members that don't get a value in constructor to nullable variables
+  [X] Change data members that don't get a value in constructor to nullable variables
+  [X] Complete PrintVehicle.Print (print the vehicle specific properties)
+  [X] Complete handeling vehicle specific properties when reading VehiclesDB
   [X] Rename ValueOutOfRangeException to ValueRangeException 
   [] Add printing of successful actions (vehicle creation, adding vehicle to garage, etc)
   [] Add exceptions to unsuccessful actions (maintain the logic -> UI throws parsing exceptions, VehicleHandler throws ArgumentNullException if a vehicle doesn't exist in garage, Garage throw other exceptions, etc..)
