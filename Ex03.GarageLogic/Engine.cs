@@ -15,10 +15,8 @@ namespace Ex03.GarageLogic
                 {
                     throw new ValueRangeException("Energy percentage can't be negative!");
                 }
-                else
-                {
-                    m_EnergyPercentage = value;
-                }
+
+                m_EnergyPercentage = value;
             }
         }
 
