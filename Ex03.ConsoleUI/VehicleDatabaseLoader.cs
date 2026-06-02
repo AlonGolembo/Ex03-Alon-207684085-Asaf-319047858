@@ -60,7 +60,7 @@ namespace Ex03.ConsoleUI
 
             currentVehicle.SetWheels(lineDetails[4], currentAirPressure);
 
-            currentVehicle.InsertSpecificVehicleProperties(lineDetails[8], lineDetails[8]);
+            currentVehicle.InsertSpecificVehicleProperties(lineDetails[8], lineDetails[9]);
 
             // Only after successfuly parsing all of the data, we create a RegisteredVehicle and then return it
             RegisteredVehicle registeredVehicle = new RegisteredVehicle(currentVehicle, lineDetails[6], lineDetails[7]);
