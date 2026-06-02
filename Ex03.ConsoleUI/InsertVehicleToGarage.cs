@@ -100,7 +100,7 @@ namespace Ex03.ConsoleUI
             string categoryInput = Console.ReadLine();
             if (Enum.TryParse(categoryInput, true, out eDrivingLicenceCategory category))
             {
-                motorcycleVehicle.DrivingLicenceCategory = category;
+                motorcycleVehicle.LicenseCategory = category;
             }
             else
             {

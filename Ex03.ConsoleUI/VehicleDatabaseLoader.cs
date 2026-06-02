@@ -67,7 +67,7 @@ namespace Ex03.ConsoleUI
 
             return registeredVehicle;
         }
-                
+
         private static bool IsVehicleType(string i_VehicleType)
         {
             List<string> vehicleTypes = VehicleCreator.SupportedTypes;

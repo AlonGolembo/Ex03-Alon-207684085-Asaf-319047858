@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic
     public abstract class Motorcycle : Vehicle
     {
         private int? m_EngineCapacity;
-        public eDrivingLicenceCategory? DrivingLicenceCategory { get; set; }
+        public eDrivingLicenceCategory? LicenseCategory { get; set; }
 
         public int? EngineCapacity
         {
@@ -28,7 +28,7 @@ namespace Ex03.GarageLogic
         public Motorcycle(string i_LicenseID, string i_ModelName) : base(i_LicenseID, i_ModelName)
         {
             EngineCapacity = null;
-            DrivingLicenceCategory = null;
+            LicenseCategory = null;
         }
         public Motorcycle(string i_LicenseID,
                           string i_ModelName,
@@ -36,7 +36,7 @@ namespace Ex03.GarageLogic
                           eDrivingLicenceCategory i_DrivingLicenceCategory) : base(i_LicenseID, i_ModelName)
         {
             EngineCapacity = i_EngineCapacity;
-            DrivingLicenceCategory = i_DrivingLicenceCategory;
+            LicenseCategory = i_DrivingLicenceCategory;
         }
 
         public override bool InsertSpecificVehicleProperties(string i_Property1, string i_Property2)
@@ -46,7 +46,7 @@ namespace Ex03.GarageLogic
             {
                 throw new FormatException("Can't parse driving license category to enum!");
             }
-            DrivingLicenceCategory = drivingLicenceCategory;
+            LicenseCategory = drivingLicenceCategory;
 
             if (!int.TryParse(i_Property2, out int engineCapacity))
             {
