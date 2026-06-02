@@ -130,15 +130,11 @@ namespace Ex03.ConsoleUI
             {
                 throw new FormatException("Can't parse air pressure to a float!");
             }
-            if (airPressure < 0)
+            if (!(airPressure >= 0 && airPressure <= i_Vehicle.Wheels[0].MaxAirPressure))
             {
-                throw new ValueRangeException("Air pressure can't be negative!");
+                throw new ValueRangeException(0f, i_Vehicle.Wheels[0].MaxAirPressure);
             }
-            if (airPressure > i_Vehicle.Wheels[0].MaxAirPressure)
-            {
-                throw new ValueRangeException($"Air pressure can't be higher than {i_Vehicle.Wheels[0].MaxAirPressure}!");
-            }
-           
+                       
             Console.WriteLine("Please enter manufacturer's name:");
             string manufacturerName = Console.ReadLine();
             

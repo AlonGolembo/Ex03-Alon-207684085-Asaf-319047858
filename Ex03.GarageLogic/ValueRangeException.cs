@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32.SafeHandles;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,8 +20,8 @@ namespace Ex03.GarageLogic
         {    
         }
 
-        public ValueRangeException(float i_MinValue, float i_MaxValue,string i_Message)
-            : base(i_Message)
+        public ValueRangeException(float i_MinValue, float i_MaxValue)
+            : base($"Value is out of range! Value should be bigger than {i_MinValue} and smaller than {i_MaxValue}!")
         {
             m_MinValue = i_MinValue;
             m_MaxValue = i_MaxValue;
