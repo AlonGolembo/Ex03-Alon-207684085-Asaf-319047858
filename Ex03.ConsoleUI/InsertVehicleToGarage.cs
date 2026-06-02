@@ -63,7 +63,7 @@ namespace Ex03.ConsoleUI
                     GetCarDetails(carVehicle);
                     break;
                 case Motorcycle motorcycleVehicle:
-                    GetDrivingLicenseCategory(motorcycleVehicle);
+                    GetMotorcycleDetails(motorcycleVehicle);
                     break;
                 case FuelTruck truckVehicle:
                     GetIsRefrigirated(truckVehicle);
@@ -89,7 +89,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        private static void GetDrivingLicenseCategory(Motorcycle motorcycleVehicle)
+        private static void GetMotorcycleDetails(Motorcycle motorcycleVehicle)
         {
             Console.WriteLine("Please insert the motorcycle's license category: ");
             Console.WriteLine("1. A");
@@ -97,15 +97,11 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("3. A2");
             Console.WriteLine("4. B");
             string categoryInput = Console.ReadLine();
-            if (!eDrivingLicenceCategory.TryParse(categoryInput, true, out eDrivingLicenceCategory o_NewCategory))
-            {
-                throw new FormatException("Can't parse license category to enum!");
-            }
-            if(!Enum.IsDefined(typeof(eDrivingLicenceCategory), o_NewCategory))
-            {
-                throw new ArgumentException("Enum doesn't exist!");
-            }
-            motorcycleVehicle.LicenseCategory = o_NewCategory;
+
+            Console.WriteLine("Please insert the motorcycle's engine capacity: ");
+            string engineCapacityInput = Console.ReadLine();
+
+            motorcycleVehicle.InsertSpecificVehicleProperties(categoryInput, engineCapacityInput);
         }
 
         private static void GetCarDetails(Car carVehicle)
