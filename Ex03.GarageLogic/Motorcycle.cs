@@ -11,7 +11,10 @@ namespace Ex03.GarageLogic
         public eDrivingLicenceCategory DrivingLicenceCategory { get; set; }
         private int m_EngineCapacity;
 
-        public Motorcycle (string i_LicenseID, string i_ModelName,int i_EngineCapacity, eDrivingLicenceCategory i_DrivingLicenceCategory) : base(i_LicenseID, i_ModelName)
+        public Motorcycle(string i_LicenseID,
+                          string i_ModelName,
+                          int i_EngineCapacity,
+                          eDrivingLicenceCategory i_DrivingLicenceCategory) : base(i_LicenseID, i_ModelName)
         {
             EngineCapacity = i_EngineCapacity;
             DrivingLicenceCategory = i_DrivingLicenceCategory;
