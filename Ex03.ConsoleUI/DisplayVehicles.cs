@@ -17,7 +17,7 @@ namespace Ex03.ConsoleUI
             string userInputString = Console.ReadLine();
             if (!eVehicleState.TryParse(userInputString, out eVehicleState o_NewState))
             {
-                throw new FormatException("Can't parse value to int");
+                throw new FormatException("Can't parse value to enum!");
             }
 
             if (!Enum.IsDefined(typeof(eVehicleState), o_NewState))

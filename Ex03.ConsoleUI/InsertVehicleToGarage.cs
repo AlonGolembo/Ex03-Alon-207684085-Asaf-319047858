@@ -21,11 +21,6 @@ namespace Ex03.ConsoleUI
             else
             {
                 string vehicleType = GetVehicleType();
-                //if (!VehicleCreator.SupportedTypes.Contains(vehicleType))
-                //{
-                //    throw new FormatException("Vehicle type doens't exist!");
-                //}
-
                 string modelName = GetVehicleModel();
                 Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseID, modelName);
                 SetVehicleDetails(currentVehicle);
@@ -96,30 +91,40 @@ namespace Ex03.ConsoleUI
 
         private static void GetDrivingLicenseCategory(Motorcycle motorcycleVehicle)
         {
-           Console.WriteLine("Please insert the motorcycle's driving license category (A, A1, A2, B): ");
+            Console.WriteLine("Please insert the motorcycle's license category: ");
+            Console.WriteLine("1. A");
+            Console.WriteLine("1. A1");
+            Console.WriteLine("1. A2");
+            Console.WriteLine("1. B");
             string categoryInput = Console.ReadLine();
-            if (Enum.TryParse(categoryInput, true, out eDrivingLicenceCategory category))
+            if (!eDrivingLicenceCategory.TryParse(categoryInput, true, out eDrivingLicenceCategory o_NewCategory))
             {
-                motorcycleVehicle.LicenseCategory = category;
+                throw new FormatException("Can't parse license category to enum!");
             }
-            else
+            if(!Enum.IsDefined(typeof(eDrivingLicenceCategory), o_NewCategory))
             {
-                throw new FormatException("Invalid input for driving license category! Please enter A, A1, A2, or B.");
+                throw new ArgumentException("Enum doesn't exist!");
             }
+            motorcycleVehicle.LicenseCategory = o_NewCategory;
         }
 
         private static void GetCarColor(Car carVehicle)
         {
-        Console.WriteLine("Please insert the car's color (Red, White, Black, Silver): ");
+            Console.WriteLine("Please insert the car's color:");
+            Console.WriteLine("1. Red");
+            Console.WriteLine("1. Yellow");
+            Console.WriteLine("1. Black");
+            Console.WriteLine("1. Silver");
             string colorInput = Console.ReadLine();
-            if (Enum.TryParse(colorInput, true, out ePaint color))
+            if (ePaint.TryParse(colorInput, out ePaint color))
             {
-                carVehicle.Color = color;
+                throw new FormatException("Invalid input for car color! Please enter Red, White, Black, or Silver.");  
             }
-            else
+            if(!Enum.IsDefined(typeof(ePaint), color))
             {
-                throw new FormatException("Invalid input for car color! Please enter Red, White, Black, or Silver.");
+                throw new ArgumentException("Enum doesn't exist!");
             }
+            carVehicle.Color = color;
         }
 
         private static void GetWheelsState(Vehicle i_Vehicle)

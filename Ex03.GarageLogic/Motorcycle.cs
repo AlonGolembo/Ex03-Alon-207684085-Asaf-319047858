@@ -46,6 +46,10 @@ namespace Ex03.GarageLogic
             {
                 throw new FormatException("Can't parse driving license category to enum!");
             }
+            if (!Enum.IsDefined(typeof(eDrivingLicenceCategory), drivingLicenceCategory))
+            {
+                throw new ArgumentException("Enum isn't defined!");
+            }
             LicenseCategory = drivingLicenceCategory;
 
             if (!int.TryParse(i_Property2, out int engineCapacity))

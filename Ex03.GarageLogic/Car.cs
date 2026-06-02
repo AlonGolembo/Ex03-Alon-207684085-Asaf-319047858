@@ -33,11 +33,19 @@ namespace Ex03.GarageLogic
             {
                 throw new FormatException("Can't parse paint to enum!");
             }
+            if (!Enum.IsDefined(typeof(ePaint), paint))
+            {
+                throw new ArgumentException("Enum isn't defined!");
+            }
             Color = paint;
 
             if (!eDoorsNumber.TryParse(i_Property2, out eDoorsNumber doorsNumber))
             {
                 throw new FormatException("Can't parse doors number to enum!");
+            }
+            if (!Enum.IsDefined(typeof(eDoorsNumber), doorsNumber))
+            {
+                throw new ArgumentException("Enum isn't defined!");
             }
             DoorsNumber = doorsNumber;
 

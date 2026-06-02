@@ -36,6 +36,10 @@ namespace Ex03.ConsoleUI
             {
                 throw new FormatException("Can't parse fuel type!");
             }
+            if(!Enum.IsDefined(typeof(eFuelType), fuelType))
+            {
+                throw new ArgumentException("Enum isn't defined!");
+            }
             Console.WriteLine("Insert amount of liters to fill up: ");
             if(!float.TryParse(Console.ReadLine(), out float fuelLiters))
             {
