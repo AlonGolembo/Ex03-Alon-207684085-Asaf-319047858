@@ -29,14 +29,9 @@ namespace Ex03.GarageLogic
             get { return m_RemainingBatteryTime; }
             set
             {
-                if (value < 0)
+                if (!(value >= 0 && value <= MaxBatteryTime))
                 {
-                    throw new ValueRangeException("Remaining battery life can't be negative!");
-                }
-                
-                if (value > m_MaxBatteryTime)
-                {
-                    throw new ValueRangeException($"Remaining battery life can't exceed max battery life time: {m_MaxBatteryTime} hours!");
+                    throw new ValueRangeException(0f, MaxBatteryTime);
                 }
 
                 m_RemainingBatteryTime = value;
@@ -57,15 +52,14 @@ namespace Ex03.GarageLogic
 
         public void ChargeBattery(float i_ChargeHours)
         {
-            if (i_ChargeHours + m_RemainingBatteryTime <= m_MaxBatteryTime)
-            {
-                m_RemainingBatteryTime += i_ChargeHours;
-                this.UpdateEnergyPercentage(RemainingBatteryLife, MaxBatteryTime);
-            }
-            else
+            if (i_ChargeHours + m_RemainingBatteryTime > m_MaxBatteryTime)
             {
                 throw new ValueRangeException($"Charging hours can't exceed max charging: {m_MaxBatteryTime - m_RemainingBatteryTime} hours!");
+
             }
+
+            m_RemainingBatteryTime += i_ChargeHours;
+            this.UpdateEnergyPercentage(RemainingBatteryLife, MaxBatteryTime);
         }
 
     }
