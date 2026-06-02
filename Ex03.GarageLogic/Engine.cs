@@ -11,14 +11,12 @@ namespace Ex03.GarageLogic
             get { return m_EnergyPercentage; }
             set
             {
-                if(value < 0)
+                if(!(value >= 0 && value <=100))
                 {
-                    throw new ValueRangeException("Energy percentage can't be negative!");
+                    throw new ValueRangeException(0f, 100f);
                 }
-                else
-                {
-                    m_EnergyPercentage = value;
-                }
+
+                m_EnergyPercentage = value;
             }
         }
 

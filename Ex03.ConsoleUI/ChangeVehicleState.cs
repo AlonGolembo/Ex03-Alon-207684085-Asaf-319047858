@@ -21,6 +21,10 @@ namespace Ex03.ConsoleUI
             {
                 throw new ArgumentException("No such vehicle state!");
             }
+            if(!Enum.IsDefined(typeof(eVehicleState), o_newState))
+            {
+                throw new ArgumentException("Enum isn't defined!");
+            }
             i_VehicleHandler.ChangeVehicleState(licenseNumber, o_newState);
             Console.WriteLine($"Vehicle number {licenseNumber} state was changed to {i_VehicleHandler.GetVehicle(licenseNumber).VehicleState}"); // This is written this way to verify the method actually works
         }

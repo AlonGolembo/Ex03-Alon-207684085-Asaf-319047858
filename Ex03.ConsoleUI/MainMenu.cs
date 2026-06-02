@@ -69,7 +69,7 @@ namespace Ex03.ConsoleUI
             }
             if (!(userChoice >= 1 && userChoice <= 9))
             {
-                throw new ValueRangeException("Invalid choice number!");
+                throw new ValueRangeException(1f, 9f);
             }
 
             bool continueToMenu = true;
@@ -106,7 +106,6 @@ namespace Ex03.ConsoleUI
                     continueToMenu = CheckIfExitOrContinue();
                     break;
                 case 8:
-                    Console.WriteLine("Please enter a vehicle's license number: ");
                     PrintVehicle.GetVehicleFromUserAndPrint(VehicleHandler);
                     continueToMenu = CheckIfExitOrContinue();
                     break;

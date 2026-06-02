@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic
     public enum ePaint
     {
         Red = 1,
-        White,
+        Yellow,
         Black,
         Silver
     }

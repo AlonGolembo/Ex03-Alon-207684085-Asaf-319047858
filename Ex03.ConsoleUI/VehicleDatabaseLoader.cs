@@ -36,26 +36,33 @@ namespace Ex03.ConsoleUI
         private static RegisteredVehicle ParseLine(string i_Line)
         {
             string[] lineDetails = i_Line.Split(',');
-            if (!IsVehicleType(lineDetails[0]) || !IsLicenseId(lineDetails[1]))
+
+            // First verify required data for VehicleCreator.CreateVehicle
+            if (!(IsVehicleType(lineDetails[0]) && IsLicenseId(lineDetails[1])))
             {
                 throw new FormatException($"Line '{i_Line}' isn't a valid vehicle!");
             }
 
             Vehicle currentVehicle = VehicleCreator.CreateVehicle(lineDetails[0], lineDetails[1], lineDetails[2]);
 
-
-            // Need to add exception here
-            if (float.TryParse(lineDetails[5], out float currentAirPressure))
+            // Verify we can parse the following numeric data
+            if (!(float.TryParse(lineDetails[3], out float energyPercentage)))
             {
-                currentVehicle.SetWheels(lineDetails[4], currentAirPressure);
+                throw new FormatException("Can't parse energy percentage to float!");
             }
 
-            // Need to add exception here
-            if (float.TryParse(lineDetails[3], out float energyPercentage))
+            currentVehicle.Engine.EnergyPercentage = energyPercentage;
+
+            if (!(float.TryParse(lineDetails[5], out float currentAirPressure)))
             {
-                currentVehicle.Engine.EnergyPercentage = energyPercentage;
+                throw new FormatException("Can't parse current air pressure to float!");
             }
 
+            currentVehicle.SetWheels(lineDetails[4], currentAirPressure);
+
+            currentVehicle.InsertSpecificVehicleProperties(lineDetails[8], lineDetails[9]);
+
+            // Only after successfuly parsing all of the data, we create a RegisteredVehicle and then return it
             RegisteredVehicle registeredVehicle = new RegisteredVehicle(currentVehicle, lineDetails[6], lineDetails[7]);
 
             return registeredVehicle;
@@ -63,7 +70,8 @@ namespace Ex03.ConsoleUI
 
         private static bool IsVehicleType(string i_VehicleType)
         {
-            return i_VehicleType == "FuelCar" || i_VehicleType == "ElectricCar" || i_VehicleType == "FuelMotorcycle" || i_VehicleType == "ElectricMotorcycle" || i_VehicleType == "FuelTruck";
+            List<string> vehicleTypes = VehicleCreator.SupportedTypes;
+            return vehicleTypes.Contains(i_VehicleType);
         }
 
         private static bool IsLicenseId(string i_LicenseId)

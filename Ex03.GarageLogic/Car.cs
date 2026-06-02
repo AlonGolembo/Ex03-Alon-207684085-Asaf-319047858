@@ -9,10 +9,14 @@ namespace Ex03.GarageLogic
     public abstract class Car : Vehicle
     {
         
-        public ePaint Color {  get; set; }
-        public eDoorsNumber DoorsNumber { get; set; }
+        public ePaint? Color {  get; set; }
+        public eDoorsNumber? DoorsNumber { get; set; }
 
-        
+        public Car(string i_LicenseID, string i_ModelName) : base(i_LicenseID, i_ModelName)
+        {
+            Color = null;
+            DoorsNumber = null;
+        }
         public Car(string i_LicenseID,
                    string i_ModelName,
                    ePaint i_Color,
@@ -21,9 +25,31 @@ namespace Ex03.GarageLogic
             Color = i_Color;
             DoorsNumber = i_DoorsNumber;
         }
-        public Car(string i_LicenseID,
-                   string i_ModelName) : base(i_LicenseID, i_ModelName) { }
+
+        public override bool InsertSpecificVehicleProperties(string i_Paint, string i_DoorsNumber)
+        {
+            bool canInsert = false;
+            if (!ePaint.TryParse(i_Paint, out ePaint paint))
+            {
+                throw new FormatException("Can't parse paint to enum!");
+            }
+            if (!Enum.IsDefined(typeof(ePaint), paint))
+            {
+                throw new ArgumentException("Enum isn't defined!");
+            }
+            Color = paint;
+
+            if (!eDoorsNumber.TryParse(i_DoorsNumber, out eDoorsNumber doorsNumber))
+            {
+                throw new FormatException("Can't parse doors number to enum!");
+            }
+            if (!Enum.IsDefined(typeof(eDoorsNumber), doorsNumber))
+            {
+                throw new ArgumentException("Enum isn't defined!");
+            }
+            DoorsNumber = doorsNumber;
+
+            return canInsert;
+        }
     }
-
-
 }

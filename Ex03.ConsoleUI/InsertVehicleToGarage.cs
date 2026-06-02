@@ -21,16 +21,14 @@ namespace Ex03.ConsoleUI
             else
             {
                 string vehicleType = GetVehicleType();
-                //if (!VehicleCreator.SupportedTypes.Contains(vehicleType))
-                //{
-                //    throw new FormatException("Vehicle type doens't exist!");
-                //}
-
                 string modelName = GetVehicleModel();
                 Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseID, modelName);
-                SetVehicleDetails(currentVehicle);
+                GetVehicleDetails(currentVehicle);
                 RegisteredVehicle registeredVehicle = RegisterVehicle(currentVehicle);
                 i_VehicleHandler.InsertToGarage(registeredVehicle);
+
+                // Print successful insertion
+                Console.WriteLine($"Vehicle {registeredVehicle.Vehicle.LicenseID} was successfuly inserted to the garage!");
             }
         }
 
@@ -58,68 +56,85 @@ namespace Ex03.ConsoleUI
             return Console.ReadLine();
         }
 
-        private static void SetVehicleDetails(Vehicle i_Vehicle)
+        private static void GetVehicleDetails(Vehicle i_Vehicle)
         {
             GetEnergyPercentage(i_Vehicle);
             GetWheelsState(i_Vehicle);
             switch (i_Vehicle)
             {
                 case Car carVehicle:
-                    GetCarColor(carVehicle);
+                    GetCarDetails(carVehicle);
                     break;
                 case Motorcycle motorcycleVehicle:
-                    GetDrivingLicenseCategory(motorcycleVehicle);
+                    GetMotorcycleDetails(motorcycleVehicle);
                     break;
                 case FuelTruck truckVehicle:
-                    GetIsRefrigirated(truckVehicle);
+                    GetTruckDetails(truckVehicle);
                     break;
             }
         }
 
-        private static void GetIsRefrigirated(FuelTruck truckVehicle)
+        private static void GetTruckDetails(FuelTruck truckVehicle)
         {
-            Console.WriteLine("Is the truck refrigerated? (Y/N)");
-            string isRefrigeratedInput = Console.ReadLine();
-            if (isRefrigeratedInput.Equals("Y", StringComparison.OrdinalIgnoreCase))
+            string isRefrigeratedInput;
+            Console.WriteLine("Is the truck refrigerated?");
+            Console.WriteLine("1. Yes");
+            Console.WriteLine("2. No");
+            if(!int.TryParse(Console.ReadLine(), out int userAnswer))
             {
-                truckVehicle.IsRefrigerated = true;
+                throw new FormatException("Can't parse answer to number!");
             }
-            else if (isRefrigeratedInput.Equals("N", StringComparison.OrdinalIgnoreCase))
+            if(!(userAnswer == 1 || userAnswer == 2))
             {
-                truckVehicle.IsRefrigerated = false;
+                throw new ArgumentException("Invalid choice!");
+            }
+            if(userAnswer == 1)
+            {
+                isRefrigeratedInput = "true";
             }
             else
             {
-                throw new FormatException("Invalid input for refrigerated status! Please enter Y or N.");
+                isRefrigeratedInput = "false";
             }
+
+            Console.WriteLine("Insert the truck cargo volume: ");
+            string cargoVolumeInput = Console.ReadLine();
+
+            truckVehicle.InsertSpecificVehicleProperties(isRefrigeratedInput, cargoVolumeInput);
         }
 
-        private static void GetDrivingLicenseCategory(Motorcycle motorcycleVehicle)
+        private static void GetMotorcycleDetails(Motorcycle motorcycleVehicle)
         {
-           Console.WriteLine("Please insert the motorcycle's driving license category (A, A1, A2, B): ");
+            Console.WriteLine("Please insert the motorcycle's license category: ");
+            Console.WriteLine("1. A");
+            Console.WriteLine("2. A1");
+            Console.WriteLine("3. A2");
+            Console.WriteLine("4. B");
             string categoryInput = Console.ReadLine();
-            if (Enum.TryParse(categoryInput, true, out eDrivingLicenceCategory category))
-            {
-                motorcycleVehicle.DrivingLicenceCategory = category;
-            }
-            else
-            {
-                throw new FormatException("Invalid input for driving license category! Please enter A, A1, A2, or B.");
-            }
+
+            Console.WriteLine("Please insert the motorcycle's engine capacity: ");
+            string engineCapacityInput = Console.ReadLine();
+
+            motorcycleVehicle.InsertSpecificVehicleProperties(categoryInput, engineCapacityInput);
         }
 
-        private static void GetCarColor(Car carVehicle)
+        private static void GetCarDetails(Car carVehicle)
         {
-        Console.WriteLine("Please insert the car's color (Red, White, Black, Silver): ");
+            Console.WriteLine("Please insert the car's color:");
+            Console.WriteLine("1. Red");
+            Console.WriteLine("2. Yellow");
+            Console.WriteLine("3. Black");
+            Console.WriteLine("4. Silver");
             string colorInput = Console.ReadLine();
-            if (Enum.TryParse(colorInput, true, out ePaint color))
-            {
-                carVehicle.Color = color;
-            }
-            else
-            {
-                throw new FormatException("Invalid input for car color! Please enter Red, White, Black, or Silver.");
-            }
+
+            Console.WriteLine("Please insert the number of doors:");
+            Console.WriteLine("1. Two");
+            Console.WriteLine("2. Three");
+            Console.WriteLine("3. Four");
+            Console.WriteLine("4. Five");
+            string doorsNumber = Console.ReadLine();
+
+            carVehicle.InsertSpecificVehicleProperties(colorInput, doorsNumber);
         }
 
         private static void GetWheelsState(Vehicle i_Vehicle)
@@ -130,15 +145,11 @@ namespace Ex03.ConsoleUI
             {
                 throw new FormatException("Can't parse air pressure to a float!");
             }
-            if (airPressure < 0)
+            if (!(airPressure >= 0 && airPressure <= i_Vehicle.Wheels[0].MaxAirPressure))
             {
-                throw new ValueRangeException("Air pressure can't be negative!");
+                throw new ValueRangeException(0f, i_Vehicle.Wheels[0].MaxAirPressure);
             }
-            if (airPressure > i_Vehicle.Wheels[0].MaxAirPressure)
-            {
-                throw new ValueRangeException($"Air pressure can't be higher than {i_Vehicle.Wheels[0].MaxAirPressure}!");
-            }
-           
+                       
             Console.WriteLine("Please enter manufacturer's name:");
             string manufacturerName = Console.ReadLine();
             

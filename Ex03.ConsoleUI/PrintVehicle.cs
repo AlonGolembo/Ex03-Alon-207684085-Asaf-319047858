@@ -32,27 +32,21 @@ namespace Ex03.ConsoleUI
 
             switch (i_Vehicle.Vehicle)
             {
+                case Car car:
+                    Console.WriteLine($"The car's color is {car.Color} and it has {car.DoorsNumber} doors");
+                    break;
+                case Motorcycle motorcycle:
+                    Console.WriteLine($"The motorcycle license category is {motorcycle.LicenseCategory} and its engine capacity is {motorcycle.EngineCapacity}");
+                    break;
                 case FuelTruck fuelTruck:
-                    Console.WriteLine($"Add FuelTruck details here...");
-                    break;
-                case FuelCar fuelCar:
-                    Console.WriteLine($"Add FuelCar details here...");
-                    break;
-                case ElectricCar electricCar:
-                    Console.WriteLine($"Add ElectricCar details here...");
-                    break;
-                case FuelMotorcycle fuelMotorcycle:
-                    Console.WriteLine($"Add FuelMotorcycle details here...");
-                    break;
-                case ElectricMotorcycle fuelMotorcycle:
-                    Console.WriteLine($"Add ElectricMotorcycle details here...");
+                    Console.WriteLine($"The truck's cargo {((bool)fuelTruck.IsRefrigerated ? "is refrigerated" : "isn't refrigerated")} and its volume is {fuelTruck.CargoVolume}");
                     break;
             }
         }
 
         internal static void GetVehicleFromUserAndPrint(VehicleHandler i_VehicleHandler)
         {
-            Console.WriteLine("Insert vehicle number: ");
+            Console.WriteLine("Insert vehicle's license number: ");
             string licenseNubmer = Console.ReadLine();
             Print(i_VehicleHandler.GetVehicle(licenseNubmer));
         }
