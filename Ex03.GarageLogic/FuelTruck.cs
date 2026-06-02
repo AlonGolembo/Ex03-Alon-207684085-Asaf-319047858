@@ -21,18 +21,36 @@ namespace Ex03.GarageLogic
         }
         public FuelTruck(string i_LicenseID, string i_ModelName, bool i_IsRefrigerated, float i_CargoVolume) : base (i_LicenseID, i_ModelName)
         {
-            this.InitializeWheelsList(eNumberOfWheels.Fourteen, 28);
-            this.Engine = new FuelEngine(eFuelType.Soler, 125);
-            this.IsRefrigerated = i_IsRefrigerated;
+            InitializeWheelsList(eNumberOfWheels.Fourteen, 28);
+            Engine = new FuelEngine(eFuelType.Soler, 125);
+            IsRefrigerated = i_IsRefrigerated;
             CargoVolume = i_CargoVolume;
         }
 
         public FuelTruck(string i_LicenseID, string i_ModelName) : base(i_LicenseID, i_ModelName)
         {
-            this.InitializeWheelsList(eNumberOfWheels.Fourteen, 28);
-            this.Engine = new FuelEngine(eFuelType.Soler, 125);
-            this.IsRefrigerated = null;
+            InitializeWheelsList(eNumberOfWheels.Fourteen, 28);
+            Engine = new FuelEngine(eFuelType.Soler, 125);
+            IsRefrigerated = null;
             CargoVolume = null;
+        }
+
+        public override bool InsertSpecificVehicleProperties(string i_Property1, string i_Property2)
+        {
+            bool canInsert = false;
+            if (!bool.TryParse(i_Property1, out bool isRefrigerated))
+            {
+                throw new FormatException("Can't parse is refrigerated to boolean value!");
+            }
+            IsRefrigerated = isRefrigerated;
+
+            if (!float.TryParse(i_Property2, out float cargoVolume))
+            {
+                throw new FormatException("Can't parse engine capacity to int!");
+            }
+            CargoVolume = cargoVolume;
+
+            return canInsert;
         }
     }
 }

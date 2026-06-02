@@ -26,6 +26,22 @@ namespace Ex03.GarageLogic
             DoorsNumber = i_DoorsNumber;
         }
 
+        public override bool InsertSpecificVehicleProperties(string i_Property1, string i_Property2)
+        {
+            bool canInsert = false;
+            if (!ePaint.TryParse(i_Property1, out ePaint paint))
+            {
+                throw new FormatException("Can't parse paint to enum!");
+            }
+            Color = paint;
 
+            if (!eDoorsNumber.TryParse(i_Property2, out eDoorsNumber doorsNumber))
+            {
+                throw new FormatException("Can't parse doors number to enum!");
+            }
+            DoorsNumber = doorsNumber;
+
+            return canInsert;
+        }
     }
 }

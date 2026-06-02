@@ -85,5 +85,7 @@ namespace Ex03.GarageLogic
                ModelName
            );
         }
+
+        public abstract bool InsertSpecificVehicleProperties(string i_Property1, string i_Property2);
     }    
 }

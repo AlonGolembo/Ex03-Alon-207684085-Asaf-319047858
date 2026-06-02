@@ -52,7 +52,7 @@ namespace Ex03.ConsoleUI
 
         internal static void GetVehicleFromUserAndPrint(VehicleHandler i_VehicleHandler)
         {
-            Console.WriteLine("Insert vehicle number: ");
+            Console.WriteLine("Insert vehicle's license number: ");
             string licenseNubmer = Console.ReadLine();
             Print(i_VehicleHandler.GetVehicle(licenseNubmer));
         }

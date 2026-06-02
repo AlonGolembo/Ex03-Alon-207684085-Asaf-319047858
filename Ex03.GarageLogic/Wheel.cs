@@ -4,23 +4,9 @@ namespace Ex03.GarageLogic
 {
     public class Wheel
     {
-        private string m_ManufacturerName;
+        public string ManufacturerName { get; set; }
         private float m_CurrentAirPressure;
         private float m_MaxAirPressure;
-
-        public string ManufacturerName
-        {
-            get { return m_ManufacturerName; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentNullException("Manufacturer name can't be empty!");
-                }
-
-                m_ManufacturerName = value;
-            }
-        }
 
         public float CurrentAirPressure
         {

@@ -106,7 +106,6 @@ namespace Ex03.ConsoleUI
                     continueToMenu = CheckIfExitOrContinue();
                     break;
                 case 8:
-                    Console.WriteLine("Please enter a vehicle's license number: ");
                     PrintVehicle.GetVehicleFromUserAndPrint(VehicleHandler);
                     continueToMenu = CheckIfExitOrContinue();
                     break;
