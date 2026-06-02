@@ -13,12 +13,19 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("1. Under repair");
             Console.WriteLine("2. Repaired");
             Console.WriteLine("3. Paid");
-            if (!eVehicleState.TryParse(Console.ReadLine(), out eVehicleState o_newState))
+
+            string userInputString = Console.ReadLine();
+            if (!eVehicleState.TryParse(userInputString, out eVehicleState o_NewState))
             {
-                throw new ArgumentException("No such vehicle state!");
+                throw new FormatException("Can't parse value to int");
             }
 
-            List<RegisteredVehicle> vehicleList = i_VehicleHandler.DisplayVehicles(o_newState);
+            if (!Enum.IsDefined(typeof(eVehicleState), o_NewState))
+            {
+                throw new ArgumentException("Enum not defined!");
+            }
+
+            List<RegisteredVehicle> vehicleList = i_VehicleHandler.DisplayVehicles(o_NewState);
             int numberOfVehiclesInList = vehicleList.Count;
 
             if (numberOfVehiclesInList == 0)
@@ -29,12 +36,12 @@ namespace Ex03.ConsoleUI
             {
                 if(numberOfVehiclesInList == 1)
                 {
-                    Console.WriteLine($"There is 1 vehicle in the garage in {o_newState} state:");
+                    Console.WriteLine($"There is 1 vehicle in the garage in {o_NewState} state:");
                     PrintVehicle.LicenseNumber(vehicleList[0]);
                 }
                 else
                 {
-                    Console.WriteLine($"There are{numberOfVehiclesInList} vehicles in the garage in {o_newState} state are:");
+                    Console.WriteLine($"There are{numberOfVehiclesInList} vehicles in the garage in {o_NewState} state are:");
                     foreach (RegisteredVehicle vehicle in vehicleList)
                     {
                         PrintVehicle.LicenseNumber(vehicle);
