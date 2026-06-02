@@ -89,7 +89,7 @@ namespace Ex03.GarageLogic
         {
             // Currently there is no limitation to insert a new vehicle into garage
             // If in the future there would be any limitation (for example space limit)
-            // Add verification here
+            // Add verification here and can also change the method from void to bool (to indicate if the insertion was successful or not)
 
             if(GetVehicle(registeredVehicle.Vehicle.LicenseID) != null)
             {

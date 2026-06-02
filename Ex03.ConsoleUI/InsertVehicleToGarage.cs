@@ -26,6 +26,9 @@ namespace Ex03.ConsoleUI
                 GetVehicleDetails(currentVehicle);
                 RegisteredVehicle registeredVehicle = RegisterVehicle(currentVehicle);
                 i_VehicleHandler.InsertToGarage(registeredVehicle);
+
+                // Print successful insertion
+                Console.WriteLine($"Vehicle {registeredVehicle.Vehicle.LicenseID} was successfuly inserted to the garage!");
             }
         }
 
