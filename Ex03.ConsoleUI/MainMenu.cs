@@ -131,6 +131,7 @@ namespace Ex03.ConsoleUI
             if(o_UserChoice == 1)
             {
                 continueToMenu = true;
+                Console.Clear();
             }
             else if(o_UserChoice == 2)
             {
