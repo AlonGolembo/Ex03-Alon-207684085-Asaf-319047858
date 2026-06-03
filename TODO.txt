@@ -10,16 +10,37 @@ TODO List:
   [X] Create a FuelTruck : Vehicle class - Alon
   [X] Create an ElectricCar : Car class - Alon
   [X] Create a FuelCar : Car class - Alon
-  [] Create an ElectricMotorcycle : Motorcycle class - Alon
-  [] Create a FuelMotorcycle : Motorcycle class - Alon
+  [X] Create an ElectricMotorcycle : Motorcycle class - Alon
+  [X] Create a FuelMotorcycle : Motorcycle class - Alon
   [X] Create Wheel class - Asaf
   [X] Create a eFuelType enum (Soler, Octan95, Octan96, Octan98) - Alon
   [X] Create a ePaint (used in ElectricCar & MotorizedCar ) enum(Red , Yellow, Black, Silver) - Asaf
   [X] Create a eDrivingLicenceCategory enum(A, A2, B1, AB) - Asaf 
-  [] Create a VehicleHandler class - to handle incoming vehicles into the garage - Asaf
-  [] Create a Garage class - the main engine that will handle the vehicles - Asaf
-
+  [X] Create a RegisteredVehicle class - register incoming vehicle and wrap with owner info etc.. - Alon
+  [X] Create a VehicleHandler class - to handle incoming registered vehicles into the garage - Asaf
+  [X] Create a Garage class - the main engine that will handle the vehicles - Asaf
+  [X] Create ValueRangeException class as mentioned at the "must use" section (page 4) of the project. - Asaf
+  [X] Refraze throwing exceptions according to "must use" section. - Asaf
 
 2. FE:
-  [] Create User input handler.
-  [] Read vehicle DB and pass to VehicleHandler.
+  [X] Create InsertToGarage option for the main menu - Alon
+  [X] Read vehicle DB and pass to RegisteredVehicle - Alon
+  [X] Create PrintVehicle class that prints all of the registered vehicle details - Alon
+  [X] Create DisplayLicenseNumbersInGarage class for the main menu - Alon
+  [X] Create ChangeVehicleState class for the main menu - Alon
+  [X] Create FillAir class for the main menu 
+  [X] Create FillGas class for the main menu 
+  [X] Create Charge class for the main menu 
+  [X] Create MainMenu class - Alon
+
+3. Refactor:
+  [X] Change data members that don't get a value in constructor to nullable variables
+  [X] Complete PrintVehicle.Print (print the vehicle specific properties)
+  [X] Complete handeling vehicle specific properties when reading VehiclesDB
+  [X] Rename ValueOutOfRangeException to ValueRangeException 
+  [X] Add printing of successful actions (vehicle creation, adding vehicle to garage, etc)
+  [X] Add exceptions to unsuccessful actions (maintain the logic -> UI throws parsing exceptions, VehicleHandler throws ArgumentNullException if a vehicle doesn't exist in garage, Garage throw other exceptions, etc..)
+  [X] Test!! 
+  [X] Handle display vehicle that doesn't exist 
+  [X] Complete invalid user input graceful handeling - Alon
+  [] Create structure scheme (Word file) - Asaf

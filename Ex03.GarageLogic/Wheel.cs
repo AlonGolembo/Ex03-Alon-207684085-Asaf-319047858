@@ -4,39 +4,21 @@ namespace Ex03.GarageLogic
 {
     public class Wheel
     {
-        private string m_ManufacturerName;
+        public string ManufacturerName { get; set; }
         private float m_CurrentAirPressure;
         private float m_MaxAirPressure;
-
-        public string ManufacturerName
-        {
-            get { return m_ManufacturerName; }
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    m_ManufacturerName = value;
-                }
-                else
-                {
-                    throw new ArgumentNullException("Manufacturer name can't be empty!");
-                }
-            }
-        }
 
         public float CurrentAirPressure
         {
             get { return m_CurrentAirPressure; }
             set
             {
-                if (value >= 0 && value <= MaxAirPressure)
+                if (!(value >= 0 && value <= MaxAirPressure))
                 {
-                    m_CurrentAirPressure = value;
+                    throw new ValueRangeException(0f, MaxAirPressure);
                 }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("Current amount of air must be positive and not exceed max air pressure!");
-                }
+
+                m_CurrentAirPressure = value;
             }
         }
 
@@ -45,14 +27,12 @@ namespace Ex03.GarageLogic
             get { return m_MaxAirPressure; }
             set
             {
-                if (value > 0)
+                if (value < 0)
                 {
-                    m_MaxAirPressure = value;
+                    throw new ValueRangeException("Max mount of air can't be negative!");
                 }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("Max mount of air can't be negative!");
-                }
+
+                m_MaxAirPressure = value;
             }
         }
 
@@ -72,15 +52,12 @@ namespace Ex03.GarageLogic
 
         public void Inflate(float i_AirToAdd)
         {
-            if (i_AirToAdd > 0 && CurrentAirPressure + i_AirToAdd <= MaxAirPressure)
+            if (!(i_AirToAdd > 0 && CurrentAirPressure <= (MaxAirPressure - i_AirToAdd)))
             {
-                CurrentAirPressure += i_AirToAdd;
+                throw new ValueRangeException(0f, (MaxAirPressure - i_AirToAdd));
             }
-            else
-            {
-                throw new ArgumentOutOfRangeException( "Amount of air to add must be positive and not exceed max air pressure!");
-            }
-        }
 
+            CurrentAirPressure += i_AirToAdd;
+        }
     }
 }

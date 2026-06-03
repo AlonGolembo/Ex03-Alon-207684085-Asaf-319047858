@@ -10,10 +10,10 @@ namespace Ex03.GarageLogic
     public abstract class Vehicle
     {
         private string m_ModelName;
-        private string m_LicenseNumber;
+        private string m_LicenseID;
         public Engine Engine { get; set; }
         private List<Wheel> m_Wheels;
-
+       
         public string ModelName
         {
             get { return m_ModelName; }
@@ -30,14 +30,20 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public string LicenseNumber
+        public  List<Wheel> Wheels
         {
-            get { return m_LicenseNumber; }
+            get { return m_Wheels; }
+            private set { m_Wheels = value; }
+        }
+
+        public string LicenseID
+        {
+            get { return m_LicenseID; }
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    m_LicenseNumber = value;
+                    m_LicenseID = value;
                 }
                 else
                 {
@@ -46,10 +52,12 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public Vehicle(string i_LicenseNumber, string i_ModelName)
+        public Vehicle(string i_LicenseID, string i_ModelName)
         {
-            LicenseNumber = i_LicenseNumber;
+            LicenseID = i_LicenseID;
             ModelName = i_ModelName;
+            Engine = null;
+            Wheels = null;
         }
 
         protected void InitializeWheelsList(eNumberOfWheels i_NumberOfWheels, float i_MaxAirPressure)
@@ -59,6 +67,25 @@ namespace Ex03.GarageLogic
             {
                 m_Wheels.Add(new Wheel(i_MaxAirPressure));
             }
-        } 
+        }
+        
+        public void SetWheels(string i_ManafacturerName, float i_CurrentAirPressure)
+        {
+            foreach (Wheel w in m_Wheels)
+            {
+                w.ManufacturerName = i_ManafacturerName;
+                w.CurrentAirPressure = i_CurrentAirPressure;
+            }
+        }
+        public override string ToString() 
+        {
+            return string.Format(
+               "License Number: {0}\nThe car model: {1}",
+                LicenseID,
+               ModelName
+           );
+        }
+
+        public abstract bool InsertSpecificVehicleProperties(string i_Property1, string i_Property2);
     }    
 }

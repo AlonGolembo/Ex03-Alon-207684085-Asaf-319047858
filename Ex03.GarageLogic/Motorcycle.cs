@@ -8,26 +8,57 @@ namespace Ex03.GarageLogic
 {
     public abstract class Motorcycle : Vehicle
     {
-        public eDrivingLicenceCategory DrivingLicenceCategory { get; set; }
-        private int m_EngineCapacity;
+        private int? m_EngineCapacity;
+        public eDrivingLicenceCategory? LicenseCategory { get; set; }
 
-        public int EngineCapacity
+        public int? EngineCapacity
         {
             get { return m_EngineCapacity; }
             set
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Engine capacity can't be negative!");
+                    throw new ValueRangeException("Engine capacity can't be negative!");
                 }
-                else
-                {
-                    m_EngineCapacity = value;
-                }
+
+                m_EngineCapacity = value;
             }
         }
 
-        public Motorcycle(string i_LicenseNumber,
-                          string i_ModelName) : base(i_LicenseNumber, i_ModelName) { }
+        public Motorcycle(string i_LicenseID, string i_ModelName) : base(i_LicenseID, i_ModelName)
+        {
+            EngineCapacity = null;
+            LicenseCategory = null;
+        }
+        public Motorcycle(string i_LicenseID,
+                          string i_ModelName,
+                          int i_EngineCapacity,
+                          eDrivingLicenceCategory i_DrivingLicenceCategory) : base(i_LicenseID, i_ModelName)
+        {
+            EngineCapacity = i_EngineCapacity;
+            LicenseCategory = i_DrivingLicenceCategory;
+        }
+
+        public override bool InsertSpecificVehicleProperties(string i_LicenseCategory, string i_EngineCapacity)
+        {
+            bool canInsert = false;
+            if (!eDrivingLicenceCategory.TryParse(i_LicenseCategory, out eDrivingLicenceCategory drivingLicenceCategory))
+            {
+                throw new FormatException("Can't parse driving license category to enum!");
+            }
+            if (!Enum.IsDefined(typeof(eDrivingLicenceCategory), drivingLicenceCategory))
+            {
+                throw new ArgumentException("Enum isn't defined!");
+            }
+            LicenseCategory = drivingLicenceCategory;
+
+            if (!int.TryParse(i_EngineCapacity, out int engineCapacity))
+            {
+                throw new FormatException("Can't parse engine capacity to int!");
+            }
+            EngineCapacity = engineCapacity;
+
+            return canInsert;
+        }
     }
 }

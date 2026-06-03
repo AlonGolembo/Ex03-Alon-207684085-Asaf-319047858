@@ -18,7 +18,7 @@ namespace Ex03.GarageLogic
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Max battery life can't be negative!");
+                    throw new ValueRangeException("Max battery life can't be negative!");
                 }
 
                 m_MaxBatteryTime = value;
@@ -29,14 +29,9 @@ namespace Ex03.GarageLogic
             get { return m_RemainingBatteryTime; }
             set
             {
-                if (value < 0)
+                if (!(value >= 0 && value <= MaxBatteryTime))
                 {
-                    throw new ArgumentOutOfRangeException("Remaining battery life can't be negative!");
-                }
-                
-                if (value > m_MaxBatteryTime)
-                {
-                    throw new ArgumentOutOfRangeException($"Remaining battery life can't exceed max battery life time: {m_MaxBatteryTime} hours!")
+                    throw new ValueRangeException(0f, MaxBatteryTime);
                 }
 
                 m_RemainingBatteryTime = value;
@@ -48,24 +43,26 @@ namespace Ex03.GarageLogic
             MaxBatteryTime = i_MaxBatteryTime;
         }
 
-        public ElectricEngine(float i_RemainingBatteryLife, float i_MaxBatteryTime)
+       
+        protected override void UpdateEnergyAmount(float i_EnergyPrecentage)
         {
-            MaxBatteryTime = i_MaxBatteryTime;
-            RemainingBatteryLife = i_RemainingBatteryLife;
-            this.UpdateEnergyPercentage(RemainingBatteryLife, MaxBatteryTime);
+            if (i_EnergyPrecentage < 0 || i_EnergyPrecentage > 100)
+            {
+                throw new ValueRangeException("Energy percentage can't be negative, and cant be above 100%!");
+            }
+
+            RemainingBatteryLife = (i_EnergyPrecentage / 100) * MaxBatteryTime;
         }
 
-        public void ChargeBattery(int i_ChargeHours)
+        public void ChargeBattery(float i_ChargeHours)
         {
-            if (i_ChargeHours + m_RemainingBatteryTime <= m_MaxBatteryTime)
+            if (i_ChargeHours + m_RemainingBatteryTime > m_MaxBatteryTime)
             {
-                m_RemainingBatteryTime += i_ChargeHours;
-                this.UpdateEnergyPercentage(RemainingBatteryLife, MaxBatteryTime);
+                throw new ValueRangeException($"Charging hours can't exceed max charging: {m_MaxBatteryTime - m_RemainingBatteryTime} hours!");
+
             }
-            else
-            {
-                throw new ArgumentOutOfRangeException($"Charging hours can't exceed max charging: {m_MaxBatteryTime - m_RemainingBatteryTime} hours!");
-            }
+            m_RemainingBatteryTime += i_ChargeHours;
+            this.UpdateEnergyPercentage(RemainingBatteryLife, MaxBatteryTime);
         }
 
     }

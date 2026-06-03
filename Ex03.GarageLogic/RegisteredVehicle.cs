@@ -1,0 +1,79 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ex03.GarageLogic
+{
+    public class RegisteredVehicle
+    {
+        public Vehicle Vehicle {  get; set; }
+        private string m_OwnerName { get; set; }
+        private string m_OwnerPhoneNumber;
+        public eVehicleState VehicleState { get; set; }
+    
+
+        public string OwnerName
+        {
+            get { return m_OwnerName; }
+            set
+            {
+                foreach (char c in value)
+                {
+                    if (!char.IsLetter(c))
+                    {
+                        throw new ArgumentException("Owner name can contain only letters!");
+                    }
+                }
+
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Owner's name can't be empty!");
+                }
+
+                m_OwnerName = value;
+            }
+        }
+        
+        public string OwnerPhoneNumber
+        {
+            get { return  m_OwnerPhoneNumber; }
+            set
+            {
+                foreach (char c in value)
+                {
+                    if (!(char.IsDigit(c) || c == '-'))
+                    {
+                        throw new FormatException($"{c} is not valid.");
+                    }
+                }
+
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Owner's phone number can't be empty!");
+                }
+
+                m_OwnerPhoneNumber = value;
+            }
+        }
+
+        public RegisteredVehicle(Vehicle i_Vehicle, string i_OwnerName, string i_OwnerPhoneNumber)
+        {
+            Vehicle = i_Vehicle;
+            OwnerName = i_OwnerName;
+            OwnerPhoneNumber = i_OwnerPhoneNumber;
+            VehicleState = eVehicleState.UnderRepair;
+        }
+        public override string ToString()
+        {
+            return string.Format(
+              "{0}\nOwner's name: {1}\nPhone number:{2}",
+             Vehicle.ToString(),
+             OwnerName,
+             OwnerPhoneNumber
+          );
+        }
+    }
+}

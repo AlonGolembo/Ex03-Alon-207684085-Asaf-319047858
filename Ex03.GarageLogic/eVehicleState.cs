@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    public enum ePaint
+    public enum eVehicleState
     {
-        Red = 1,
-        Yellow,
-        Black,
-        Silver
+        UnderRepair =1,
+        Repaired,
+        Paid
     }
 }

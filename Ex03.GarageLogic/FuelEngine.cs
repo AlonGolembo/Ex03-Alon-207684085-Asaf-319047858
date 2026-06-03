@@ -17,18 +17,12 @@ namespace Ex03.GarageLogic
             get { return m_CurrentFuelAmount; }
             set
             {
-                if (value < 0)
+                if (!(value >= 0 && value <= TankCapacity))
                 {
-                    throw new ArgumentOutOfRangeException("The current fuel amount can't be negative!");
+                    throw new ValueRangeException(0f, TankCapacity);
                 }
-                else if (value > m_TankCapacity)
-                {
-                    throw new ArgumentOutOfRangeException("The current fuel amount can't be higher than max fuel amount!");
-                }
-                else
-                {
-                    m_CurrentFuelAmount = value;
-                }
+
+                m_CurrentFuelAmount = value;
             }
         }
 
@@ -39,12 +33,10 @@ namespace Ex03.GarageLogic
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("The max fuel amount can't be negative!");
+                    throw new ValueRangeException("The max fuel amount can't be negative!");
                 }
-                else
-                {
-                    m_TankCapacity = value;
-                }
+
+                m_TankCapacity = value;
             }
         }
 
@@ -53,32 +45,25 @@ namespace Ex03.GarageLogic
             FuelType = i_FuelType;
             TankCapacity = i_TankCapacity;
         }
-
-        public FuelEngine(eFuelType i_FuelType, float i_TankCapacity, float i_CurrentFuelAmount)
+ 
+    protected override void UpdateEnergyAmount(float i_EnergyPrecentage)
+    {
+        if (!(i_EnergyPrecentage >= 0 && i_EnergyPrecentage <= 100))
         {
-            FuelType = i_FuelType;
-            TankCapacity = i_TankCapacity;
-            CurrentFuelAmount = i_CurrentFuelAmount;
-            this.UpdateEnergyPercentage(CurrentFuelAmount, TankCapacity);
+            throw new ValueRangeException("Energy percentage can't be negative, and cant be above 100%!");
         }
-
-        public void Refuel(float i_FuelInLiters, eFuelType i_eFuelType)
-        {
-            if (FuelType != i_eFuelType)
-            {
-                throw new ArgumentException("Fuel type has to match to car's fuel type!");
-            }
-
-            if (m_CurrentFuelAmount + i_FuelInLiters <= m_TankCapacity)
-            {
-                m_CurrentFuelAmount += i_FuelInLiters;
-                this.UpdateEnergyPercentage(CurrentFuelAmount, TankCapacity); // Update the energy percentage whenver refuling
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException($"Feul can't exceed tank size: {m_TankCapacity} Liters!");
-            }
-
-        }
+        CurrentFuelAmount = (i_EnergyPrecentage / 100) * TankCapacity;
     }
+
+    public void Refuel(float i_FuelInLiters, eFuelType i_eFuelType)//Need to check 
+    {
+        if (m_CurrentFuelAmount + i_FuelInLiters > TankCapacity)
+        {
+            throw new ValueRangeException($"Fuel can't exceed tank size: {m_TankCapacity} Liters!");
+        }
+        CurrentFuelAmount += i_FuelInLiters;
+        this.UpdateEnergyPercentage(CurrentFuelAmount, TankCapacity); 
+    }   
+  }
 }
+

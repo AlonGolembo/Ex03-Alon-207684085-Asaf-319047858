@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using Ex03.GarageLogic;
 
 namespace Ex03.ConsoleUI
 {
-    internal class Program
+    public class Program
     {
         public static void Main()
         {
-            
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.StartMenu();
         }
     }
 }
