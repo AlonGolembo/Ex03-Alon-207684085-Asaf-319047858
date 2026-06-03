@@ -42,5 +42,5 @@ TODO List:
   [X] Add exceptions to unsuccessful actions (maintain the logic -> UI throws parsing exceptions, VehicleHandler throws ArgumentNullException if a vehicle doesn't exist in garage, Garage throw other exceptions, etc..)
   [X] Test!! 
   [X] Handle display vehicle that doesn't exist 
-  [] Complete invalid user input graceful handeling
-  [] Create structure scheme (Word file) 
+  [] Complete invalid user input graceful handeling - Alon
+  [] Create structure scheme (Word file) - Asaf
