@@ -20,8 +20,39 @@ namespace Ex03.ConsoleUI
             }
             else
             {
-                string vehicleType = GetVehicleType();
-                string modelName = GetVehicleModel();
+                string vehicleType = null;
+                string modelName = null;
+                bool tryAgain = true;
+                while (tryAgain)
+                {
+                    try
+                    {
+                        vehicleType = GetVehicleType();
+                        tryAgain = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("Please try again");
+                        Console.WriteLine();
+                    }
+                }
+                tryAgain = true;
+                while (tryAgain)
+                {
+                    try
+                    {
+                        modelName = GetVehicleModel();
+                        tryAgain = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("Please try again");
+                        Console.WriteLine();
+                    }
+                }
+                
                 Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseID, modelName);
                 GetVehicleDetails(currentVehicle);
                 RegisteredVehicle registeredVehicle = RegisterVehicle(currentVehicle);
@@ -29,6 +60,8 @@ namespace Ex03.ConsoleUI
 
                 // Print successful insertion
                 Console.WriteLine($"Vehicle {registeredVehicle.Vehicle.LicenseID} was successfuly inserted to the garage!");
+                
+                
             }
         }
 
@@ -46,6 +79,10 @@ namespace Ex03.ConsoleUI
             {
                 throw new FormatException("Can't parse input to a valid vehicle type number!");
             }
+            if(!(o_TypeNumber < VehicleCreator.SupportedTypes.Count))
+            {
+                throw new ValueRangeException(0f, (float)VehicleCreator.SupportedTypes.Count);
+            }
 
             return VehicleCreator.SupportedTypes[o_TypeNumber - 1];
         }
@@ -53,7 +90,13 @@ namespace Ex03.ConsoleUI
         private static string GetVehicleModel()
         {
             Console.WriteLine("Please insert the vehicle's model name: ");
-            return Console.ReadLine();
+            string userInput = Console.ReadLine();
+            if (string.IsNullOrEmpty(userInput))
+            {
+                throw new ArgumentException("Model name can't be empty!");
+            }
+
+            return userInput;
         }
 
         private static void GetVehicleDetails(Vehicle i_Vehicle)
@@ -127,11 +170,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("4. Silver");
             string colorInput = Console.ReadLine();
 
-            Console.WriteLine("Please insert the number of doors:");
-            Console.WriteLine("1. Two");
-            Console.WriteLine("2. Three");
-            Console.WriteLine("3. Four");
-            Console.WriteLine("4. Five");
+            Console.WriteLine("Please insert the number of doors (2-5):");
             string doorsNumber = Console.ReadLine();
 
             carVehicle.InsertSpecificVehicleProperties(colorInput, doorsNumber);
@@ -198,6 +237,17 @@ namespace Ex03.ConsoleUI
 
                     break;
             }
+        }
+
+        internal static void GetVehicleFromUser(VehicleHandler i_VehicleHandler)
+        {
+            Console.WriteLine("Please Enter a vehicle's license number: ");
+            string userInput = Console.ReadLine();
+            if (string.IsNullOrEmpty(userInput))
+            {
+                throw new ArgumentException("License number can't be empty!");
+            }
+            InsertVehicleToGarage.Insert(i_VehicleHandler, userInput);
         }
     }
 }

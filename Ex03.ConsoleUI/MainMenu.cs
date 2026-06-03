@@ -81,8 +81,7 @@ namespace Ex03.ConsoleUI
                     continueToMenu = CheckIfExitOrContinue();
                     break;
                 case 2:
-                    Console.WriteLine("Please Enter a vehicle's license number: ");
-                    InsertVehicleToGarage.Insert(VehicleHandler, Console.ReadLine());
+                    InsertVehicleToGarage.GetVehicleFromUser(VehicleHandler);
                     continueToMenu = CheckIfExitOrContinue();
                     break;
                 case 3:
