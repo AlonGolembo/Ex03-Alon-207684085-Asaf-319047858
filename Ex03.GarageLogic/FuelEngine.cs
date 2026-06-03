@@ -62,7 +62,7 @@ namespace Ex03.GarageLogic
             throw new ValueRangeException($"Fuel can't exceed tank size: {m_TankCapacity} Liters!");
         }
         CurrentFuelAmount += i_FuelInLiters;
-        this.updateEnergyPercentage(CurrentFuelAmount, TankCapacity); 
+        this.UpdateEnergyPercentage(CurrentFuelAmount, TankCapacity); 
     }   
   }
 }

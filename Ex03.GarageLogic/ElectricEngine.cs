@@ -62,7 +62,7 @@ namespace Ex03.GarageLogic
 
             }
             m_RemainingBatteryTime += i_ChargeHours;
-            this.updateEnergyPercentage(RemainingBatteryLife, MaxBatteryTime);
+            this.UpdateEnergyPercentage(RemainingBatteryLife, MaxBatteryTime);
         }
 
     }
