@@ -48,7 +48,7 @@ namespace Ex03.GarageLogic
  
     protected override void UpdateEnergyAmount(float i_EnergyPrecentage)
     {
-        if (i_EnergyPrecentage < 0 || i_EnergyPrecentage > 100)
+        if (!(i_EnergyPrecentage >= 0 && i_EnergyPrecentage <= 100))
         {
             throw new ValueRangeException("Energy percentage can't be negative, and cant be above 100%!");
         }
