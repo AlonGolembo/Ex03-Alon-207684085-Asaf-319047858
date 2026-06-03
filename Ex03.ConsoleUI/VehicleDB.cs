@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.ConsoleUI
 {
-    internal class VehicleDB
+    public class VehicleDB
     {
         public const string fileName = "VehiclesDB.txt";
 

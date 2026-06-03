@@ -44,7 +44,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        internal static void GetVehicleFromUserAndPrint(VehicleHandler i_VehicleHandler)
+        private static void GetVehicleFromUserAndPrint(VehicleHandler i_VehicleHandler)
         {
             Console.WriteLine("Insert vehicle's license number: ");
             string licenseNubmer = Console.ReadLine();
@@ -59,7 +59,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        internal static void LicenseNumber(RegisteredVehicle i_RegisteredVehicle)
+        public static void LicenseNumber(RegisteredVehicle i_RegisteredVehicle)
         {
             Console.WriteLine($"{i_RegisteredVehicle.Vehicle.LicenseID}");
         }

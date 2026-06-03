@@ -7,7 +7,7 @@ using Ex03.GarageLogic;
 
 namespace Ex03.ConsoleUI
 {
-    internal class MainMenu
+    public class MainMenu
     {
         private VehicleHandler m_VehicleHandler;
 

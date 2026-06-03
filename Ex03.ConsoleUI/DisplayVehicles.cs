@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 
 namespace Ex03.ConsoleUI
 {
-    internal class DisplayVehicles
+    public class DisplayVehicles
     {
-        internal static void DisplayAccordingToState(VehicleHandler i_VehicleHandler)
+        public static void DisplayAccordingToState(VehicleHandler i_VehicleHandler)
         {
             Console.WriteLine("Choose a vehicle state to display:");
             Console.WriteLine("1. Under repair");

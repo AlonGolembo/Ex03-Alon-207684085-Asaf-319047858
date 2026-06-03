@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.ConsoleUI
 {
-    internal class FillAir
+    public class FillAir
     {
         public static void Fill(VehicleHandler i_VehicleHandler)
         {
@@ -18,7 +18,16 @@ namespace Ex03.ConsoleUI
                 throw new ArgumentNullException("License number doesn't exist in garage!");
             }
 
-            i_VehicleHandler.FillAir(licenseNumber);
+            try
+            {
+                i_VehicleHandler.FillAir(licenseNumber);
+                Console.WriteLine("Tiers were successfully filled!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Tier fill up failed!");
+            }
         }
     }
 }

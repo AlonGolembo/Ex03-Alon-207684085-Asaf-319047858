@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.ConsoleUI
 {
-    internal class ChangeVehicleState
+    public class ChangeVehicleState
     {
         public static void Change(VehicleHandler i_VehicleHandler)
         {

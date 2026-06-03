@@ -7,23 +7,33 @@ using Ex03.GarageLogic;
 
 namespace Ex03.ConsoleUI
 {
-    internal class Energize
+    public class Energize
     {
-        internal static void Recharge(VehicleHandler i_VehicleHandler)
+        public static void Recharge(VehicleHandler i_VehicleHandler)
         {
             Console.WriteLine("Insert a license number to charge: ");
             string licenseNubmer = Console.ReadLine();
             Console.WriteLine("Insert amount of minutes to charge: ");
             //string minutesToCharge = Console.ReadLine(); -->> Needs to be deleted ?
-            if(!float.TryParse(Console.ReadLine(), out float minutesToCharge))
+            if (!float.TryParse(Console.ReadLine(), out float minutesToCharge))
             {
                 throw new FormatException("Can't parse minutes to float!");
             }
 
-            i_VehicleHandler.ChargeVehicle(licenseNubmer, minutesToCharge);
+            try
+            {
+                i_VehicleHandler.ChargeVehicle(licenseNubmer, minutesToCharge);
+                Console.WriteLine("Vehicle was successfully recharged");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Recharge failed, please try again!");
+            }
         }
 
-        internal static void Refuel(VehicleHandler i_VehicleHandler)
+
+        public static void Refuel(VehicleHandler i_VehicleHandler)
         {
             Console.WriteLine("Insert a license number to refuel: ");
             string licenseNubmer = Console.ReadLine();
@@ -46,7 +56,17 @@ namespace Ex03.ConsoleUI
                 throw new FormatException("Can't parse fuel amount!");
             }
 
-            i_VehicleHandler.FuelVehicle(licenseNubmer, fuelType, fuelLiters);
+            try 
+            {
+                i_VehicleHandler.FuelVehicle(licenseNubmer, fuelType, fuelLiters);
+                Console.WriteLine("Vehicle was successfully refuled");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Refuel failed, please try again!");
+            }
+                
         }
     }
 }
