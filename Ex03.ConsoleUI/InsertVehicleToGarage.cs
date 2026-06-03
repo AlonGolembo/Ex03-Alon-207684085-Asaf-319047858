@@ -20,15 +20,22 @@ namespace Ex03.ConsoleUI
             }
             else
             {
-                string vehicleType = GetVehicleType();
-                string modelName = GetVehicleModel();
-                Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseID, modelName);
-                GetVehicleDetails(currentVehicle);
-                RegisteredVehicle registeredVehicle = RegisterVehicle(currentVehicle);
-                i_VehicleHandler.InsertToGarage(registeredVehicle);
+                
+                    string vehicleType = GetVehicleType();
+                    string modelName = GetVehicleModel();
+                    Vehicle currentVehicle = VehicleCreator.CreateVehicle(vehicleType, i_LicenseID, modelName);
+                    GetVehicleDetails(currentVehicle);
+                    RegisteredVehicle registeredVehicle = RegisterVehicle(currentVehicle);
+                    i_VehicleHandler.InsertToGarage(registeredVehicle);
+                    // Print successful insertion
+                    Console.WriteLine($"Vehicle {registeredVehicle.Vehicle.LicenseID} was successfuly inserted to the garage!");
+                
+               
+                    Console.WriteLine($"An error occurred while inserting the vehicle: {ex.Message}");
+                    return;
+                
 
-                // Print successful insertion
-                Console.WriteLine($"Vehicle {registeredVehicle.Vehicle.LicenseID} was successfuly inserted to the garage!");
+               
             }
         }
 

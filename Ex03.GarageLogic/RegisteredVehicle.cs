@@ -20,12 +20,19 @@ namespace Ex03.GarageLogic
             get { return m_OwnerName; }
             set
             {
-                foreach (char c in value)
+                if (!string.IsNullOrEmpty(value))
                 {
-                    if (!char.IsLetter(c))
+                    foreach (char c in value)
                     {
-                        throw new ArgumentException("Owner name can contain only letters!");
+                        if (!(char.IsLetter(c) || c == ' '))
+                        {
+                            throw new ArgumentException("Owner name can contain only letters!");
+                        }
                     }
+                }
+                else 
+                {
+                    throw new ArgumentNullException("Owner name can't be empty!");
                 }
 
                 m_OwnerName = value;
