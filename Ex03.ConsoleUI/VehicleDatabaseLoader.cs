@@ -90,9 +90,16 @@ namespace Ex03.ConsoleUI
         }
 
         [Obsolete]
-        private static bool IsModelName(string v)
+        private static bool IsModelName(string i_ModelName)
         {
-            throw new NotImplementedException("Not sure if we need this or not");
+            bool isModelName = true;
+            if (string.IsNullOrEmpty(i_ModelName))
+            {
+                throw new ArgumentException("Model's name can't be null or empty spaces.");
+                isModelName = false;
+            }
+            return isModelName;
+
         }
     }
 }
