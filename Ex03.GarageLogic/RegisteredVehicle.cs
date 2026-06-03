@@ -37,20 +37,15 @@ namespace Ex03.GarageLogic
             get { return  m_OwnerPhoneNumber; }
             set
             {
-                if (!value.StartsWith("05"))
+                foreach (char c in value)
                 {
-                    throw new FormatException("Phone number must start with 05!");
-                }
-
-                for (int i = 0; i < value.Length; i++)
-                {
-                    if (!(char.IsDigit(value[i]) || value[i] == '-'))
+                    if (!(char.IsDigit(c) || c == '-'))
                     {
-                        throw new FormatException($"{i} is not valid.");
+                        throw new FormatException($"{c} is not valid.");
                     }
-
-                    m_OwnerPhoneNumber = value;
                 }
+
+                m_OwnerPhoneNumber = value;
             }
         }
 
