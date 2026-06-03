@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
             get { return m_EnergyPercentage; }
             set
             {
-                if(value < 0|| value > 100)
+                if(!(value >= 0 && value <= 100))
                 {
                     throw new ValueRangeException("Energy percentage can't be negative, and cant be above 100%!");
                 }
@@ -26,9 +26,9 @@ namespace Ex03.GarageLogic
         public Engine() { }
 
         protected abstract void UpdateEnergyAmount(float i_EnergyPrecentage);
-        protected void updateEnergyPercentage(float i_CurrentFuelAmount, float i_TankCapacity)
+        protected void UpdateEnergyPercentage(float i_CurrentEnergyAmount, float i_MaxCapacity)
         {
-            EnergyPercentage = (i_CurrentFuelAmount / i_TankCapacity) * 100;
+            EnergyPercentage = (i_CurrentEnergyAmount / i_MaxCapacity) * 100;
         }
 
     }
