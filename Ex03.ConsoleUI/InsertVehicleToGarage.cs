@@ -43,14 +43,6 @@ namespace Ex03.ConsoleUI
             bool tryAgain = true;
             while(tryAgain)
             {
-                Console.WriteLine("Please select a vehicle type: ");
-                int typeAmount = 1;
-                foreach (string type in VehicleCreator.SupportedTypes)
-                {
-                    Console.WriteLine($"{typeAmount}. {type}");
-                    typeAmount++;
-                }
-
                 try
                 {
                     vehicleType = ReadVehicleType();
@@ -69,13 +61,21 @@ namespace Ex03.ConsoleUI
 
         private static int ReadVehicleType()
         {
+            Console.WriteLine("Please select a vehicle type: ");
+            int typeAmount = 1;
+            foreach (string type in VehicleCreator.SupportedTypes)
+            {
+                Console.WriteLine($"{typeAmount}. {type}");
+                typeAmount++;
+            }
+
             if (!int.TryParse(Console.ReadLine(), out int o_TypeNumber))
             {
                 throw new FormatException("Can't parse input to a valid vehicle type number!");
             }
-            if (!(o_TypeNumber > 0 && o_TypeNumber < VehicleCreator.SupportedTypes.Count))
+            if (!(o_TypeNumber > 0 && o_TypeNumber < VehicleCreator.SupportedTypes.Count + 1))
             {
-                throw new ValueRangeException(0f, (float)VehicleCreator.SupportedTypes.Count);
+                throw new ValueRangeException(0f, (float)(VehicleCreator.SupportedTypes.Count + 1));
             }
 
             return o_TypeNumber;
@@ -87,7 +87,6 @@ namespace Ex03.ConsoleUI
             bool tryAgain = true;
             while(tryAgain)
             {
-                Console.WriteLine("Please insert the vehicle's model name: ");
                 try
                 {
                     userInput = ReadVehicleModel();
@@ -105,6 +104,7 @@ namespace Ex03.ConsoleUI
 
         private static string ReadVehicleModel()
         {
+            Console.WriteLine("Please insert the vehicle's model name: ");
             string vehicleModel = Console.ReadLine();
             if (string.IsNullOrEmpty(vehicleModel))
             {
@@ -296,9 +296,9 @@ namespace Ex03.ConsoleUI
             {
                 throw new FormatException("Can't parse air pressure to a float!");
             }
-            if (!(airPressure >= 0 && airPressure <= i_Vehicle.Wheels[0].MaxAirPressure))
+            if (!(airPressure >= 0 && airPressure < i_Vehicle.Wheels[0].MaxAirPressure + 1))
             {
-                throw new ValueRangeException(0f, i_Vehicle.Wheels[0].MaxAirPressure);
+                throw new ValueRangeException(0f, (float)(i_Vehicle.Wheels[0].MaxAirPressure + 1));
             }
 
             return airPressure;
@@ -317,6 +317,7 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("Please insert car owners phone number: ");
                     string ownerPhoneNumber = Console.ReadLine();
                     registeredVehicle = new RegisteredVehicle(i_Vehicle, ownerName, ownerPhoneNumber);
+                    tryAgain = false;
                 }
                 catch (Exception ex)
                 {

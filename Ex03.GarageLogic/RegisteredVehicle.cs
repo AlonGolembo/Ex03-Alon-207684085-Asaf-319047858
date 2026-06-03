@@ -28,6 +28,11 @@ namespace Ex03.GarageLogic
                     }
                 }
 
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Owner's name can't be empty!");
+                }
+
                 m_OwnerName = value;
             }
         }
@@ -43,6 +48,11 @@ namespace Ex03.GarageLogic
                     {
                         throw new FormatException($"{c} is not valid.");
                     }
+                }
+
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Owner's phone number can't be empty!");
                 }
 
                 m_OwnerPhoneNumber = value;
