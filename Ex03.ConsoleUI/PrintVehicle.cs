@@ -48,7 +48,15 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Insert vehicle's license number: ");
             string licenseNubmer = Console.ReadLine();
-            Print(i_VehicleHandler.GetVehicle(licenseNubmer));
+            RegisteredVehicle currentVehicle = i_VehicleHandler.GetVehicle(licenseNubmer);
+            if(currentVehicle != null)
+            {
+                Print(currentVehicle);
+            }
+            else
+            {
+                Console.WriteLine("Vehicle doesn't exist!");
+            }
         }
 
         internal static void LicenseNumber(RegisteredVehicle i_RegisteredVehicle)

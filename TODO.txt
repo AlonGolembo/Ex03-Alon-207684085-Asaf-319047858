@@ -38,6 +38,9 @@ TODO List:
   [X] Complete PrintVehicle.Print (print the vehicle specific properties)
   [X] Complete handeling vehicle specific properties when reading VehiclesDB
   [X] Rename ValueOutOfRangeException to ValueRangeException 
-  [] Add printing of successful actions (vehicle creation, adding vehicle to garage, etc)
-  [] Add exceptions to unsuccessful actions (maintain the logic -> UI throws parsing exceptions, VehicleHandler throws ArgumentNullException if a vehicle doesn't exist in garage, Garage throw other exceptions, etc..)
-  [] Test!!
+  [X] Add printing of successful actions (vehicle creation, adding vehicle to garage, etc)
+  [X] Add exceptions to unsuccessful actions (maintain the logic -> UI throws parsing exceptions, VehicleHandler throws ArgumentNullException if a vehicle doesn't exist in garage, Garage throw other exceptions, etc..)
+  [X] Test!! 
+  [X] Handle display vehicle that doesn't exist 
+  [] Complete invalid user input graceful handeling
+  [] Create structure scheme (Word file) 
