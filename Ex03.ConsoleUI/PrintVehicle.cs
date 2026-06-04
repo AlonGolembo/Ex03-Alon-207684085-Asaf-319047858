@@ -44,7 +44,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        private static void GetVehicleFromUserAndPrint(VehicleHandler i_VehicleHandler)
+        public static void GetVehicleFromUserAndPrint(VehicleHandler i_VehicleHandler)
         {
             Console.WriteLine("Insert vehicle's license number: ");
             string licenseNubmer = Console.ReadLine();
